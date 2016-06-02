@@ -31,6 +31,10 @@ namespace MaintinfoBo
             this.seuilMinimal = seuilMinimal;
         }
 
+        public Article()
+        {
+        }
+
         public string DesignationArticle
         {
             get

@@ -10,7 +10,7 @@ namespace MaintinfoBll
     {
         public static void CreerBonEntree(string refArt,int quantite)
         {
-            Article art = ArticleManager.RechercheArticle(refArt);
+            Article art = new Article();
             BonEntree BonE = new BonEntree(art, quantite, DateTime.Now);
             
         }
