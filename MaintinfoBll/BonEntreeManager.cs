@@ -6,7 +6,7 @@ using MaintinfoBo;
 
 namespace MaintinfoBll
 {
-    class BonEntreeManager
+    public class BonEntreeManager
     {
         public static void CreerBonEntree(string refArt,int quantite)
         {
