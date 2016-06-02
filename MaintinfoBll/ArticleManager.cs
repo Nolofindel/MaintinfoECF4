@@ -12,14 +12,19 @@ namespace MaintinfoBll
     {
         public Article SaisirArticle(string DesignationArticle)
         {
-            //Article art=ArticleDao.RecupererArticle(DesignationArticle);
-            //return Article;
-            return new Article();   ArticleDao add = new ArticleDao();        
+            Article art=ArticleDao.RecupererArticle(DesignationArticle);
+            return art;
+
         }
         public void SortiArticle(Article Article, int Quantite)
         {
             Article.QuantiteArticle -= Quantite;
-
+            ArticleDao.MaJArticle(Article);
+        }
+        public void EntreeArticle(Article Article, int Quantite)
+        {
+            Article.QuantiteArticle += Quantite;
+            ArticleDao.MaJArticle(Article);
         }
     }
 }

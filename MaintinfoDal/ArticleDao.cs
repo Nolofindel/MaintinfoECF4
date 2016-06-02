@@ -9,11 +9,14 @@ namespace MaintinfoDal
     [Serializable]
     public class ArticleDao
     {
-        public Article RecupererArticle(string DesignationArticle)
+        public static Article RecupererArticle(string DesignationArticle)
         {
             Article art = new Article();
             return art;
         }
-        
+        public static void MaJArticle(Article art)
+        {
+
+        }
     }
 }

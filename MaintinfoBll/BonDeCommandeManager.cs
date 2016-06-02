@@ -7,9 +7,9 @@ namespace MaintinfoBll
 {
    public class BonDeCommandeManager
     {
-        public void TesterQuantiteSeuil(BonDeCommande Bdc)
+        public bool TesterQuantiteSeuil(BonDeCommande Bdc)
         {
-
+            return Bdc.QuantiteCommande + Bdc.ArticleCommande.QuantiteArticle >= Bdc.ArticleCommande.SeuilMinimal;
         }
     }
 }
