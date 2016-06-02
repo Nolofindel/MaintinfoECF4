@@ -22,17 +22,16 @@ namespace MaintinfoDal
         protected string CmdGetAll;
         protected string CmdGetAllBy;
 
-        // Imposé
-        // Si une procédure stockée retourne un identifiant ce sera le dernier parametre
+        // Imposé  Si une procédure stockée retourne un identifiant ce sera le dernier parametre
 
         // Affectation des parametres de la proc stockée (Insert, Update) à partir de l'objet
         protected abstract void ObjectToParameters(T obj, DbCommand oCommand);
-        // Affectation des propriétés de l'objet (à créer )à partir du rdr
+        // Affectation des propriétés de l'objet (à créer )à partir du reader
         protected abstract T ReaderToObject(DbDataReader rdr);
-        // Affectation du parametre de la proc sto permettant la lecture par identifiant
+        // Affectation du parametre de la procédure stockée permettant la lecture par identifiant
         protected abstract void IdToParameter(object id, DbCommand oCommand);
 
-        // Affectation du parametre de la proc sto permettant une selection all en base
+        // Affectation du parametre de la procédure stockée permettant une selection all en base
         protected abstract void FindByPameter(object id, DbCommand oCommand);
 
         public virtual T GetById(object Id)
@@ -66,7 +65,7 @@ namespace MaintinfoDal
                     }
                     catch (DaoException daoex)
                     {
-                        throw;
+                        throw new DaoExceptionAfficheMessage("L'opération n'a pas été réalisée: \n" + daoex.Message);
                     }
                     catch (DbException dbe)
                     {
