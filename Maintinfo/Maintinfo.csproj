@@ -72,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBonEntree.resx">
+      <DependentUpon>FrmBonEntree.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -93,6 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaintinfoBll\MaintinfoBll.csproj">
+      <Project>{acdd5f08-10e5-4459-8887-6e37416f4481}</Project>
+      <Name>MaintinfoBll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Métier\MaintinfoBo.csproj">
+      <Project>{642283c0-934e-4061-9b40-40e2cb6653bf}</Project>
+      <Name>MaintinfoBo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

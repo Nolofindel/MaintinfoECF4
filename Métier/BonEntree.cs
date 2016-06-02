@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace MaintinfoBo
 {
-    class BonEntree
+    public class BonEntree
     {
         private Article articleEntree;
         private int quantiteEntree;
         private DateTime dateEntree;
+        public BonEntree()
+        {
 
+        }
         public BonEntree(Article article, int quantite, DateTime dateEntree)
         {
             this.articleEntree = article;
