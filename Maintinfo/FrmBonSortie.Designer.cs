@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.txtboxCodeArt = new System.Windows.Forms.TextBox();
+            this.numericUpDownQte = new System.Windows.Forms.NumericUpDown();
             this.lblQuantite = new System.Windows.Forms.Label();
-            this.lblRefArticle = new System.Windows.Forms.Label();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
-            this.lblNumEnreg = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.lblSortieArt = new System.Windows.Forms.Label();
+            this.lblCodeArt = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtboxCodeArt
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 11;
+            this.txtboxCodeArt.Location = new System.Drawing.Point(123, 38);
+            this.txtboxCodeArt.Name = "txtboxCodeArt";
+            this.txtboxCodeArt.Size = new System.Drawing.Size(79, 20);
+            this.txtboxCodeArt.TabIndex = 11;
             // 
-            // numericUpDown1
+            // numericUpDownQte
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(123, 161);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numericUpDownQte.Location = new System.Drawing.Point(123, 64);
+            this.numericUpDownQte.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(79, 20);
-            this.numericUpDown1.TabIndex = 10;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericUpDownQte.Name = "numericUpDownQte";
+            this.numericUpDownQte.Size = new System.Drawing.Size(79, 20);
+            this.numericUpDownQte.TabIndex = 10;
+            this.numericUpDownQte.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -65,20 +65,11 @@
             // lblQuantite
             // 
             this.lblQuantite.AutoSize = true;
-            this.lblQuantite.Location = new System.Drawing.Point(120, 145);
+            this.lblQuantite.Location = new System.Drawing.Point(70, 71);
             this.lblQuantite.Name = "lblQuantite";
             this.lblQuantite.Size = new System.Drawing.Size(47, 13);
             this.lblQuantite.TabIndex = 9;
             this.lblQuantite.Text = "Quantité";
-            // 
-            // lblRefArticle
-            // 
-            this.lblRefArticle.AutoSize = true;
-            this.lblRefArticle.Location = new System.Drawing.Point(12, 145);
-            this.lblRefArticle.Name = "lblRefArticle";
-            this.lblRefArticle.Size = new System.Drawing.Size(89, 13);
-            this.lblRefArticle.TabIndex = 8;
-            this.lblRefArticle.Text = "Réference Article";
             // 
             // btnAnnuler
             // 
@@ -98,30 +89,39 @@
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
             // 
-            // lblNumEnreg
+            // lblSortieArt
             // 
-            this.lblNumEnreg.AutoSize = true;
-            this.lblNumEnreg.Location = new System.Drawing.Point(15, 9);
-            this.lblNumEnreg.Name = "lblNumEnreg";
-            this.lblNumEnreg.Size = new System.Drawing.Size(92, 13);
-            this.lblNumEnreg.TabIndex = 12;
-            this.lblNumEnreg.Text = "N° Enregistrement";
+            this.lblSortieArt.AutoSize = true;
+            this.lblSortieArt.Location = new System.Drawing.Point(15, 9);
+            this.lblSortieArt.Name = "lblSortieArt";
+            this.lblSortieArt.Size = new System.Drawing.Size(135, 13);
+            this.lblSortieArt.TabIndex = 12;
+            this.lblSortieArt.Text = "Demande de sortie d\'article";
+            // 
+            // lblCodeArt
+            // 
+            this.lblCodeArt.AutoSize = true;
+            this.lblCodeArt.Location = new System.Drawing.Point(53, 41);
+            this.lblCodeArt.Name = "lblCodeArt";
+            this.lblCodeArt.Size = new System.Drawing.Size(64, 13);
+            this.lblCodeArt.TabIndex = 13;
+            this.lblCodeArt.Text = "Code Article";
             // 
             // FrmBonSortie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 277);
-            this.Controls.Add(this.lblNumEnreg);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.lblCodeArt);
+            this.Controls.Add(this.lblSortieArt);
+            this.Controls.Add(this.txtboxCodeArt);
+            this.Controls.Add(this.numericUpDownQte);
             this.Controls.Add(this.lblQuantite);
-            this.Controls.Add(this.lblRefArticle);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
             this.Name = "FrmBonSortie";
             this.Text = "FrmBonSortie";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,12 +129,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox txtboxCodeArt;
+        private System.Windows.Forms.NumericUpDown numericUpDownQte;
         private System.Windows.Forms.Label lblQuantite;
-        private System.Windows.Forms.Label lblRefArticle;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnValider;
-        private System.Windows.Forms.Label lblNumEnreg;
+        private System.Windows.Forms.Label lblSortieArt;
+        private System.Windows.Forms.Label lblCodeArt;
     }
 }
