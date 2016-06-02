@@ -49,6 +49,12 @@
     <Compile Include="SecteurGeographiqueDao.cs" />
     <Compile Include="SpecialiteDao.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Métier\MaintinfoBo.csproj">
+      <Project>{642283c0-934e-4061-9b40-40e2cb6653bf}</Project>
+      <Name>MaintinfoBo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
