@@ -4,19 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Métier
+namespace MaintinfoBo
 {
     public class Article
     {
         private string designationArticle;
         private string nomArticle;
         private List<Article> sousEnsemble;
+        private int quantiteArticle;
+        private int seuilMinimal;
 
-        public Article(string designationArticle, string nomArticle, int seuilMinimal, List<Article> sousEnsemble)
+        public Article(string designationArticle, string nomArticle, List<Article> sousEnsemble, int quantiteArticle, int seuilMinimal)
         {
             this.designationArticle = designationArticle;
             this.nomArticle = nomArticle;
             this.sousEnsemble = sousEnsemble;
+            this.quantiteArticle = quantiteArticle;
+            this.seuilMinimal = seuilMinimal;
+        }
+
+        public Article(string designationArticle, string nomArticle, int quantiteArticle, int seuilMinimal)
+        {
+            this.designationArticle = designationArticle;
+            this.nomArticle = nomArticle;
+            this.quantiteArticle = quantiteArticle;
+            this.seuilMinimal = seuilMinimal;
         }
 
         public string DesignationArticle
@@ -55,6 +67,32 @@ namespace Métier
             set
             {
                 sousEnsemble = value;
+            }
+        }
+
+        public int QuantiteArticle
+        {
+            get
+            {
+                return quantiteArticle;
+            }
+
+            set
+            {
+                quantiteArticle = value;
+            }
+        }
+
+        public int SeuilMinimal
+        {
+            get
+            {
+                return seuilMinimal;
+            }
+
+            set
+            {
+                seuilMinimal = value;
             }
         }
     }
