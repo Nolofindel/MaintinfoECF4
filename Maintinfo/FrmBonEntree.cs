@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+
+using System.Windows.Forms;
 using MaintinfoBll;
 namespace Maintinfo
 {
@@ -9,7 +11,7 @@ namespace Maintinfo
             InitializeComponent();
         }
 
-        private void btnValider_Click(object sender, EventArgs e)
+        private void btnValider_Click(object sender,EventArgs e)
         {
             string refArt = txtBoxRefArticle.Text;
             int quant = (int)numericUpDownQuantite.Value;
