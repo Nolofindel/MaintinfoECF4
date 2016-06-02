@@ -11,5 +11,9 @@ namespace MaintinfoBll
         {
             return Bdc.QuantiteCommande + Bdc.ArticleCommande.QuantiteArticle >= Bdc.ArticleCommande.SeuilMinimal;
         }
+        public void RemplirBonDeCommande(BonDeCommande Bdc,int Quantite)
+        {
+            Bdc.QuantiteCommande = Quantite;
+        }
     }
 }
