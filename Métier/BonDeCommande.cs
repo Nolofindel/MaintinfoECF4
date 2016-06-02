@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MaintinfoBo
 {
-    class BonDeCommande
+    public class BonDeCommande
     {
         private int numCommande;
         private DateTime dateCommande;
