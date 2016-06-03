@@ -76,5 +76,82 @@ namespace MaintinfoDal
 
             }
         }
+
+        public virtual List<T> GetAll()
+        {
+            // création connection
+            using (DbConnection oConnection = Connection.GetConnection())
+            {
+                using (DbCommand oCommand = oConnection.CreateCommand())
+                {
+
+                    oCommand.CommandText = CmdGetAll;
+                    oCommand.CommandType = CommandType.StoredProcedure;
+
+                    T obj;
+                    List<T> liste = new List<T>();
+
+                    try
+                    {
+                        using (DbDataReader rdr = oCommand.ExecuteReader())
+                        {
+                            while (rdr.Read())
+                            {
+                                obj = ReaderToObject(rdr);
+                                liste.Add(obj);
+                            }
+                            return liste;
+                        }
+                    }
+                    catch (DbException dbe)
+                    {
+                        // pas de possibilité de switch sur dbException
+                        throw new DaoExceptionAfficheMessage("L'opération de lecture n'a pas été réalisée: \n" +
+                                                             dbe.Message);
+                    }
+                }
+
+            }
+        }
+        // FindAllBy reçoit un objet permettant une selection
+        public virtual List<T> FindAllBy(object Id)
+        {
+            // création connection
+            using (DbConnection oConnection = Connection.GetConnection())
+            {
+                using (DbCommand oCommand = oConnection.CreateCommand())
+                {
+
+                    oCommand.CommandText = CmdGetAllBy;
+                    oCommand.CommandType = CommandType.StoredProcedure;
+
+                    // affectation du parametre à la procédure stockée
+                    FindByPameter(Id, oCommand);
+
+                    T obj;
+                    List<T> liste = new List<T>();
+
+                    try
+                    {
+                        using (DbDataReader rdr = oCommand.ExecuteReader())
+                        {
+                            while (rdr.Read())
+                            {
+                                obj = ReaderToObject(rdr);
+                                liste.Add(obj);
+                            }
+                            return liste;
+                        }
+                    }
+                    catch (DbException dbe)
+                    {
+                        // pas de possibilité de switch sur dbException
+                        throw new DaoExceptionAfficheMessage("L'opération de lecture n'a pas été réalisée: \n" +
+                                                             dbe.Message);
+                    }
+                }
+
+            }
+        }
     }
 }

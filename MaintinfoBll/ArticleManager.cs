@@ -10,6 +10,16 @@ namespace MaintinfoBll
 
     public class ArticleManager
     {
+
+
+        public List<Article> RechercherLesProduits(object o)
+        {
+            
+            // Appel du Dao
+            ArticleDao pDao = new ArticleDao();
+            return pDao.FindAllBy(o);
+        }
+
         public Article SaisirArticle(string DesignationArticle)
         {
             Article art=ArticleDao.RecupererArticle(DesignationArticle);
