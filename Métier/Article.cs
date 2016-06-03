@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MaintinfoBo
 {
@@ -29,6 +25,10 @@ namespace MaintinfoBo
             this.nomArticle = nomArticle;
             this.quantiteArticle = quantiteArticle;
             this.seuilMinimal = seuilMinimal;
+        }
+
+        public Article()
+        {
         }
 
         public string DesignationArticle

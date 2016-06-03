@@ -72,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAcceuil.resx">
+      <DependentUpon>FrmAcceuil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBonEntree.resx">
       <DependentUpon>FrmBonEntree.cs</DependentUpon>
     </EmbeddedResource>

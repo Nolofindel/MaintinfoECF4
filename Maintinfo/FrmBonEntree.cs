@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using System.Windows.Forms;
+using MaintinfoBll;
 namespace Maintinfo
 {
     public partial class FrmBonEntree : Form
@@ -16,10 +8,22 @@ namespace Maintinfo
         {
             InitializeComponent();
         }
-
-        private void btnValider_Click(object sender, EventArgs e)
+        
+        private void btnValider_Click(object sender, System.EventArgs e)
         {
+            string refArt = txtBoxRefArticle.Text;
+            int quant = (int)numericUpDownQuantite.Value;
+            BonEntreeManager.CreerBonEntree(refArt,quant);
+        }
 
+        private void btnAnnuler_Click(object sender, System.EventArgs e)
+        {
+            ResetText();
+        }
+        private void ResetBox()
+        {
+            txtBoxRefArticle.Clear();
+            numericUpDownQuantite.ResetText();
         }
     }
 }

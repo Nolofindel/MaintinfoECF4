@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MaintinfoBo
 {
-    class BonDeCommande
+    public class BonDeCommande
     {
-        private int numCommande;
         private DateTime dateCommande;
         private Article articleCommande;
         private int quantiteCommande;
@@ -17,19 +12,6 @@ namespace MaintinfoBo
         {
             this.articleCommande = articleCommande;
             this.dateCommande = DateTime.Today;
-        }
-
-        public int NumCommande
-        {
-            get
-            {
-                return numCommande;
-            }
-
-            set
-            {
-                numCommande = value;
-            }
         }
 
         public DateTime DateCommande

@@ -47,6 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MaintinfoDal\MaintinfoDal.csproj">
+      <Project>{e7ccf73f-d1db-4b4e-b72a-45ec5a72a051}</Project>
+      <Name>MaintinfoDal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Métier\MaintinfoBo.csproj">
       <Project>{642283c0-934e-4061-9b40-40e2cb6653bf}</Project>
       <Name>MaintinfoBo</Name>
