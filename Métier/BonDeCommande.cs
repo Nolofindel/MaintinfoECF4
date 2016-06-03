@@ -4,7 +4,6 @@ namespace MaintinfoBo
 {
     public class BonDeCommande
     {
-        private int numCommande;
         private DateTime dateCommande;
         private Article articleCommande;
         private int quantiteCommande;
@@ -13,19 +12,6 @@ namespace MaintinfoBo
         {
             this.articleCommande = articleCommande;
             this.dateCommande = DateTime.Today;
-        }
-
-        public int NumCommande
-        {
-            get
-            {
-                return numCommande;
-            }
-
-            set
-            {
-                numCommande = value;
-            }
         }
 
         public DateTime DateCommande
