@@ -22,7 +22,7 @@ namespace MaintinfoDal
             CmdGetBy = string.Empty;
             CmdGetAll = "GetAllProduit";
             CmdGetAllBy = "RecupererArticle";
-            //test
+            //testb
 
         }
 
