@@ -55,6 +55,14 @@
       <Name>MaintinfoBo</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Procédures stockées\EnregistrementBonDeCommande.sql" />
+    <Content Include="Procédures stockées\EnregistrerBonEntree.sql" />
+    <Content Include="Procédures stockées\EnregistrerBonSortie.sql" />
+    <Content Include="Procédures stockées\MaJQuantiteArticle.sql" />
+    <Content Include="Procédures stockées\RecupererArticle.sql" />
+    <Content Include="Procédures stockées\RecupererCatalogueParCategorie.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
