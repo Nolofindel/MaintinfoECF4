@@ -46,5 +46,10 @@ namespace MaintinfoDal
             throw new NotImplementedException();
 
         }
+
+        public static List<Article> RecupererArticleCategorie(char cat)
+        {
+            return null;
+        }
     }
 }

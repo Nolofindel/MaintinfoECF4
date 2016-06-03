@@ -47,7 +47,7 @@ namespace MaintinfoDal
             throw new NotImplementedException();
 
         }
-        public void EnregistrerBonDeCommande(BonDeCommande BdC)
+        public static void EnregistrerBonDeCommande(BonDeCommande BdC)
         {
 
         }
