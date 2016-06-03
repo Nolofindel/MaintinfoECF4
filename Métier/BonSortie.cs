@@ -2,7 +2,7 @@
 
 namespace MaintinfoBo
 {
-    class BonSortie
+    public class BonSortie
     {
         private string nomDepanneur;
         private Article articleSortie;
