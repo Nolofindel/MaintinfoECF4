@@ -14,5 +14,9 @@ namespace MaintinfoBll
             BonEntree BonE = new BonEntree(art, quantite, DateTime.Now);
             
         }
+        public static bool EnregistrerBonEntree()
+        {
+            return true;
+        }
     }
 }
