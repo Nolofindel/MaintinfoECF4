@@ -28,13 +28,17 @@ namespace MaintinfoBo
                 return _instance.Value;
             }
         }
-    public void RemplirCatalogue(List<Article> arts)
+    public static  void RemplirCatalogue(List<Article> arts)
         {
             Instance.Cat.AddRange(arts);
         }
         public List<Article> RecupererCatalogue()
         {
             return Instance.Cat;
+        }
+        public static void ViderCatalogue()
+        {
+            Instance.Cat.Clear();
         }
     }
 

@@ -16,12 +16,12 @@ namespace MaintinfoBll
             return art;
 
         }
-        public void SortiArticle(Article Article, int Quantite)
+        public void SortirArticle(Article Article, int Quantite)
         {
             Article.QuantiteArticle -= Quantite;
             ArticleDao.MaJArticle(Article);
         }
-        public void EntreeArticle(Article Article, int Quantite)
+        public void EntrerArticle(Article Article, int Quantite)
         {
             Article.QuantiteArticle += Quantite;
             ArticleDao.MaJArticle(Article);

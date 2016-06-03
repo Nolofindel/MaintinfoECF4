@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MaintinfoBo;
-
 namespace MaintinfoDal
 {
-    public class BonDeCommandeDao
+    public class CatalogueDao
     {
-        public static void EnregistrerBonDeCommande(BonDeCommande BdC)
+        public static List<Article> RecupererArticleCategorie(char cat)
         {
-
+            List<Article> arts = new List<Article>();
+            return arts;
         }
     }
 }
