@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Catalogue.cs">
+    <Compile Include="FrmCatalogue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Catalogue.Designer.cs">
-      <DependentUpon>Catalogue.cs</DependentUpon>
+    <Compile Include="FrmCatalogue.Designer.cs">
+      <DependentUpon>FrmCatalogue.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAcceuil.cs">
       <SubType>Form</SubType>
@@ -76,10 +76,11 @@
     <Compile Include="FrmBonSortie.Designer.cs">
       <DependentUpon>FrmBonSortie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Methodes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Catalogue.resx">
-      <DependentUpon>Catalogue.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCatalogue.resx">
+      <DependentUpon>FrmCatalogue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAcceuil.resx">
       <DependentUpon>FrmAcceuil.cs</DependentUpon>

@@ -141,6 +141,7 @@
             this.Name = "FrmAcceuil";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAcceuil_FormClosing);
             this.menuStripAccueil.ResumeLayout(false);
             this.menuStripAccueil.PerformLayout();
             this.statusStripAccueil.ResumeLayout(false);

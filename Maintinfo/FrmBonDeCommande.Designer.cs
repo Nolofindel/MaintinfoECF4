@@ -33,13 +33,13 @@
             this.buttonCatalogue = new System.Windows.Forms.Button();
             this.buttonQuitter = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxQuantiteStock = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxSeuilMinimal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxQuantiteCommande = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxArticle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +52,7 @@
             this.buttonValider.TabIndex = 0;
             this.buttonValider.Text = "Valider";
             this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
             // 
             // buttonModifier
             // 
@@ -61,6 +62,7 @@
             this.buttonModifier.TabIndex = 1;
             this.buttonModifier.Text = "Modifier";
             this.buttonModifier.UseVisualStyleBackColor = true;
+            this.buttonModifier.Click += new System.EventHandler(this.buttonModifier_Click);
             // 
             // buttonCatalogue
             // 
@@ -70,6 +72,7 @@
             this.buttonCatalogue.TabIndex = 2;
             this.buttonCatalogue.Text = "Catalogue";
             this.buttonCatalogue.UseVisualStyleBackColor = true;
+            this.buttonCatalogue.Click += new System.EventHandler(this.buttonCatalogue_Click);
             // 
             // buttonQuitter
             // 
@@ -79,29 +82,30 @@
             this.buttonQuitter.TabIndex = 3;
             this.buttonQuitter.Text = "Quitter";
             this.buttonQuitter.UseVisualStyleBackColor = true;
+            this.buttonQuitter.Click += new System.EventHandler(this.buttonQuitter_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.textBoxQuantiteStock);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.textBoxSeuilMinimal);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.textBoxQuantiteCommande);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxArticle);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(248, 155);
             this.panel1.TabIndex = 4;
             // 
-            // textBox4
+            // textBoxQuantiteStock
             // 
-            this.textBox4.Location = new System.Drawing.Point(145, 34);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 12;
+            this.textBoxQuantiteStock.Location = new System.Drawing.Point(145, 34);
+            this.textBoxQuantiteStock.Name = "textBoxQuantiteStock";
+            this.textBoxQuantiteStock.ReadOnly = true;
+            this.textBoxQuantiteStock.Size = new System.Drawing.Size(100, 20);
+            this.textBoxQuantiteStock.TabIndex = 12;
             // 
             // label4
             // 
@@ -112,13 +116,13 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Quantité en Stock";
             // 
-            // textBox3
+            // textBoxSeuilMinimal
             // 
-            this.textBox3.Location = new System.Drawing.Point(145, 60);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 10;
+            this.textBoxSeuilMinimal.Location = new System.Drawing.Point(145, 60);
+            this.textBoxSeuilMinimal.Name = "textBoxSeuilMinimal";
+            this.textBoxSeuilMinimal.ReadOnly = true;
+            this.textBoxSeuilMinimal.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSeuilMinimal.TabIndex = 10;
             // 
             // label3
             // 
@@ -129,12 +133,12 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "SeuilMinimal";
             // 
-            // textBox2
+            // textBoxQuantiteCommande
             // 
-            this.textBox2.Location = new System.Drawing.Point(145, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 8;
+            this.textBoxQuantiteCommande.Location = new System.Drawing.Point(145, 89);
+            this.textBoxQuantiteCommande.Name = "textBoxQuantiteCommande";
+            this.textBoxQuantiteCommande.Size = new System.Drawing.Size(100, 20);
+            this.textBoxQuantiteCommande.TabIndex = 8;
             // 
             // label2
             // 
@@ -145,12 +149,12 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Quantité à Commander";
             // 
-            // textBox1
+            // textBoxArticle
             // 
-            this.textBox1.Location = new System.Drawing.Point(145, 8);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.textBoxArticle.Location = new System.Drawing.Point(145, 8);
+            this.textBoxArticle.Name = "textBoxArticle";
+            this.textBoxArticle.Size = new System.Drawing.Size(100, 20);
+            this.textBoxArticle.TabIndex = 6;
             // 
             // label1
             // 
@@ -173,6 +177,7 @@
             this.Controls.Add(this.buttonValider);
             this.Name = "FrmBonDeCommande";
             this.Text = "FrmBonDeCommande";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBonDeCommande_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -186,13 +191,13 @@
         private System.Windows.Forms.Button buttonCatalogue;
         private System.Windows.Forms.Button buttonQuitter;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxArticle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxQuantiteStock;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxSeuilMinimal;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxQuantiteCommande;
         private System.Windows.Forms.Label label2;
     }
 }
