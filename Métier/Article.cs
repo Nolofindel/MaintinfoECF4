@@ -45,10 +45,7 @@ namespace MaintinfoBo
                 return false;
         }
 
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+
         public string DesignationArticle
         {
             get

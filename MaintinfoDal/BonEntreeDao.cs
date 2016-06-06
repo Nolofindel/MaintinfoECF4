@@ -19,8 +19,8 @@ namespace MaintinfoDal
             CmdUpdate = string.Empty;
             CmdDelete = string.Empty;
             CmdGetBy = string.Empty;
-            CmdGetAll = "GetAllProduit";
-            CmdGetAllBy = "GetAllGenByFam";
+            CmdGetAll = string.Empty;
+            CmdGetAllBy = string.Empty;
 
         }
        
@@ -41,7 +41,7 @@ namespace MaintinfoDal
             odbP10.DbType = System.Data.DbType.String;
             odbP10.Direction = System.Data.ParameterDirection.Input;
             odbP10.ParameterName = "@ArticleEntree";
-            odbP10.Value = be.ArticleEntree;
+            odbP10.Value = be.ArticleEntree.DesignationArticle;
             oCommand.Parameters.Add(odbP10);
             // Parametre QUANTITE_ENTREE
             DbParameter odbP2 = oCommand.CreateParameter();

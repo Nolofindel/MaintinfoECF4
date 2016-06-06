@@ -36,18 +36,18 @@
             this.numericUpDownQuantite = new System.Windows.Forms.NumericUpDown();
             this.txtBoxRefArticle = new System.Windows.Forms.TextBox();
             this.dataGridViewBonEntree = new System.Windows.Forms.DataGridView();
+            this.articleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bonEntreeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnConfirmer = new System.Windows.Forms.Button();
             this.errorProviderBonEntree = new System.Windows.Forms.ErrorProvider(this.components);
-            this.articleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.articleEntreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.quantiteEntreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateEntreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBonEntree)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.articleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bonEntreeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderBonEntree)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.articleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnValider
@@ -129,6 +129,10 @@
             this.dataGridViewBonEntree.Size = new System.Drawing.Size(346, 150);
             this.dataGridViewBonEntree.TabIndex = 6;
             // 
+            // articleBindingSource
+            // 
+            this.articleBindingSource.DataSource = typeof(MaintinfoBo.Article);
+            // 
             // bonEntreeBindingSource
             // 
             this.bonEntreeBindingSource.DataSource = typeof(MaintinfoBo.BonEntree);
@@ -145,10 +149,6 @@
             // errorProviderBonEntree
             // 
             this.errorProviderBonEntree.ContainerControl = this;
-            // 
-            // articleBindingSource
-            // 
-            this.articleBindingSource.DataSource = typeof(MaintinfoBo.Article);
             // 
             // articleEntreeDataGridViewTextBoxColumn
             // 
@@ -196,9 +196,9 @@
             this.Load += new System.EventHandler(this.FrmBonEntree_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBonEntree)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.articleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bonEntreeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderBonEntree)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.articleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

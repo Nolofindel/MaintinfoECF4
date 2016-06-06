@@ -23,8 +23,15 @@ namespace Maintinfo
                 string refArt = txtBoxRefArticle.Text;
                 int quant = (int)numericUpDownQuantite.Value;
                 BonEntree newBE = BonEntreeManager.CreerBonEntree(refArt,quant);
-                articleBindingSource.Add(newBE.ArticleEntree);
-                bonEntreeBindingSource.Add(newBE);
+
+                if (BonEntreeManager.EnregistrerBonEntree(newBE))
+                {
+                    MessageBox.Show("Bon d'entrée ajouter", "Article " + newBE.ArticleEntree.DesignationArticle + " : " + newBE.ArticleEntree.NomArticle + " Ajouter au stock", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Erreurr", "Article " + newBE.ArticleEntree.DesignationArticle+" : " + newBE.ArticleEntree.NomArticle + " Non ajouter au stock", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                }
             }
 
         }
