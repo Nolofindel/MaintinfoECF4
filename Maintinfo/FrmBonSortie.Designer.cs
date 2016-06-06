@@ -35,6 +35,9 @@
             this.btnValider = new System.Windows.Forms.Button();
             this.lblSortieArt = new System.Windows.Forms.Label();
             this.lblCodeArt = new System.Windows.Forms.Label();
+            this.buttonCatalogue = new System.Windows.Forms.Button();
+            this.textBoxQuantiteStock = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +82,7 @@
             this.btnAnnuler.TabIndex = 7;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // btnValider
             // 
@@ -107,11 +111,41 @@
             this.lblCodeArt.TabIndex = 13;
             this.lblCodeArt.Text = "Code Article";
             // 
+            // buttonCatalogue
+            // 
+            this.buttonCatalogue.Location = new System.Drawing.Point(285, 76);
+            this.buttonCatalogue.Name = "buttonCatalogue";
+            this.buttonCatalogue.Size = new System.Drawing.Size(75, 34);
+            this.buttonCatalogue.TabIndex = 14;
+            this.buttonCatalogue.Text = "Catalogue";
+            this.buttonCatalogue.UseVisualStyleBackColor = true;
+            this.buttonCatalogue.Click += new System.EventHandler(this.buttonCatalogue_Click);
+            // 
+            // textBoxQuantiteStock
+            // 
+            this.textBoxQuantiteStock.Location = new System.Drawing.Point(123, 90);
+            this.textBoxQuantiteStock.Name = "textBoxQuantiteStock";
+            this.textBoxQuantiteStock.ReadOnly = true;
+            this.textBoxQuantiteStock.Size = new System.Drawing.Size(79, 20);
+            this.textBoxQuantiteStock.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(82, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Stock";
+            // 
             // FrmBonSortie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 277);
+            this.ClientSize = new System.Drawing.Size(368, 277);
+            this.Controls.Add(this.textBoxQuantiteStock);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.buttonCatalogue);
             this.Controls.Add(this.lblCodeArt);
             this.Controls.Add(this.lblSortieArt);
             this.Controls.Add(this.txtboxCodeArt);
@@ -136,5 +170,8 @@
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Label lblSortieArt;
         private System.Windows.Forms.Label lblCodeArt;
+        private System.Windows.Forms.Button buttonCatalogue;
+        private System.Windows.Forms.TextBox textBoxQuantiteStock;
+        private System.Windows.Forms.Label label4;
     }
 }
