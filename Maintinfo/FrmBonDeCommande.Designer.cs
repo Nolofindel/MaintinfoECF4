@@ -32,7 +32,7 @@
             this.buttonModifier = new System.Windows.Forms.Button();
             this.buttonCatalogue = new System.Windows.Forms.Button();
             this.buttonQuitter = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelArticle = new System.Windows.Forms.Panel();
             this.textBoxQuantiteStock = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxSeuilMinimal = new System.Windows.Forms.TextBox();
@@ -41,7 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxArticle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.panelArticle.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonValider
@@ -84,20 +84,20 @@
             this.buttonQuitter.UseVisualStyleBackColor = true;
             this.buttonQuitter.Click += new System.EventHandler(this.buttonQuitter_Click);
             // 
-            // panel1
+            // panelArticle
             // 
-            this.panel1.Controls.Add(this.textBoxQuantiteStock);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBoxSeuilMinimal);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBoxQuantiteCommande);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBoxArticle);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(248, 155);
-            this.panel1.TabIndex = 4;
+            this.panelArticle.Controls.Add(this.textBoxQuantiteStock);
+            this.panelArticle.Controls.Add(this.label4);
+            this.panelArticle.Controls.Add(this.textBoxSeuilMinimal);
+            this.panelArticle.Controls.Add(this.label3);
+            this.panelArticle.Controls.Add(this.textBoxQuantiteCommande);
+            this.panelArticle.Controls.Add(this.label2);
+            this.panelArticle.Controls.Add(this.textBoxArticle);
+            this.panelArticle.Controls.Add(this.label1);
+            this.panelArticle.Location = new System.Drawing.Point(12, 12);
+            this.panelArticle.Name = "panelArticle";
+            this.panelArticle.Size = new System.Drawing.Size(248, 155);
+            this.panelArticle.TabIndex = 4;
             // 
             // textBoxQuantiteStock
             // 
@@ -170,7 +170,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 202);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelArticle);
             this.Controls.Add(this.buttonQuitter);
             this.Controls.Add(this.buttonCatalogue);
             this.Controls.Add(this.buttonModifier);
@@ -178,8 +178,8 @@
             this.Name = "FrmBonDeCommande";
             this.Text = "FrmBonDeCommande";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBonDeCommande_FormClosing);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelArticle.ResumeLayout(false);
+            this.panelArticle.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -190,7 +190,7 @@
         private System.Windows.Forms.Button buttonModifier;
         private System.Windows.Forms.Button buttonCatalogue;
         private System.Windows.Forms.Button buttonQuitter;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelArticle;
         private System.Windows.Forms.TextBox textBoxArticle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxQuantiteStock;

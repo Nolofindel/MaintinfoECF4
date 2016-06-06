@@ -13,10 +13,15 @@ namespace Maintinfo
             FrmCatalogue.OnCatalogueClosing += SelectionChange;
         }
         public delegate void CatalogueShow(object sender, EventArgs e);
-        public static event CatalogueShow OnCatalogueShow;
+        private bool Valide = false;
+        private Article article = new Article();
+        private BonDeCommande BdC;
         private void FrmBonDeCommande_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Methodes.Quitter(sender, e, "Quitter la création du Bon de Commande?");
+            if (!Valide)
+            {
+                Methodes.Quitter(sender, e, "Quitter la création du Bon de Commande?");
+            }
         }
         void SelectionChange(object sender, EventArgs e, Article art)
         {
@@ -24,49 +29,73 @@ namespace Maintinfo
         }
         private void buttonValider_Click(object sender, System.EventArgs e)
         {
-            Article article = new Article();
-            try
+            if (!Valide)
             {
-                 article = ArticleManager.SaisirArticle(textBoxArticle.Text);
-            }
-            catch (Exception se)
-            {
-                if (se.Message == "L'opération n'a pas été réalisée: \nInexistant")
+                try
                 {
-                    DialogResult Erreur = MessageBox.Show("Article non trouvé voulez vous afficher le catalogue? ","Erreur", MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                    if (Erreur == DialogResult.Yes)
+                    article = ArticleManager.SaisirArticle(textBoxArticle.Text);
+                }
+                catch (Exception se)
+                {
+                    if (se.Message == "L'opération n'a pas été réalisée: \nInexistant")
                     {
-                        this.buttonCatalogue_Click(sender, e);
+                        DialogResult Erreur = MessageBox.Show("Article non trouvé voulez vous afficher le catalogue? ", "Erreur", MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                        if (Erreur == DialogResult.Yes)
+                        {
+                            this.buttonCatalogue_Click(sender, e);
+                        }
+                        return;
                     }
-                    return;
+                    else
+                    {
+                        Methodes.Erreur(se);
+                    }
+                }
+                BdC = BonDeCommandeManager.CreerBonDeCommande(article);
+                textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
+                textBoxSeuilMinimal.Text = article.SeuilMinimal.ToString();
+                int qte;
+                if (textBoxQuantiteCommande.Text == string.Empty || !int.TryParse(textBoxQuantiteCommande.Text, out qte))
+                {
+                    Methodes.Erreur("Veuillez entrez une quanitité");
+
                 }
                 else
                 {
-                    Methodes.Erreur(se);
+                    BdC.QuantiteCommande = qte;
+                    if (BonDeCommandeManager.TesterQuantiteSeuil(BdC))
+                    {
+                        Methodes.Apercu(BdC);
+                        panelArticle.Enabled = false;
+                        buttonCatalogue.Enabled = false;
+                        Valide = true;
+                    }
+                    else
+                    {
+                        Methodes.Erreur("Veuillez entrez une quantité correct");
+                    }
                 }
-            }
-            BonDeCommande BdC= BonDeCommandeManager.CreerBonDeCommande(article);
-            textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
-            textBoxSeuilMinimal.Text = article.SeuilMinimal.ToString();
-            int qte;
-            if (textBoxQuantiteCommande.Text == string.Empty || !int.TryParse(textBoxQuantiteCommande.Text,out qte))
-            {
-                Methodes.Erreur("Veuillez entrez une quanitité");
-                
             }
             else
             {
-                BdC.QuantiteCommande = qte;
-                if (!BonDeCommandeManager.TesterQuantiteSeuil(BdC))
+                try
                 {
-                    Methodes.Erreur("Veuillez entrez une quantité correct");
+                    BonDeCommandeManager.EnregistrerBonDeCommande(BdC);
+                    DialogResult Reussi = MessageBox.Show("Envoie Réussi", "Envoie", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    this.Close();
+                }
+                catch (Exception se)
+                {
+                    Methodes.Erreur(se);
                 }
             }
         }
 
         private void buttonModifier_Click(object sender, System.EventArgs e)
         {
-
+            panelArticle.Enabled = true;
+            Valide = false;
+            buttonCatalogue.Enabled = true;
         }
 
         private void buttonCatalogue_Click(object sender, System.EventArgs e)
