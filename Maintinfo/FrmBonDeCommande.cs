@@ -16,7 +16,7 @@ namespace Maintinfo
         public static event CatalogueShow OnCatalogueShow;
         private void FrmBonDeCommande_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Methodes.Quitter(sender,e,"Quitter la création du Bon de Commande?");
+            Methodes.Quitter(sender, e, "Quitter la création du Bon de Commande?");
         }
         void SelectionChange(object sender, EventArgs e, Article art)
         {
@@ -28,9 +28,20 @@ namespace Maintinfo
             {
                 Article article = ArticleManager.SaisirArticle(textBoxArticle.Text);
             }
-            catch (Exception)
+            catch (Exception se)
             {
-                //a faire
+                if (se.Message == "L'opération n'a pas été réalisée: \nInexistant")
+                {
+                    DialogResult Erreur = MessageBox.Show("Article non trouvé voulez vous afficher le catalogue? ","Erreur", MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    if (Erreur == DialogResult.Yes)
+                    {
+                        this.buttonCatalogue_Click(sender, e);
+                    }
+                }
+                else
+                {
+                    Methodes.Erreur(se);
+                }
             }
         }
 
@@ -42,7 +53,7 @@ namespace Maintinfo
         private void buttonCatalogue_Click(object sender, System.EventArgs e)
         {
             FrmCatalogue Catalogue = new FrmCatalogue();
-            Catalogue.Owner = this;       
+            Catalogue.Owner = this;
             Catalogue.Show();
             Catalogue.Focus();
         }

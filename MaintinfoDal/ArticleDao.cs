@@ -19,8 +19,8 @@ namespace MaintinfoDal
             CmdInsert = string.Empty;
             CmdUpdate = string.Empty;
             CmdDelete = string.Empty;
-            CmdGetBy = string.Empty;
-            CmdGetAll = "GetAllProduit";
+            CmdGetBy = "RecupererArticle";
+            CmdGetAll = string.Empty;
             CmdGetAllBy = "RecupererCatalogueParCategorie";
           
 

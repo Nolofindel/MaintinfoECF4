@@ -29,7 +29,7 @@ namespace Maintinfo
             }
             catch(Exception se)
             {
-                DialogResult Erreur = MessageBox.Show("Erreur  :"+se.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                Methodes.Erreur(se);
             }
         }
 
