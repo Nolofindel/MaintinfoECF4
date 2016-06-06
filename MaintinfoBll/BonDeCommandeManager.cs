@@ -23,7 +23,7 @@ namespace MaintinfoBll
         public static void EnregistrerBonDeCommande(BonDeCommande BdC)
         {
             BonDeCommandeDao BdCdao = new BonDeCommandeDao();
-            //à Finir
+            BdCdao.Insert(BdC);
         }
         public static string MiseEnPageBonDeCommande(BonDeCommande BdC)
         {

@@ -14,19 +14,37 @@ namespace MaintinfoDal
 
         public BonDeCommandeDao()
         {
-            CmdInsert = string.Empty;
+            CmdInsert = "EnregistrerBonDeCommande";
             CmdUpdate = string.Empty;
             CmdDelete = string.Empty;
             CmdGetBy = string.Empty;
-            CmdGetAll = "GetAllProduit";
-            CmdGetAllBy = "GetAllGenByFam";
+            CmdGetAll = string.Empty;
+            CmdGetAllBy = string.Empty;
 
         }
 
-        protected override void ObjectToParameters(BonDeCommande p, DbCommand oCommand)
+        protected override void ObjectToParameters(BonDeCommande BdC, DbCommand oCommand)
         {
             // à implémenter lors d'operations Insert, Update 
-            throw new NotImplementedException();
+            oCommand.Parameters.Clear();
+            DbParameter odbP1 = oCommand.CreateParameter();
+            odbP1.DbType = System.Data.DbType.StringFixedLength;
+            odbP1.Direction = System.Data.ParameterDirection.Input;
+            odbP1.ParameterName = "@ArticleCommande";
+            odbP1.Value = BdC.ArticleCommande.DesignationArticle;
+            oCommand.Parameters.Add(odbP1);
+            DbParameter odbP10 = oCommand.CreateParameter();
+            odbP10.DbType = System.Data.DbType.DateTime;
+            odbP10.Direction = System.Data.ParameterDirection.Input;
+            odbP10.ParameterName = "@DateCommande";
+            odbP10.Value = BdC.DateCommande;
+            oCommand.Parameters.Add(odbP10);
+            DbParameter odbP2 = oCommand.CreateParameter();
+            odbP2.DbType = System.Data.DbType.Int32;
+            odbP2.Direction = System.Data.ParameterDirection.Input;
+            odbP2.ParameterName = "@QuantiteCommande";
+            odbP2.Value = BdC.QuantiteCommande;
+            oCommand.Parameters.Add(odbP2);
         }
         protected override void IdToParameter(object id, DbCommand oCommand)
         {
