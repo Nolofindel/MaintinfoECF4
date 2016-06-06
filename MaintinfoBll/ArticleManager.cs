@@ -39,7 +39,7 @@ namespace MaintinfoBll
         }
         public static void EntrerArticle(Article Article, int Quantite)
         {
-            Article.QuantiteArticle += Quantite;
+            Article.QuantiteArticle += Quantite ;
             ArticleDao.MaJArticle(Article);
         }
     }

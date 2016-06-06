@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MaintinfoBo
 {
@@ -30,7 +34,21 @@ namespace MaintinfoBo
         public Article()
         {
         }
+        // Equals : code identique
+        public override bool Equals(Object obj)
+        {
+            var article = obj as Article;
+            if (article != null)
+                return
+                   article.DesignationArticle.Equals(this.DesignationArticle);
+            else
+                return false;
+        }
 
+        public override string ToString()
+        {
+            return base.ToString();
+        }
         public string DesignationArticle
         {
             get
