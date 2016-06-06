@@ -21,7 +21,7 @@ namespace MaintinfoDal
             CmdDelete = string.Empty;
             CmdGetBy = string.Empty;
             CmdGetAll = "GetAllProduit";
-            CmdGetAllBy = "RecupererArticle";
+            CmdGetAllBy = "RecupererArticle"; 
           
 
         }
