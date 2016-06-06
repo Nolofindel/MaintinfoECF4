@@ -113,5 +113,9 @@ namespace MaintinfoBo
                 seuilMinimal = value;
             }
         }
+        public override string ToString()
+        {
+            return NomArticle.ToString();
+        }
     }
 }

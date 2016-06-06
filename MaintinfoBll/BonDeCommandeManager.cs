@@ -8,7 +8,7 @@ namespace MaintinfoBll
 {
    public class BonDeCommandeManager
     {
-        public bool TesterQuantiteSeuil(BonDeCommande Bdc)
+        public static  bool TesterQuantiteSeuil(BonDeCommande Bdc)
         {
             return Bdc.QuantiteCommande + Bdc.ArticleCommande.QuantiteArticle >= Bdc.ArticleCommande.SeuilMinimal;
         }
@@ -20,9 +20,18 @@ namespace MaintinfoBll
         {
             return  new BonDeCommande(art);
         }
-        public void EnregistrerBonDeCommande(BonDeCommande BdC)
+        public static void EnregistrerBonDeCommande(BonDeCommande BdC)
         {
-            BonDeCommandeDao.EnregistrerBonDeCommande(BdC);
+            BonDeCommandeDao BdCdao = new BonDeCommandeDao();
+            //à Finir
+        }
+        public static string MiseEnPageBonDeCommande(BonDeCommande BdC)
+        {
+            string str= "Bon de Commande \n";
+            str +=BdC.ArticleCommande.NomArticle.ToString()+"\n";
+            str +="Date de la Commande " + BdC.DateCommande.ToString() + "\n";
+            str +="Quantité Commandé" + BdC.QuantiteCommande.ToString() + "\n";
+            return str;
         }
     }
 }

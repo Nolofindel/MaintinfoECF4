@@ -61,7 +61,6 @@
     <Compile Include="BonDeCommandeDao.cs" />
     <Compile Include="BonEntreeDao.cs" />
     <Compile Include="BonSortieDao.cs" />
-    <Compile Include="CatalogueDao.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="DepanneurDao.cs" />
     <Compile Include="Exceptions\DaoException.cs" />

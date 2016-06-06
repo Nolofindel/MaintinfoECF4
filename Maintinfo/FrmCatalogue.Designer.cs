@@ -69,6 +69,7 @@
             this.listBoxArticles.Name = "listBoxArticles";
             this.listBoxArticles.Size = new System.Drawing.Size(262, 147);
             this.listBoxArticles.TabIndex = 3;
+            this.listBoxArticles.SelectedIndexChanged += new System.EventHandler(this.listBoxArticles_SelectedIndexChanged);
             // 
             // buttonValider
             // 

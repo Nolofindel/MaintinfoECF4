@@ -20,8 +20,8 @@ namespace MaintinfoDal
             CmdUpdate = string.Empty;
             CmdDelete = string.Empty;
             CmdGetBy = "RecupererArticle";
-            CmdGetAll = "GetAllProduit";
-            CmdGetAllBy = "RecupererArticle";
+            CmdGetAll = string.Empty;
+            CmdGetAllBy = "RecupererCatalogueParCategorie";
           
 
         }
@@ -48,7 +48,14 @@ namespace MaintinfoDal
         protected override void FindByPameter(object id, DbCommand oCommand)
         {
             // à implémenter lors d'operations FindAllBy
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            oCommand.Parameters.Clear();
+            DbParameter odbP1 = oCommand.CreateParameter();
+            odbP1.DbType = System.Data.DbType.StringFixedLength;
+            odbP1.Direction = System.Data.ParameterDirection.Input;
+            odbP1.ParameterName = "@Categorie";
+            odbP1.Value = id.ToString();
+            oCommand.Parameters.Add(odbP1);
         }
 
 
@@ -59,7 +66,8 @@ namespace MaintinfoDal
             {
                 DesignationArticle = rdr[0] as string,
                 NomArticle = rdr[2] as string,
-                QuantiteArticle = rdr.GetInt32(3)
+                QuantiteArticle = rdr.GetInt32(3),
+                SeuilMinimal = rdr.GetInt32(4)
 
             };
 

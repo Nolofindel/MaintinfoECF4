@@ -22,8 +22,14 @@ namespace MaintinfoBll
 
         public static  Article SaisirArticle(string DesignationArticle)
         {
-            Article art=ArticleDao.RecupererArticle(DesignationArticle);
-            return art;
+            try {
+            ArticleDao artdao = new ArticleDao();
+            return artdao.GetById(DesignationArticle);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
 
         }
         public static void SortirArticle(Article Article, int Quantite)
