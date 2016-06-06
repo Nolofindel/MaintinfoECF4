@@ -10,12 +10,18 @@ namespace Maintinfo
         public FrmBonDeCommande()
         {
             InitializeComponent();
+            FrmCatalogue.OnCatalogueClosing += SelectionChange;
         }
+        public delegate void CatalogueShow(object sender, EventArgs e);
+        public static event CatalogueShow OnCatalogueShow;
         private void FrmBonDeCommande_FormClosing(object sender, FormClosingEventArgs e)
         {
             Methodes.Quitter(sender,e,"Quitter la création du Bon de Commande?");
         }
-
+        void SelectionChange(object sender, EventArgs e, Article art)
+        {
+            textBoxArticle.Text = art.DesignationArticle.ToString();
+        }
         private void buttonValider_Click(object sender, System.EventArgs e)
         {
             try

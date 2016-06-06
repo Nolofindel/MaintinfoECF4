@@ -12,8 +12,16 @@ namespace MaintinfoBll
         public static void GenererCatalogue(char cat)
         {
             List<Article> arts = new List<Article>();
-            arts = CatalogueDao.RecupererArticleCategorie(cat);
-            Catalogue.RemplirCatalogue(arts);
+            try
+            {
+                ArticleDao cDao = new ArticleDao();
+                arts = cDao.FindAllBy(cat);
+                Catalogue.RemplirCatalogue(arts);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
         }
         public static List<Article> RecupererCatalogue()
         {

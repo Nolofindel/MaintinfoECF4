@@ -15,16 +15,28 @@ namespace Maintinfo
         public FrmCatalogue()
         {
             InitializeComponent();
+            //FrmBonDeCommande.OnCatalogueShow += DetailFermeture;
         }
+        public delegate void CatalogueClosing(object sender, EventArgs e,Article art);
+        public static event CatalogueClosing OnCatalogueClosing;
+        private Article article;
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
+            try {
            MaintinfoBll.CatalogueManager.GenererCatalogue(Convert.ToChar(textBoxCategorie.Text));
             List<Article> cat = MaintinfoBll.CatalogueManager.RecupererCatalogue();
             listBoxArticles.DataSource = cat;
+            }
+            catch(Exception se)
+            {
+                DialogResult Erreur = MessageBox.Show("Erreur  :"+se.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void buttonValider_Click(object sender, EventArgs e)
         {
+            OnCatalogueClosing(sender,e,article);
+            this.Close();
         }
         private void buttonQuitter_Click(object sender, EventArgs e)
         {
@@ -34,7 +46,14 @@ namespace Maintinfo
         {
             Methodes.Quitter(sender,e,"Quitter Catalogue?");
         }
+        void DetailFermeture(object sender, EventArgs e)
+        {
 
+        }
 
+        private void listBoxArticles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            article = (Article)listBoxArticles.SelectedItem;
+        }
     }
 }
