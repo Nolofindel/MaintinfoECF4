@@ -23,6 +23,7 @@ namespace Maintinfo
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
             try {
+                listBoxArticles.DataSource = null;
            MaintinfoBll.CatalogueManager.GenererCatalogue(Convert.ToChar(textBoxCategorie.Text));
             List<Article> cat = MaintinfoBll.CatalogueManager.RecupererCatalogue();
             listBoxArticles.DataSource = cat;

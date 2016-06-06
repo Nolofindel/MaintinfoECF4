@@ -30,6 +30,7 @@ namespace MaintinfoBo
         }
     public static  void RemplirCatalogue(List<Article> arts)
         {
+            ViderCatalogue();
             Instance.Cat.AddRange(arts);
         }
         public List<Article> RecupererCatalogue()

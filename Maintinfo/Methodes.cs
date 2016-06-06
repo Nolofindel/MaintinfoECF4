@@ -24,5 +24,9 @@ namespace Maintinfo
         {
             DialogResult Erreur = MessageBox.Show("Erreur  :" + se.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
         }
+        public static void Erreur(string msg)
+        {
+            DialogResult Erreur = MessageBox.Show("Erreur  :" + msg, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+        }
     }
 }

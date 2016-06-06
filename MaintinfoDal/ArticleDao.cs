@@ -66,7 +66,8 @@ namespace MaintinfoDal
             {
                 DesignationArticle = rdr[0] as string,
                 NomArticle = rdr[2] as string,
-                QuantiteArticle = rdr.GetInt32(3)
+                QuantiteArticle = rdr.GetInt32(3),
+                SeuilMinimal = rdr.GetInt32(4)
 
             };
 

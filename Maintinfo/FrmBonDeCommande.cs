@@ -24,9 +24,10 @@ namespace Maintinfo
         }
         private void buttonValider_Click(object sender, System.EventArgs e)
         {
+            Article article = new Article();
             try
             {
-                Article article = ArticleManager.SaisirArticle(textBoxArticle.Text);
+                 article = ArticleManager.SaisirArticle(textBoxArticle.Text);
             }
             catch (Exception se)
             {
@@ -37,10 +38,28 @@ namespace Maintinfo
                     {
                         this.buttonCatalogue_Click(sender, e);
                     }
+                    return;
                 }
                 else
                 {
                     Methodes.Erreur(se);
+                }
+            }
+            BonDeCommande BdC= BonDeCommandeManager.CreerBonDeCommande(article);
+            textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
+            textBoxSeuilMinimal.Text = article.SeuilMinimal.ToString();
+            int qte;
+            if (textBoxQuantiteCommande.Text == string.Empty || !int.TryParse(textBoxQuantiteCommande.Text,out qte))
+            {
+                Methodes.Erreur("Veuillez entrez une quanitité");
+                
+            }
+            else
+            {
+                BdC.QuantiteCommande = qte;
+                if (!BonDeCommandeManager.TesterQuantiteSeuil(BdC))
+                {
+                    Methodes.Erreur("Veuillez entrez une quantité correct");
                 }
             }
         }
