@@ -1,6 +1,6 @@
 ﻿namespace Maintinfo
 {
-    partial class Catalogue
+    partial class FrmCatalogue
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxCategorie = new System.Windows.Forms.TextBox();
             this.buttonRechercher = new System.Windows.Forms.Button();
             this.listBoxArticles = new System.Windows.Forms.ListBox();
             this.buttonValider = new System.Windows.Forms.Button();
@@ -45,12 +45,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Sélectionner catégorie";
             // 
-            // textBox1
+            // textBoxCategorie
             // 
-            this.textBox1.Location = new System.Drawing.Point(131, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(27, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxCategorie.Location = new System.Drawing.Point(131, 19);
+            this.textBoxCategorie.Name = "textBoxCategorie";
+            this.textBoxCategorie.Size = new System.Drawing.Size(27, 20);
+            this.textBoxCategorie.TabIndex = 1;
             // 
             // buttonRechercher
             // 
@@ -60,6 +60,7 @@
             this.buttonRechercher.TabIndex = 2;
             this.buttonRechercher.Text = "Rechercher";
             this.buttonRechercher.UseVisualStyleBackColor = true;
+            this.buttonRechercher.Click += new System.EventHandler(this.buttonRechercher_Click);
             // 
             // listBoxArticles
             // 
@@ -77,6 +78,7 @@
             this.buttonValider.TabIndex = 4;
             this.buttonValider.Text = "Valider";
             this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
             // 
             // buttonQuitter
             // 
@@ -86,8 +88,9 @@
             this.buttonQuitter.TabIndex = 5;
             this.buttonQuitter.Text = "Quitter";
             this.buttonQuitter.UseVisualStyleBackColor = true;
+            this.buttonQuitter.Click += new System.EventHandler(this.buttonQuitter_Click);
             // 
-            // Catalogue
+            // FrmCatalogue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -96,10 +99,11 @@
             this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.listBoxArticles);
             this.Controls.Add(this.buttonRechercher);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxCategorie);
             this.Controls.Add(this.label1);
-            this.Name = "Catalogue";
+            this.Name = "FrmCatalogue";
             this.Text = "Catalogue";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCatalogue_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,7 +112,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxCategorie;
         private System.Windows.Forms.Button buttonRechercher;
         private System.Windows.Forms.ListBox listBoxArticles;
         private System.Windows.Forms.Button buttonValider;

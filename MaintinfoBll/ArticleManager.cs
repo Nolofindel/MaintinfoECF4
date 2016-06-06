@@ -12,7 +12,7 @@ namespace MaintinfoBll
     {
 
 
-        public List<Article> RechercherLesProduits(object o)
+        public static List<Article> RechercherLesProduits(object o)
         {
             
             // Appel du Dao
@@ -20,18 +20,18 @@ namespace MaintinfoBll
             return pDao.FindAllBy(o);
         }
 
-        public Article SaisirArticle(string DesignationArticle)
+        public static  Article SaisirArticle(string DesignationArticle)
         {
             Article art=ArticleDao.RecupererArticle(DesignationArticle);
             return art;
 
         }
-        public void SortirArticle(Article Article, int Quantite)
+        public static void SortirArticle(Article Article, int Quantite)
         {
             Article.QuantiteArticle -= Quantite;
             ArticleDao.MaJArticle(Article);
         }
-        public void EntrerArticle(Article Article, int Quantite)
+        public static void EntrerArticle(Article Article, int Quantite)
         {
             Article.QuantiteArticle += Quantite;
             ArticleDao.MaJArticle(Article);

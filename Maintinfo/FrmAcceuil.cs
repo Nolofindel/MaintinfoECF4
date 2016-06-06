@@ -54,5 +54,10 @@ namespace Maintinfo
         {
             toolStripStatusLabelDate.Text = DateTime.Now.ToString();
         }
+
+        private void FrmAcceuil_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Methodes.Quitter(sender, e,"Fin de la gestion?");
+        }
     }
 }
