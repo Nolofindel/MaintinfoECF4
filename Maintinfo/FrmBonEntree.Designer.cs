@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.lblRefArticle = new System.Windows.Forms.Label();
@@ -35,9 +36,18 @@
             this.numericUpDownQuantite = new System.Windows.Forms.NumericUpDown();
             this.txtBoxRefArticle = new System.Windows.Forms.TextBox();
             this.dataGridViewBonEntree = new System.Windows.Forms.DataGridView();
+            this.bonEntreeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnConfirmer = new System.Windows.Forms.Button();
+            this.errorProviderBonEntree = new System.Windows.Forms.ErrorProvider(this.components);
+            this.articleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.articleEntreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.quantiteEntreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateEntreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBonEntree)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bonEntreeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderBonEntree)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.articleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnValider
@@ -48,7 +58,7 @@
             this.btnValider.TabIndex = 0;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
-            this.btnValider.Click += new System.EventHandler(this.btnValider_Click_1);
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // btnAnnuler
             // 
@@ -104,11 +114,24 @@
             // 
             // dataGridViewBonEntree
             // 
+            this.dataGridViewBonEntree.AllowUserToAddRows = false;
+            this.dataGridViewBonEntree.AllowUserToDeleteRows = false;
+            this.dataGridViewBonEntree.AutoGenerateColumns = false;
             this.dataGridViewBonEntree.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBonEntree.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.articleEntreeDataGridViewTextBoxColumn,
+            this.quantiteEntreeDataGridViewTextBoxColumn,
+            this.dateEntreeDataGridViewTextBoxColumn});
+            this.dataGridViewBonEntree.DataSource = this.bonEntreeBindingSource;
             this.dataGridViewBonEntree.Location = new System.Drawing.Point(12, 60);
             this.dataGridViewBonEntree.Name = "dataGridViewBonEntree";
+            this.dataGridViewBonEntree.ReadOnly = true;
             this.dataGridViewBonEntree.Size = new System.Drawing.Size(346, 150);
             this.dataGridViewBonEntree.TabIndex = 6;
+            // 
+            // bonEntreeBindingSource
+            // 
+            this.bonEntreeBindingSource.DataSource = typeof(MaintinfoBo.BonEntree);
             // 
             // btnConfirmer
             // 
@@ -118,6 +141,41 @@
             this.btnConfirmer.TabIndex = 7;
             this.btnConfirmer.Text = "Confirmer";
             this.btnConfirmer.UseVisualStyleBackColor = true;
+            // 
+            // errorProviderBonEntree
+            // 
+            this.errorProviderBonEntree.ContainerControl = this;
+            // 
+            // articleBindingSource
+            // 
+            this.articleBindingSource.DataSource = typeof(MaintinfoBo.Article);
+            // 
+            // articleEntreeDataGridViewTextBoxColumn
+            // 
+            this.articleEntreeDataGridViewTextBoxColumn.DataPropertyName = "ArticleEntree";
+            this.articleEntreeDataGridViewTextBoxColumn.DataSource = this.articleBindingSource;
+            this.articleEntreeDataGridViewTextBoxColumn.DisplayMember = "DesignationArticle";
+            this.articleEntreeDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.articleEntreeDataGridViewTextBoxColumn.HeaderText = "ArticleEntree";
+            this.articleEntreeDataGridViewTextBoxColumn.Name = "articleEntreeDataGridViewTextBoxColumn";
+            this.articleEntreeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.articleEntreeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.articleEntreeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.articleEntreeDataGridViewTextBoxColumn.ValueMember = "DesignationArticle";
+            // 
+            // quantiteEntreeDataGridViewTextBoxColumn
+            // 
+            this.quantiteEntreeDataGridViewTextBoxColumn.DataPropertyName = "QuantiteEntree";
+            this.quantiteEntreeDataGridViewTextBoxColumn.HeaderText = "QuantiteEntree";
+            this.quantiteEntreeDataGridViewTextBoxColumn.Name = "quantiteEntreeDataGridViewTextBoxColumn";
+            this.quantiteEntreeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateEntreeDataGridViewTextBoxColumn
+            // 
+            this.dateEntreeDataGridViewTextBoxColumn.DataPropertyName = "DateEntree";
+            this.dateEntreeDataGridViewTextBoxColumn.HeaderText = "DateEntree";
+            this.dateEntreeDataGridViewTextBoxColumn.Name = "dateEntreeDataGridViewTextBoxColumn";
+            this.dateEntreeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmBonEntree
             // 
@@ -134,8 +192,13 @@
             this.Controls.Add(this.btnValider);
             this.Name = "FrmBonEntree";
             this.Text = "FrmBonEntree";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBonEntree_FormClosing);
+            this.Load += new System.EventHandler(this.FrmBonEntree_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBonEntree)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bonEntreeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderBonEntree)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.articleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +214,11 @@
         private System.Windows.Forms.TextBox txtBoxRefArticle;
         private System.Windows.Forms.DataGridView dataGridViewBonEntree;
         private System.Windows.Forms.Button btnConfirmer;
+        private System.Windows.Forms.ErrorProvider errorProviderBonEntree;
+        private System.Windows.Forms.BindingSource bonEntreeBindingSource;
+        private System.Windows.Forms.BindingSource articleBindingSource;
+        private System.Windows.Forms.DataGridViewComboBoxColumn articleEntreeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantiteEntreeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateEntreeDataGridViewTextBoxColumn;
     }
 }

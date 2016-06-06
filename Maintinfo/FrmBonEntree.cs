@@ -2,6 +2,7 @@
 
 using System.Windows.Forms;
 using MaintinfoBll;
+using MaintinfoBo;
 namespace Maintinfo
 {
     public partial class FrmBonEntree : Form
@@ -10,12 +11,22 @@ namespace Maintinfo
         {
             InitializeComponent();
         }
+        private void FrmBonEntree_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnValider_Click(object sender,EventArgs e)
         {
-            string refArt = txtBoxRefArticle.Text;
-            int quant = (int)numericUpDownQuantite.Value;
-            BonEntreeManager.CreerBonEntree(refArt,quant);
+            if (IsValideArticleSaisi())
+            {
+                string refArt = txtBoxRefArticle.Text;
+                int quant = (int)numericUpDownQuantite.Value;
+                BonEntree newBE = BonEntreeManager.CreerBonEntree(refArt,quant);
+                articleBindingSource.Add(newBE.ArticleEntree);
+                bonEntreeBindingSource.Add(newBE);
+            }
+
         }
 
         private void btnAnnuler_Click(object sender, System.EventArgs e)
@@ -26,11 +37,28 @@ namespace Maintinfo
         {
             txtBoxRefArticle.Clear();
             numericUpDownQuantite.ResetText();
+            errorProviderBonEntree.Clear();
         }
-
-        private void btnValider_Click_1(object sender, EventArgs e)
+        private bool IsValideArticleSaisi()
         {
+            bool retour = true;
+            errorProviderBonEntree.Clear();
 
+            // Controle saisi article
+            if (this.txtBoxRefArticle.Text.Length == 0)
+            {
+                errorProviderBonEntree.SetError(txtBoxRefArticle, "Le code Article est obligatoire");
+                txtBoxRefArticle.Focus();
+                retour = false;
+            }
+            return retour;
         }
+
+        private void FrmBonEntree_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Methodes.Quitter(sender, e, "Fin des entrées articles?");
+        }
+
+
     }
 }

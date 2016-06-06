@@ -34,6 +34,95 @@ namespace MaintinfoDal
         // Affectation du parametre de la procédure stockée permettant une selection all en base
         protected abstract void FindByPameter(object id, DbCommand oCommand);
 
+        public virtual object Insert(T obj)
+        {
+            // création connection
+            using (DbConnection oConnection = Connection.GetConnection())
+            {
+                using (DbCommand oCommand = oConnection.CreateCommand())
+                {
+                    oCommand.CommandText = CmdInsert;
+                    oCommand.CommandType = CommandType.StoredProcedure;
+                    ObjectToParameters(obj, oCommand);
+                    try
+                    {
+                        int n = oCommand.ExecuteNonQuery();
+                        if (n != 1)
+                            throw new DaoExceptionAfficheMessage("L'opération n'a pas été réalisée");
+                        // récup du parametre de sortie
+                        int nbParam = oCommand.Parameters.Count;
+                        // Pour ne pas obliger chaque proc sto Ajoute à retourner un identifiant int
+                        // retourner la valeur du dernier parametre sous forme d'objet
+                        object id = oCommand.Parameters[nbParam - 1].Value;
+                        return id;
+                    }
+                    catch (DbException dbe)
+                    {
+                        throw new DaoExceptionAfficheMessage("L'opération de création n'a pas été réalisée: \n" +
+                                                             dbe.Message);
+                    }
+
+                }
+            }
+        }
+        public virtual void Update(T obj)
+        {
+            using (DbConnection oConnection = Connection.GetConnection())
+            {
+                // création connection
+                using (DbCommand oCommand = oConnection.CreateCommand())
+                {
+                    try
+                    {
+                        oCommand.CommandText = CmdUpdate;
+                        oCommand.CommandType = CommandType.StoredProcedure;
+
+                        ObjectToParameters(obj, oCommand);
+
+                        int n = oCommand.ExecuteNonQuery();
+                        if (n != 1)
+                            throw new DaoExceptionAfficheMessage("L'opération n'a pas été réalisée");
+                    }
+                    catch (DbException dbe)
+                    {
+                        throw new DaoExceptionAfficheMessage("L'opération de mise à jour n'a pas été réalisée: \n" +
+                                                             dbe.Message);
+                    }
+
+                }
+            }
+        }
+
+
+        public virtual void Delete(object id)
+        {
+            using (DbConnection oConnection = Connection.GetConnection())
+            {
+                    // création connection
+                    using (DbCommand oCommand = oConnection.CreateCommand())
+                {
+
+                    oCommand.CommandText = CmdDelete;
+                    oCommand.CommandType = CommandType.StoredProcedure;
+
+                    // affectation du parametre à la procédure stockée
+                    IdToParameter(id, oCommand);
+                    try
+                    {
+
+                        int n = oCommand.ExecuteNonQuery();
+                        if (n != 1)
+                            throw new DaoExceptionAfficheMessage("L'opération n'a pas été réalisée");
+                    }
+                    catch (DbException dbe)
+                    {
+                        throw new DaoExceptionAfficheMessage("L'opération de suppression n'a pas été réalisée: \n" +
+                                                             dbe.Message);
+                    }
+
+                }
+            }
+        }
         public virtual T GetById(object Id)
         {
             // création connection
