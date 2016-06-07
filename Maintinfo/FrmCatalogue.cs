@@ -15,11 +15,13 @@ namespace Maintinfo
         public FrmCatalogue()
         {
             InitializeComponent();
-            //FrmBonDeCommande.OnCatalogueShow += DetailFermeture;
         }
+        //Delegate permettant de récupérer l'id d'un Article dans le formulaire qui à appelé le catalogue
         public delegate void CatalogueClosing(object sender, EventArgs e,Article art);
         public static event CatalogueClosing OnCatalogueClosing;
         private Article article;
+
+        //Recherche la liste des articles appartenant à une certaine catégorie
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
             try {
@@ -34,22 +36,21 @@ namespace Maintinfo
             }
         }
 
+        //Lance l'event associé au delegate puis ferme
         private void buttonValider_Click(object sender, EventArgs e)
         {
             OnCatalogueClosing(sender,e,article);
             this.Close();
         }
+        //Ferme le formulaire
         private void buttonQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void FrmCatalogue_FormClosing(object sender, FormClosingEventArgs e)
         {
             Methodes.Quitter(sender,e,"Quitter Catalogue?");
-        }
-        void DetailFermeture(object sender, EventArgs e)
-        {
-
         }
 
         private void listBoxArticles_SelectedIndexChanged(object sender, EventArgs e)

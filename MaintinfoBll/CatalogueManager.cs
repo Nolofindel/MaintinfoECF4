@@ -29,7 +29,7 @@ namespace MaintinfoBll
         }
         public static void ViderCatalogue()
         {
-
+            Catalogue.ViderCatalogue();
         }
     }
 }

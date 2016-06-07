@@ -12,14 +12,6 @@ namespace MaintinfoBll
     {
 
 
-        public static List<Article> RechercherLesProduits(object o)
-        {
-            
-            // Appel du Dao
-            ArticleDao pDao = new ArticleDao();
-            return pDao.FindAllBy(o);
-        }
-
         public static  Article SaisirArticle(string DesignationArticle)
         {
             try {

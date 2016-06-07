@@ -155,6 +155,7 @@
             this.textBoxArticle.Name = "textBoxArticle";
             this.textBoxArticle.Size = new System.Drawing.Size(100, 20);
             this.textBoxArticle.TabIndex = 6;
+            this.textBoxArticle.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxArticle_Validating);
             // 
             // label1
             // 

@@ -12,6 +12,7 @@ namespace Maintinfo
 {
     public class Methodes
     {
+        //affiche un YesNo messageBox,No annule l'event
         public static void Quitter(object sender, FormClosingEventArgs e, string message)
         {
             DialogResult dr = MessageBox.Show(message, "FIN",
@@ -23,14 +24,18 @@ namespace Maintinfo
                 e.Cancel = true;
             }
         }
+        //Affiche OK messageBox qui affiche une erreur et le message de l'exception
         public static void Erreur(Exception se)
         {
             DialogResult Erreur = MessageBox.Show("Erreur  :" + se.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
         }
+        //Affiche OK messageBox qui affiche une erreur avec un message en paramètre
         public static void Erreur(string msg)
         {
             DialogResult Erreur = MessageBox.Show("Erreur  :" + msg, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
         }
+
+        //Affiche une apercu avant impression du bon de commande
         public static void Apercu(BonDeCommande bdc)
         {
             PrintPreviewDialog printDialog = new PrintPreviewDialog();
