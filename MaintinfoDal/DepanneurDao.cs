@@ -18,7 +18,7 @@ namespace MaintinfoDal
             CmdUpdate = string.Empty;
             CmdDelete = string.Empty;
             CmdGetBy = string.Empty;
-            CmdGetAll = "GetAllProduit";
+            CmdGetAll = "RecupererDepanneur";
             CmdGetAllBy = "GetAllGenByFam";
 
         }
@@ -44,7 +44,11 @@ namespace MaintinfoDal
         protected override Depanneur ReaderToObject(DbDataReader rdr)
         {
 
-            throw new NotImplementedException();
+            Depanneur dep = new Depanneur
+            {
+                NomDepanneur = rdr[0] as string
+            };
+            return dep;
 
         }
 

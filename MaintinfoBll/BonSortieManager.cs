@@ -25,5 +25,13 @@ namespace MaintinfoBll
             str += "Quantité demandée: " + BdS.Quantite.ToString() + "\n\n";
             return str;
         }
+
+        public static List<Depanneur> lesDepanneurs()
+        {
+            DepanneurDao depDao = new DepanneurDao();
+            return depDao.GetAll();
+        }
+
+
     }
 }

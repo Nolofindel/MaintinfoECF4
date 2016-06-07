@@ -39,14 +39,14 @@
             this.textBoxQuantiteStock = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboxDepanneur = new System.Windows.Forms.ComboBox();
-            this.lblDepanneur = new System.Windows.Forms.Label();
-            this.maintinfoDataSet = new Maintinfo.MaintinfoDataSet();
             this.recupererDepanneurBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.recupererDepanneurTableAdapter = new Maintinfo.MaintinfoDataSetTableAdapters.RecupererDepanneurTableAdapter();
+            //this.maintinfoDataSet = new Maintinfo.MaintinfoDataSet();
+            this.lblDepanneur = new System.Windows.Forms.Label();
+            //this.recupererDepanneurTableAdapter = new Maintinfo.MaintinfoDataSetTableAdapters.RecupererDepanneurTableAdapter();
             this.txtboxNomArticle = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maintinfoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recupererDepanneurBindingSource)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.maintinfoDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // txtboxCodeArt
@@ -140,14 +140,21 @@
             // 
             // cboxDepanneur
             // 
-            this.cboxDepanneur.DataSource = this.recupererDepanneurBindingSource;
-            this.cboxDepanneur.DisplayMember = "NOM_DEPANNEUR";
             this.cboxDepanneur.FormattingEnabled = true;
             this.cboxDepanneur.Location = new System.Drawing.Point(82, 145);
             this.cboxDepanneur.Name = "cboxDepanneur";
             this.cboxDepanneur.Size = new System.Drawing.Size(121, 21);
             this.cboxDepanneur.TabIndex = 17;
-            this.cboxDepanneur.ValueMember = "NOM_DEPANNEUR";
+            // 
+            // recupererDepanneurBindingSource
+            // 
+            //this.recupererDepanneurBindingSource.DataMember = "RecupererDepanneur";
+            //this.recupererDepanneurBindingSource.DataSource = this.maintinfoDataSet;
+            // 
+            // maintinfoDataSet
+            // 
+            //this.maintinfoDataSet.DataSetName = "MaintinfoDataSet";
+            //this.maintinfoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblDepanneur
             // 
@@ -158,19 +165,9 @@
             this.lblDepanneur.TabIndex = 18;
             this.lblDepanneur.Text = "Dépanneur";
             // 
-            // maintinfoDataSet
-            // 
-            this.maintinfoDataSet.DataSetName = "MaintinfoDataSet";
-            this.maintinfoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // recupererDepanneurBindingSource
-            // 
-            this.recupererDepanneurBindingSource.DataMember = "RecupererDepanneur";
-            this.recupererDepanneurBindingSource.DataSource = this.maintinfoDataSet;
-            // 
             // recupererDepanneurTableAdapter
             // 
-            this.recupererDepanneurTableAdapter.ClearBeforeFill = true;
+            //this.recupererDepanneurTableAdapter.ClearBeforeFill = true;
             // 
             // txtboxNomArticle
             // 
@@ -202,8 +199,8 @@
             this.Text = "Demande de Bon de Sortie";
             this.Load += new System.EventHandler(this.FrmBonSortie_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maintinfoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recupererDepanneurBindingSource)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.maintinfoDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,9 +219,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboxDepanneur;
         private System.Windows.Forms.Label lblDepanneur;
-        private MaintinfoDataSet maintinfoDataSet;
+        //private MaintinfoDataSet maintinfoDataSet;
         private System.Windows.Forms.BindingSource recupererDepanneurBindingSource;
-        private MaintinfoDataSetTableAdapters.RecupererDepanneurTableAdapter recupererDepanneurTableAdapter;
+        //private MaintinfoDataSetTableAdapters.RecupererDepanneurTableAdapter recupererDepanneurTableAdapter;
         private System.Windows.Forms.TextBox txtboxNomArticle;
     }
 }

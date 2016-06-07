@@ -12,7 +12,10 @@
             this.specialiteDepanneur = specialiteDepanneur;
             this.secteurGeographiqueDepanneur = secteurGeographiqueDepanneur;
         }
+        public Depanneur()
+        {
 
+        }
         public string NomDepanneur
         {
             get
@@ -51,9 +54,9 @@
                 secteurGeographiqueDepanneur = value;
             }
         }
-        //public override string ToString()
-        //{
-        //    return nomDepanneur;
-        //}
+        public override string ToString()
+        {
+            return nomDepanneur;
+        }
     }
 }

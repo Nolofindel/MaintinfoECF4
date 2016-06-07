@@ -83,7 +83,9 @@ namespace Maintinfo
         private void FrmBonSortie_Load(object sender, EventArgs e)
         {
             // TODO: cette ligne de code charge les données dans la table 'maintinfoDataSet.RecupererDepanneur'. Vous pouvez la déplacer ou la supprimer selon vos besoins.
-            this.recupererDepanneurTableAdapter.Fill(this.maintinfoDataSet.RecupererDepanneur);
+            //this.recupererDepanneurTableAdapter.Fill(this.maintinfoDataSet.RecupererDepanneur);
+            cboxDepanneur.DataSource = BonSortieManager.lesDepanneurs();
+
             cboxDepanneur.SelectedIndex = -1;
         }
     }
