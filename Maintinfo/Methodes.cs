@@ -27,12 +27,12 @@ namespace Maintinfo
         //Affiche OK messageBox qui affiche une erreur et le message de l'exception
         public static void Erreur(Exception se)
         {
-            DialogResult Erreur = MessageBox.Show("Erreur  :" + se.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            DialogResult Erreur = MessageBox.Show("Erreur : " + se.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
         }
         //Affiche OK messageBox qui affiche une erreur avec un message en paramètre
         public static void Erreur(string msg)
         {
-            DialogResult Erreur = MessageBox.Show("Erreur  :" + msg, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            DialogResult Erreur = MessageBox.Show("Erreur : " + msg, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
         }
 
         //Affiche une apercu avant impression du bon de commande
@@ -63,5 +63,19 @@ namespace Maintinfo
             }
             return retour;
         }
+
+        public static void Apercu(BonSortie bds)
+        {
+            PrintPreviewDialog printDialog = new PrintPreviewDialog();
+            PrintDocument printText = new PrintDocument();
+            printText.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(BonSortieManager.MiseEnPageBonSortie(bds), new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(0, 0, printText.DefaultPageSettings.PrintableArea.Width, printText.DefaultPageSettings.PrintableArea.Height));
+            };
+            printDialog.Document = printText;
+            printDialog.ShowDialog();
+
+        }
+
     }
 }
