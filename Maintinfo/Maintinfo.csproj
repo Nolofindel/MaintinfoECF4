@@ -76,6 +76,11 @@
     <Compile Include="FrmBonSortie.Designer.cs">
       <DependentUpon>FrmBonSortie.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaintinfoDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaintinfoDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Methodes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +108,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="MaintinfoDataSet2.xsc">
+      <DependentUpon>MaintinfoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="MaintinfoDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MaintinfoDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MaintinfoDataSet2.xss">
+      <DependentUpon>MaintinfoDataSet2.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\MaintinfoBo.Article.datasource" />
     <None Include="Properties\DataSources\MaintinfoBo.BonEntree.datasource" />
     <None Include="Properties\Settings.settings">

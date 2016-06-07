@@ -60,5 +60,11 @@ namespace MaintinfoBo
                 dateDemande = value;
             }
         }
+
+        public BonSortie(Article articleSortie)
+        {
+            this.articleSortie = articleSortie;
+            this.dateDemande = DateTime.Today;
+        }
     }
 }

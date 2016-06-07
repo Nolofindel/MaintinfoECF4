@@ -51,5 +51,9 @@
                 secteurGeographiqueDepanneur = value;
             }
         }
+        //public override string ToString()
+        //{
+        //    return nomDepanneur;
+        //}
     }
 }

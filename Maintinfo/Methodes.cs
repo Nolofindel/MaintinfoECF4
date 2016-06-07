@@ -43,5 +43,19 @@ namespace Maintinfo
             printDialog.ShowDialog();
 
         }
+
+        public static void Apercu(BonSortie bds)
+        {
+            PrintPreviewDialog printDialog = new PrintPreviewDialog();
+            PrintDocument printText = new PrintDocument();
+            printText.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(BonSortieManager.MiseEnPageBonSortie(bds), new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(0, 0, printText.DefaultPageSettings.PrintableArea.Width, printText.DefaultPageSettings.PrintableArea.Height));
+            };
+            printDialog.Document = printText;
+            printDialog.ShowDialog();
+
+        }
+
     }
 }

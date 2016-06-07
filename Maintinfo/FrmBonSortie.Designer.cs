@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtboxCodeArt = new System.Windows.Forms.TextBox();
             this.numericUpDownQte = new System.Windows.Forms.NumericUpDown();
             this.lblQuantite = new System.Windows.Forms.Label();
@@ -38,19 +39,27 @@
             this.buttonCatalogue = new System.Windows.Forms.Button();
             this.textBoxQuantiteStock = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.cboxDepanneur = new System.Windows.Forms.ComboBox();
+            this.lblDepanneur = new System.Windows.Forms.Label();
+            this.maintinfoDataSet = new Maintinfo.MaintinfoDataSet();
+            this.recupererDepanneurBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recupererDepanneurTableAdapter = new Maintinfo.MaintinfoDataSetTableAdapters.RecupererDepanneurTableAdapter();
+            this.txtboxNomArticle = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maintinfoDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recupererDepanneurBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtboxCodeArt
             // 
-            this.txtboxCodeArt.Location = new System.Drawing.Point(123, 38);
+            this.txtboxCodeArt.Location = new System.Drawing.Point(82, 40);
             this.txtboxCodeArt.Name = "txtboxCodeArt";
-            this.txtboxCodeArt.Size = new System.Drawing.Size(79, 20);
+            this.txtboxCodeArt.Size = new System.Drawing.Size(38, 20);
             this.txtboxCodeArt.TabIndex = 11;
             // 
             // numericUpDownQte
             // 
-            this.numericUpDownQte.Location = new System.Drawing.Point(123, 64);
+            this.numericUpDownQte.Location = new System.Drawing.Point(82, 75);
             this.numericUpDownQte.Minimum = new decimal(new int[] {
             1,
             0,
@@ -68,7 +77,7 @@
             // lblQuantite
             // 
             this.lblQuantite.AutoSize = true;
-            this.lblQuantite.Location = new System.Drawing.Point(70, 71);
+            this.lblQuantite.Location = new System.Drawing.Point(29, 82);
             this.lblQuantite.Name = "lblQuantite";
             this.lblQuantite.Size = new System.Drawing.Size(47, 13);
             this.lblQuantite.TabIndex = 9;
@@ -92,11 +101,12 @@
             this.btnValider.TabIndex = 6;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // lblSortieArt
             // 
             this.lblSortieArt.AutoSize = true;
-            this.lblSortieArt.Location = new System.Drawing.Point(15, 9);
+            this.lblSortieArt.Location = new System.Drawing.Point(79, 9);
             this.lblSortieArt.Name = "lblSortieArt";
             this.lblSortieArt.Size = new System.Drawing.Size(135, 13);
             this.lblSortieArt.TabIndex = 12;
@@ -105,7 +115,7 @@
             // lblCodeArt
             // 
             this.lblCodeArt.AutoSize = true;
-            this.lblCodeArt.Location = new System.Drawing.Point(53, 41);
+            this.lblCodeArt.Location = new System.Drawing.Point(12, 47);
             this.lblCodeArt.Name = "lblCodeArt";
             this.lblCodeArt.Size = new System.Drawing.Size(64, 13);
             this.lblCodeArt.TabIndex = 13;
@@ -123,7 +133,7 @@
             // 
             // textBoxQuantiteStock
             // 
-            this.textBoxQuantiteStock.Location = new System.Drawing.Point(123, 90);
+            this.textBoxQuantiteStock.Location = new System.Drawing.Point(82, 110);
             this.textBoxQuantiteStock.Name = "textBoxQuantiteStock";
             this.textBoxQuantiteStock.ReadOnly = true;
             this.textBoxQuantiteStock.Size = new System.Drawing.Size(79, 20);
@@ -132,17 +142,62 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(82, 97);
+            this.label4.Location = new System.Drawing.Point(41, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Stock";
+            // 
+            // cboxDepanneur
+            // 
+            this.cboxDepanneur.DataSource = this.recupererDepanneurBindingSource;
+            this.cboxDepanneur.DisplayMember = "NOM_DEPANNEUR";
+            this.cboxDepanneur.FormattingEnabled = true;
+            this.cboxDepanneur.Location = new System.Drawing.Point(82, 145);
+            this.cboxDepanneur.Name = "cboxDepanneur";
+            this.cboxDepanneur.Size = new System.Drawing.Size(121, 21);
+            this.cboxDepanneur.TabIndex = 17;
+            this.cboxDepanneur.ValueMember = "NOM_DEPANNEUR";
+            // 
+            // lblDepanneur
+            // 
+            this.lblDepanneur.AutoSize = true;
+            this.lblDepanneur.Location = new System.Drawing.Point(16, 153);
+            this.lblDepanneur.Name = "lblDepanneur";
+            this.lblDepanneur.Size = new System.Drawing.Size(60, 13);
+            this.lblDepanneur.TabIndex = 18;
+            this.lblDepanneur.Text = "Dépanneur";
+            // 
+            // maintinfoDataSet
+            // 
+            this.maintinfoDataSet.DataSetName = "MaintinfoDataSet";
+            this.maintinfoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // recupererDepanneurBindingSource
+            // 
+            this.recupererDepanneurBindingSource.DataMember = "RecupererDepanneur";
+            this.recupererDepanneurBindingSource.DataSource = this.maintinfoDataSet;
+            // 
+            // recupererDepanneurTableAdapter
+            // 
+            this.recupererDepanneurTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtboxNomArticle
+            // 
+            this.txtboxNomArticle.Location = new System.Drawing.Point(124, 40);
+            this.txtboxNomArticle.Name = "txtboxNomArticle";
+            this.txtboxNomArticle.ReadOnly = true;
+            this.txtboxNomArticle.Size = new System.Drawing.Size(79, 20);
+            this.txtboxNomArticle.TabIndex = 19;
             // 
             // FrmBonSortie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 277);
+            this.Controls.Add(this.txtboxNomArticle);
+            this.Controls.Add(this.lblDepanneur);
+            this.Controls.Add(this.cboxDepanneur);
             this.Controls.Add(this.textBoxQuantiteStock);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonCatalogue);
@@ -155,7 +210,10 @@
             this.Controls.Add(this.btnValider);
             this.Name = "FrmBonSortie";
             this.Text = "FrmBonSortie";
+            this.Load += new System.EventHandler(this.FrmBonSortie_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maintinfoDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recupererDepanneurBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +231,11 @@
         private System.Windows.Forms.Button buttonCatalogue;
         private System.Windows.Forms.TextBox textBoxQuantiteStock;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboxDepanneur;
+        private System.Windows.Forms.Label lblDepanneur;
+        private MaintinfoDataSet maintinfoDataSet;
+        private System.Windows.Forms.BindingSource recupererDepanneurBindingSource;
+        private MaintinfoDataSetTableAdapters.RecupererDepanneurTableAdapter recupererDepanneurTableAdapter;
+        private System.Windows.Forms.TextBox txtboxNomArticle;
     }
 }
