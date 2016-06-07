@@ -177,7 +177,7 @@
             this.Controls.Add(this.buttonModifier);
             this.Controls.Add(this.buttonValider);
             this.Name = "FrmBonDeCommande";
-            this.Text = "FrmBonDeCommande";
+            this.Text = "BonDeCommande";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBonDeCommande_FormClosing);
             this.panelArticle.ResumeLayout(false);
             this.panelArticle.PerformLayout();
