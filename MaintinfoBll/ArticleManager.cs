@@ -9,14 +9,13 @@ namespace MaintinfoBll
 {
 
     public class ArticleManager
-    {
-
+    {       
 
         public static  Article SaisirArticle(string DesignationArticle)
         {
             try {
-            ArticleDao artdao = new ArticleDao();
-            return artdao.GetById(DesignationArticle);
+            ArticleDao artDao = new ArticleDao();
+            return artDao.GetById(DesignationArticle);
             }
             catch (Exception e)
             {
@@ -27,12 +26,13 @@ namespace MaintinfoBll
         public static void SortirArticle(Article Article, int Quantite)
         {
             Article.QuantiteArticle -= Quantite;
-            ArticleDao.MaJArticle(Article);
+            
         }
         public static void EntrerArticle(Article Article, int Quantite)
-        {
+        { ArticleDao artDao = new ArticleDao();
             Article.QuantiteArticle += Quantite ;
-            ArticleDao.MaJArticle(Article);
+            artDao.Update(Article);
+            
         }
     }
 }

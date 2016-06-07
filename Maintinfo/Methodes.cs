@@ -48,5 +48,20 @@ namespace Maintinfo
             printDialog.ShowDialog();
 
         }
+        //Controle de la saisi d'un article(string différent de null)
+        public static bool IsValideArticleSaisi(TextBox TextControl, ErrorProvider ErrP)
+        {
+            bool retour = true;
+            ErrP.Clear();
+
+            // Controle saisi article
+            if (TextControl.Text.Length == 0)
+            {
+                ErrP.SetError(TextControl, "Le code Article est obligatoire");
+                TextControl.Focus();
+                retour = false;
+            }
+            return retour;
+        }
     }
 }

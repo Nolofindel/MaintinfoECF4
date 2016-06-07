@@ -13,15 +13,34 @@ namespace MaintinfoBll
         {
             Article art = new Article();
             ArticleDao rechArt = new ArticleDao();
-            art = rechArt.GetById(refArt);
-            BonEntree BonE = new BonEntree(art, quantite, DateTime.Now);
-            return BonE;
+            try
+            {
+                art = ArticleManager.SaisirArticle(refArt);
+                BonEntree BonE = new BonEntree(art, quantite, DateTime.Now);
+                return BonE;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message, ex);
+            }
+
         }
         public static bool EnregistrerBonEntree(BonEntree t)
         {
             BonEntreeDao BEdao=new BonEntreeDao();
-            BEdao.Insert(t);
-            return true;
+
+            try
+            {                
+                BEdao.Insert(t);
+                ArticleManager.EntrerArticle(t.ArticleEntree, t.QuantiteEntree);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message, ex);
+            }
         }
     }
 }
