@@ -25,11 +25,11 @@ namespace Maintinfo
         }
         public static void Erreur(Exception se)
         {
-            DialogResult Erreur = MessageBox.Show("Erreur  :" + se.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            DialogResult Erreur = MessageBox.Show("Erreur : " + se.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
         }
         public static void Erreur(string msg)
         {
-            DialogResult Erreur = MessageBox.Show("Erreur  :" + msg, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            DialogResult Erreur = MessageBox.Show("Erreur : " + msg, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
         }
         public static void Apercu(BonDeCommande bdc)
         {

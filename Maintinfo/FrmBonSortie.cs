@@ -66,6 +66,7 @@ namespace Maintinfo
             if (cboxDepanneur.SelectedIndex == -1)
             {
                 Methodes.Erreur("Veuillez selectionner le dépanneur");
+                cboxDepanneur.Focus();
             }
             else
             {

@@ -34,7 +34,6 @@
             this.lblQuantite = new System.Windows.Forms.Label();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
-            this.lblSortieArt = new System.Windows.Forms.Label();
             this.lblCodeArt = new System.Windows.Forms.Label();
             this.buttonCatalogue = new System.Windows.Forms.Button();
             this.textBoxQuantiteStock = new System.Windows.Forms.TextBox();
@@ -102,15 +101,6 @@
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
-            // 
-            // lblSortieArt
-            // 
-            this.lblSortieArt.AutoSize = true;
-            this.lblSortieArt.Location = new System.Drawing.Point(79, 9);
-            this.lblSortieArt.Name = "lblSortieArt";
-            this.lblSortieArt.Size = new System.Drawing.Size(135, 13);
-            this.lblSortieArt.TabIndex = 12;
-            this.lblSortieArt.Text = "Demande de sortie d\'article";
             // 
             // lblCodeArt
             // 
@@ -192,9 +182,10 @@
             // 
             // FrmBonSortie
             // 
+            this.AcceptButton = this.btnValider;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 277);
+            this.ClientSize = new System.Drawing.Size(368, 229);
             this.Controls.Add(this.txtboxNomArticle);
             this.Controls.Add(this.lblDepanneur);
             this.Controls.Add(this.cboxDepanneur);
@@ -202,14 +193,13 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonCatalogue);
             this.Controls.Add(this.lblCodeArt);
-            this.Controls.Add(this.lblSortieArt);
             this.Controls.Add(this.txtboxCodeArt);
             this.Controls.Add(this.numericUpDownQte);
             this.Controls.Add(this.lblQuantite);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
             this.Name = "FrmBonSortie";
-            this.Text = "FrmBonSortie";
+            this.Text = "Demande de Bon de Sortie";
             this.Load += new System.EventHandler(this.FrmBonSortie_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maintinfoDataSet)).EndInit();
@@ -226,7 +216,6 @@
         private System.Windows.Forms.Label lblQuantite;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnValider;
-        private System.Windows.Forms.Label lblSortieArt;
         private System.Windows.Forms.Label lblCodeArt;
         private System.Windows.Forms.Button buttonCatalogue;
         private System.Windows.Forms.TextBox textBoxQuantiteStock;
