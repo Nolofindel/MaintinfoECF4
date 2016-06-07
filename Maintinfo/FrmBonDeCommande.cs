@@ -63,7 +63,10 @@ namespace Maintinfo
             {
                 try
                 {
+                    //Envoie du Bon de Commande
                     BonDeCommandeManager.EnregistrerBonDeCommande(BdC);
+                    DepartementFabrication implementation = new ImplementationDepartementFabrication();
+                    implementation.EnvoyerBondeCommande(BdC);
                     DialogResult Reussi = MessageBox.Show("Envoie Réussi", "Envoie", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     this.Close();
                 }

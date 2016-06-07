@@ -11,7 +11,7 @@ namespace MaintinfoBll
         //Test si la quantité commandée est suffisante pour arriver au dessus du seuil
         public static  bool TesterQuantiteSeuil(BonDeCommande Bdc)
         {
-            return Bdc.QuantiteCommande + Bdc.ArticleCommande.QuantiteArticle >= Bdc.ArticleCommande.SeuilMinimal;
+            return (Bdc.QuantiteCommande + Bdc.ArticleCommande.QuantiteArticle >= Bdc.ArticleCommande.SeuilMinimal &Bdc.QuantiteCommande>0);
         }
         public void RemplirBonDeCommande(BonDeCommande Bdc,int Quantite)
         {
