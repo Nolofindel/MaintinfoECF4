@@ -139,7 +139,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripAccueil;
             this.Name = "FrmAcceuil";
-            this.Text = "Form1";
+            this.Text = "Gestion du stock";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAcceuil_FormClosing);
             this.menuStripAccueil.ResumeLayout(false);

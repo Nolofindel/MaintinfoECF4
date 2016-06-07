@@ -13,7 +13,7 @@ namespace MaintinfoBo
         private List<Article> sousEnsemble;
         private int quantiteArticle;
         private int seuilMinimal;
-
+        public Article Self { get { return this; } }
         public Article(string designationArticle, string nomArticle, List<Article> sousEnsemble, int quantiteArticle, int seuilMinimal)
         {
             this.designationArticle = designationArticle;
