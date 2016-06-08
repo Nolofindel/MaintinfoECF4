@@ -7,6 +7,7 @@ namespace MaintinfoBo
         private DateTime dateCommande;
         private Article articleCommande;
         private int quantiteCommande;
+        private bool commandeEffectue;
 
         public BonDeCommande(Article articleCommande)
         {
@@ -50,6 +51,19 @@ namespace MaintinfoBo
             set
             {
                 quantiteCommande = value;
+            }
+        }
+
+        public bool CommandeEffectue
+        {
+            get
+            {
+                return commandeEffectue;
+            }
+
+            set
+            {
+                commandeEffectue = value;
             }
         }
     }

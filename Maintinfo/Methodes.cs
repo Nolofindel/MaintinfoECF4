@@ -39,15 +39,28 @@ namespace Maintinfo
         public static void Apercu(BonDeCommande bdc)
         {
             PrintPreviewDialog printDialog = new PrintPreviewDialog();
+            PrintDocument printText = Rediger(bdc);
+            printDialog.Document = printText;
+            printDialog.ShowDialog();
+
+        }
+
+        private static PrintDocument Rediger(BonDeCommande bdc)
+        {
             PrintDocument printText = new PrintDocument();
             printText.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
             {
                 e1.Graphics.DrawString(BonDeCommandeManager.MiseEnPageBonDeCommande(bdc), new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(0, 0, printText.DefaultPageSettings.PrintableArea.Width, printText.DefaultPageSettings.PrintableArea.Height));
             };
-            printDialog.Document = printText;
-            printDialog.ShowDialog();
-
+            return printText;
         }
+
+        //Imprimer le bon de commande
+        public static void Imprimer(BonDeCommande bdc)
+        {
+          Rediger(bdc).Print();
+        }
+
         //Controle de la saisi d'un article(string différent de null)
         public static bool IsValideArticleSaisi(TextBox TextControl, ErrorProvider ErrP)
         {

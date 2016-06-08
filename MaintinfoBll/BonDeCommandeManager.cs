@@ -21,8 +21,9 @@ namespace MaintinfoBll
         {
             return  new BonDeCommande(art);
         }
-        public static void EnregistrerBonDeCommande(BonDeCommande BdC)
+        public static void EnregistrerBonDeCommande(BonDeCommande BdC,bool Effectue)
         {
+            BdC.CommandeEffectue = Effectue;
             BonDeCommandeDao BdCdao = new BonDeCommandeDao();
             BdCdao.Insert(BdC);
         }

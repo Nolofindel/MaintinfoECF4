@@ -45,6 +45,12 @@ namespace MaintinfoDal
             odbP2.ParameterName = "@QuantiteCommande";
             odbP2.Value = BdC.QuantiteCommande;
             oCommand.Parameters.Add(odbP2);
+            DbParameter odbP3 = oCommand.CreateParameter();
+            odbP3.DbType = System.Data.DbType.Boolean;
+            odbP3.Direction = System.Data.ParameterDirection.Input;
+            odbP3.ParameterName = "@CommandeEffectue";
+            odbP3.Value = BdC.CommandeEffectue;
+            oCommand.Parameters.Add(odbP3);
         }
         protected override void IdToParameter(object id, DbCommand oCommand)
         {

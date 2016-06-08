@@ -28,7 +28,7 @@ namespace Maintinfo
         void SelectionChange(object sender, EventArgs e, Article art)
         {
             textBoxArticle.Text = art.DesignationArticle.ToString();
-            article= ArticleManager.SaisirArticle(textBoxArticle.Text);
+            article = ArticleManager.SaisirArticle(textBoxArticle.Text);
             RemplirTextes(true);
         }
 
@@ -61,18 +61,29 @@ namespace Maintinfo
             }
             else
             {
+                //Envoie du Bon de Commande  
                 try
                 {
-                    //Envoie du Bon de Commande
-                    BonDeCommandeManager.EnregistrerBonDeCommande(BdC);
                     DepartementFabrication implementation = new ImplementationDepartementFabrication();
                     implementation.EnvoyerBondeCommande(BdC);
                     DialogResult Reussi = MessageBox.Show("Envoie Réussi", "Envoie", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    BonDeCommandeManager.EnregistrerBonDeCommande(BdC, true);
                     this.Close();
                 }
                 catch (Exception se)
                 {
                     Methodes.Erreur(se);
+                    DialogResult Echec = MessageBox.Show("Echec de l'envoie, voulez imprimer?", "Echec", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    switch (Echec)
+                    {
+                        case DialogResult.Yes:
+                            try { Methodes.Imprimer(BdC); BonDeCommandeManager.EnregistrerBonDeCommande(BdC, true); }
+                            catch (Exception pr) { Methodes.Erreur(pr); }
+                            break;
+                        case DialogResult.No: BonDeCommandeManager.EnregistrerBonDeCommande(BdC, false);break;
+                        case DialogResult.Cancel: break;
+                    }
+                    this.Close();
                 }
             }
         }
@@ -128,10 +139,11 @@ namespace Maintinfo
         //Remplit les champs du formuaire et initialise le bon de commande
         private void RemplirTextes(bool b)
         {
-            if (b) {
-            BdC = BonDeCommandeManager.CreerBonDeCommande(article);
-            textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
-            textBoxSeuilMinimal.Text = article.SeuilMinimal.ToString();
+            if (b)
+            {
+                BdC = BonDeCommandeManager.CreerBonDeCommande(article);
+                textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
+                textBoxSeuilMinimal.Text = article.SeuilMinimal.ToString();
             }
             else
             {
