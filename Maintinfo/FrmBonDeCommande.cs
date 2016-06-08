@@ -38,27 +38,34 @@ namespace Maintinfo
             if (!Valide)
             {
                 int qte;
-                if (textBoxQuantiteCommande.Text == string.Empty || !int.TryParse(textBoxQuantiteCommande.Text, out qte))
+                try
                 {
-                    Methodes.Erreur("Veuillez entrez une quanitité");
-
-                }
-                else
-                {
-                    BdC.QuantiteCommande = qte;
-                    if (BonDeCommandeManager.TesterQuantiteSeuil(BdC))
+                    if (textBoxQuantiteCommande.Text == string.Empty || !int.TryParse(textBoxQuantiteCommande.Text, out qte))
                     {
-                        Methodes.Apercu(BdC);
-                        panelArticle.Enabled = false;
-                        buttonCatalogue.Enabled = false;
-                        Valide = true;
+                        Methodes.Erreur("Veuillez entrez une quanitité");
+
                     }
                     else
                     {
-                        Methodes.Erreur("Veuillez entrez une quantité correct");
+                        BdC.QuantiteCommande = qte;
+                        if (BonDeCommandeManager.TesterQuantiteSeuil(BdC))
+                        {
+                            Methodes.Apercu(BdC);
+                            panelArticle.Enabled = false;
+                            buttonCatalogue.Enabled = false;
+                            Valide = true;
+                        }
+                        else
+                        {
+                            Methodes.Erreur("Veuillez entrez une quantité correct");
+                        }
                     }
                 }
-            }
+                catch(Exception qt)
+                {
+                    Methodes.Erreur("Veuillez sélectionner un article avant de valider");
+                }
+                }
             else
             {
                 //Envoie du Bon de Commande  
@@ -66,6 +73,9 @@ namespace Maintinfo
                 {
                     DepartementFabrication implementation = new ImplementationDepartementFabrication();
                     implementation.EnvoyerBondeCommande(BdC);
+                    //Test echec envoie
+                    throw new Exception("Erreur Envoie");
+
                     DialogResult Reussi = MessageBox.Show("Envoie Réussi", "Envoie", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     BonDeCommandeManager.EnregistrerBonDeCommande(BdC, true);
                     this.Close();
@@ -80,7 +90,7 @@ namespace Maintinfo
                             try { Methodes.Imprimer(BdC); BonDeCommandeManager.EnregistrerBonDeCommande(BdC, true); }
                             catch (Exception pr) { Methodes.Erreur(pr); }
                             break;
-                        case DialogResult.No: BonDeCommandeManager.EnregistrerBonDeCommande(BdC, false);break;
+                        case DialogResult.No: BonDeCommandeManager.EnregistrerBonDeCommande(BdC, false); break;
                         case DialogResult.Cancel: break;
                     }
                     this.Close();
