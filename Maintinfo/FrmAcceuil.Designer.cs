@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStripAccueil = new System.Windows.Forms.MenuStrip();
-            this.bonDentréeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bonDeSortieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bonDeCommandeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fenetreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horisontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +37,10 @@
             this.statusStripAccueil = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerDate = new System.Windows.Forms.Timer(this.components);
+            this.gestionDuStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bonDentreeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bonDeSortieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bonDeCommandeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripAccueil.SuspendLayout();
             this.statusStripAccueil.SuspendLayout();
             this.SuspendLayout();
@@ -47,36 +48,13 @@
             // menuStripAccueil
             // 
             this.menuStripAccueil.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bonDentréeToolStripMenuItem,
-            this.bonDeSortieToolStripMenuItem,
-            this.bonDeCommandeToolStripMenuItem,
+            this.gestionDuStockToolStripMenuItem,
             this.fenetreToolStripMenuItem});
             this.menuStripAccueil.Location = new System.Drawing.Point(0, 0);
             this.menuStripAccueil.Name = "menuStripAccueil";
             this.menuStripAccueil.Size = new System.Drawing.Size(740, 24);
             this.menuStripAccueil.TabIndex = 1;
             this.menuStripAccueil.Text = "menuStrip1";
-            // 
-            // bonDentréeToolStripMenuItem
-            // 
-            this.bonDentréeToolStripMenuItem.Name = "bonDentréeToolStripMenuItem";
-            this.bonDentréeToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.bonDentréeToolStripMenuItem.Text = "Bon d\'entrée";
-            this.bonDentréeToolStripMenuItem.Click += new System.EventHandler(this.bonDentréeToolStripMenuItem_Click);
-            // 
-            // bonDeSortieToolStripMenuItem
-            // 
-            this.bonDeSortieToolStripMenuItem.Name = "bonDeSortieToolStripMenuItem";
-            this.bonDeSortieToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
-            this.bonDeSortieToolStripMenuItem.Text = "Bon de sortie";
-            this.bonDeSortieToolStripMenuItem.Click += new System.EventHandler(this.bonDeSortieToolStripMenuItem_Click);
-            // 
-            // bonDeCommandeToolStripMenuItem
-            // 
-            this.bonDeCommandeToolStripMenuItem.Name = "bonDeCommandeToolStripMenuItem";
-            this.bonDeCommandeToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
-            this.bonDeCommandeToolStripMenuItem.Text = "Bon de commande";
-            this.bonDeCommandeToolStripMenuItem.Click += new System.EventHandler(this.bonDeCommandeToolStripMenuItem_Click);
             // 
             // fenetreToolStripMenuItem
             // 
@@ -91,21 +69,21 @@
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cascadeToolStripMenuItem.Text = "Cascade";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
             // horisontalToolStripMenuItem
             // 
             this.horisontalToolStripMenuItem.Name = "horisontalToolStripMenuItem";
-            this.horisontalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.horisontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.horisontalToolStripMenuItem.Text = "Horizontal";
             this.horisontalToolStripMenuItem.Click += new System.EventHandler(this.horisontalToolStripMenuItem_Click);
             // 
             // verticalToolStripMenuItem
             // 
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.verticalToolStripMenuItem.Text = "Vertical";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
@@ -129,6 +107,38 @@
             // 
             this.timerDate.Tick += new System.EventHandler(this.timerDate_Tick);
             // 
+            // gestionDuStockToolStripMenuItem
+            // 
+            this.gestionDuStockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bonDentreeToolStripMenuItem,
+            this.bonDeSortieToolStripMenuItem,
+            this.bonDeCommandeToolStripMenuItem});
+            this.gestionDuStockToolStripMenuItem.Name = "gestionDuStockToolStripMenuItem";
+            this.gestionDuStockToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
+            this.gestionDuStockToolStripMenuItem.Text = "Gestion du stock";
+            this.gestionDuStockToolStripMenuItem.Click += new System.EventHandler(this.gestionDuStockToolStripMenuItem_Click);
+            // 
+            // bonDentreeToolStripMenuItem
+            // 
+            this.bonDentreeToolStripMenuItem.Name = "bonDentreeToolStripMenuItem";
+            this.bonDentreeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.bonDentreeToolStripMenuItem.Text = "Bon d\'entrée";
+            this.bonDentreeToolStripMenuItem.Click += new System.EventHandler(this.bonDentreeToolStripMenuItem_Click);
+            // 
+            // bonDeSortieToolStripMenuItem
+            // 
+            this.bonDeSortieToolStripMenuItem.Name = "bonDeSortieToolStripMenuItem";
+            this.bonDeSortieToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.bonDeSortieToolStripMenuItem.Text = "Bon de sortie";
+            this.bonDeSortieToolStripMenuItem.Click += new System.EventHandler(this.bonDeSortieToolStripMenuItem_Click);
+            // 
+            // bonDeCommandeToolStripMenuItem
+            // 
+            this.bonDeCommandeToolStripMenuItem.Name = "bonDeCommandeToolStripMenuItem";
+            this.bonDeCommandeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.bonDeCommandeToolStripMenuItem.Text = "Bon de commande";
+            this.bonDeCommandeToolStripMenuItem.Click += new System.EventHandler(this.bonDeCommandeToolStripMenuItem_Click);
+            // 
             // FrmAcceuil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,7 +149,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripAccueil;
             this.Name = "FrmAcceuil";
-            this.Text = "Gestion du stock";
+            this.Text = "Accueil Maintenance informatique";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAcceuil_FormClosing);
             this.menuStripAccueil.ResumeLayout(false);
@@ -154,9 +164,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStripAccueil;
-        private System.Windows.Forms.ToolStripMenuItem bonDentréeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bonDeSortieToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bonDeCommandeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fenetreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horisontalToolStripMenuItem;
@@ -164,6 +171,10 @@
         private System.Windows.Forms.StatusStrip statusStripAccueil;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDate;
         private System.Windows.Forms.Timer timerDate;
+        private System.Windows.Forms.ToolStripMenuItem gestionDuStockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bonDentreeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bonDeSortieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bonDeCommandeToolStripMenuItem;
     }
 }
 
