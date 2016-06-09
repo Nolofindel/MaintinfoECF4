@@ -9,7 +9,8 @@ namespace MaintinfoBll
 {
     public class BonEntreeManager
     {
-        private ArticleManager artMgr;
+        private ArticleManager artMgr=new ArticleManager();
+        public BonEntreeManager() { }
         public BonEntree CreerBonEntree(string refArt,int quantite)
         {
             Article art = new Article();

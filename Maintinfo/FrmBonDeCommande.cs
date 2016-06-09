@@ -16,8 +16,8 @@ namespace Maintinfo
         private bool Valide = false;
         private Article article = new Article();
         private BonDeCommande BdC;
-        private BonDeCommandeManager BdCMgr;
-        private ArticleManager articleMgr;
+        private BonDeCommandeManager BdCMgr = new BonDeCommandeManager();
+        private ArticleManager articleMgr=new ArticleManager();
         private void FrmBonDeCommande_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Test si Valide pour quitter le formulaire sans demande de confirmation
@@ -63,7 +63,7 @@ namespace Maintinfo
                         }
                     }
                 }
-                catch(Exception qt)
+                catch(Exception)
                 {
                     Methodes.Erreur("Veuillez sélectionner un article avant de valider");
                 }

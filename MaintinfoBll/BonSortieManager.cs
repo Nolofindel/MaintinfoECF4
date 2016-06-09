@@ -10,7 +10,7 @@ namespace MaintinfoBll
     public class BonSortieManager
     {
 
-
+        public BonSortieManager() { }
         public BonSortie CreerBonSortie(Article art)
         {
             return new BonSortie(art);

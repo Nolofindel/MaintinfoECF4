@@ -10,8 +10,8 @@ namespace Maintinfo
         public delegate void CatalogueShow(object sender, EventArgs e);
         private Article article = new Article();
         private BonSortie BdS;
-        private ArticleManager articleMgr;
-        private BonSortieManager BdSMgr;
+        private ArticleManager articleMgr= new ArticleManager();
+        private BonSortieManager BdSMgr=new BonSortieManager();
         public FrmBonSortie()
         {
             InitializeComponent();

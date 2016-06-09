@@ -12,7 +12,7 @@ namespace Maintinfo
             InitializeComponent();
             FrmCatalogue.OnCatalogueClosing += SelectionChange;
         }
-        private BonEntreeManager BEMgr;
+        private BonEntreeManager BEMgr=new BonEntreeManager();
         private void FrmBonEntree_Load(object sender, EventArgs e)
         {            
             
