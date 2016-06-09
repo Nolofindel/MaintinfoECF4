@@ -9,8 +9,9 @@ namespace MaintinfoBll
 {
 
     public class ArticleManager
-    {       
+    {
 
+        public ArticleManager() { }
         public  Article SaisirArticle(string DesignationArticle)
         {
             try {

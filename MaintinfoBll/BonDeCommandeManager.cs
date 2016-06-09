@@ -8,6 +8,7 @@ namespace MaintinfoBll
 {
    public class BonDeCommandeManager
     {
+       public BonDeCommandeManager() { }
         //Test si la quantité commandée est suffisante pour arriver au dessus du seuil
         public bool TesterQuantiteSeuil(BonDeCommande Bdc)
         {

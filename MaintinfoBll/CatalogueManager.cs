@@ -9,6 +9,7 @@ namespace MaintinfoBll
 {
     public class CatalogueManager
     {
+        public CatalogueManager() { }
         public void GenererCatalogue(char cat)
         {
             List<Article> arts = new List<Article>();

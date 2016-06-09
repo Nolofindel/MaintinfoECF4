@@ -22,7 +22,7 @@ namespace Maintinfo
         public static event CatalogueClosing OnCatalogueClosing;
         private Article article;
         private bool Valide;
-        private CatalogueManager catalogueMgr;
+        private CatalogueManager catalogueMgr=new CatalogueManager();
         //Recherche la liste des articles appartenant à une certaine catégorie
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
