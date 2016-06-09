@@ -12,6 +12,7 @@ namespace Maintinfo
             InitializeComponent();
             FrmCatalogue.OnCatalogueClosing += SelectionChange;
         }
+        private BonEntreeManager BEMgr;
         private void FrmBonEntree_Load(object sender, EventArgs e)
         {            
             
@@ -27,11 +28,11 @@ namespace Maintinfo
                 string refArt = txtBoxRefArticle.Text;
                 int quant = (int)numericUpDownQuantite.Value;
                 BonEntree newBE = new BonEntree();
-                BonEntreeManager newBeM = new BonEntreeManager();
+                
                 try
                 {
-                    newBE = newBeM.CreerBonEntree(refArt,quant);
-                    if (newBeM.EnregistrerBonEntree(newBE))
+                    newBE = BEMgr.CreerBonEntree(refArt,quant);
+                    if (BEMgr.EnregistrerBonEntree(newBE))
                     {
                         MessageBox.Show("Article " + newBE.ArticleEntree.DesignationArticle + " : " + newBE.ArticleEntree.NomArticle + " Ajouter au stock", "Bon d'entrée ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         articleBindingSource.Add(newBE.ArticleEntree);

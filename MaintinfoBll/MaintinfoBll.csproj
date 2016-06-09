@@ -45,6 +45,7 @@
     <Compile Include="BonEntreeManager.cs" />
     <Compile Include="BonSortieManager.cs" />
     <Compile Include="CatalogueManager.cs" />
+    <Compile Include="DepartementFabrication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -36,18 +36,31 @@ namespace Maintinfo
         }
 
         //Affiche une apercu avant impression du bon de commande
-        public static void Apercu(BonDeCommande bdc)
+        public static void Apercu(BonDeCommande bdc,BonDeCommandeManager bdcmgr)
         {
             PrintPreviewDialog printDialog = new PrintPreviewDialog();
-            PrintDocument printText = new PrintDocument();
-            printText.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
-            {
-                e1.Graphics.DrawString(BonDeCommandeManager.MiseEnPageBonDeCommande(bdc), new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(0, 0, printText.DefaultPageSettings.PrintableArea.Width, printText.DefaultPageSettings.PrintableArea.Height));
-            };
+            PrintDocument printText = Rediger(bdc, bdcmgr);
             printDialog.Document = printText;
             printDialog.ShowDialog();
 
         }
+
+        private static PrintDocument Rediger(BonDeCommande bdc,BonDeCommandeManager bdcmgr)
+        {
+            PrintDocument printText = new PrintDocument();
+            printText.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(bdcmgr.MiseEnPageBonDeCommande(bdc), new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(0, 0, printText.DefaultPageSettings.PrintableArea.Width, printText.DefaultPageSettings.PrintableArea.Height));
+            };
+            return printText;
+        }
+
+        //Imprimer le bon de commande
+        public static void Imprimer(BonDeCommande bdc, BonDeCommandeManager bdcmgr)
+        {
+          Rediger(bdc, bdcmgr).Print();
+        }
+
         //Controle de la saisi d'un article(string différent de null)
         public static bool IsValideArticleSaisi(TextBox TextControl, ErrorProvider ErrP)
         {
@@ -64,13 +77,13 @@ namespace Maintinfo
             return retour;
         }
 
-        public static void Apercu(BonSortie bds)
+        public static void Apercu(BonSortie bds,BonSortieManager bdsmgr)
         {
             PrintPreviewDialog printDialog = new PrintPreviewDialog();
             PrintDocument printText = new PrintDocument();
             printText.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
             {
-                e1.Graphics.DrawString(BonSortieManager.MiseEnPageBonSortie(bds), new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(0, 0, printText.DefaultPageSettings.PrintableArea.Width, printText.DefaultPageSettings.PrintableArea.Height));
+                e1.Graphics.DrawString(bdsmgr.MiseEnPageBonSortie(bds), new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(0, 0, printText.DefaultPageSettings.PrintableArea.Width, printText.DefaultPageSettings.PrintableArea.Height));
             };
             printDialog.Document = printText;
             printDialog.ShowDialog();

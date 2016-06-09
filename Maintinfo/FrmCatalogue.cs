@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaintinfoBo;
+using MaintinfoBll;
 namespace Maintinfo
 {
     public partial class FrmCatalogue : Form
@@ -20,14 +21,15 @@ namespace Maintinfo
         public delegate void CatalogueClosing(object sender, EventArgs e,Article art);
         public static event CatalogueClosing OnCatalogueClosing;
         private Article article;
-
+        private bool Valide;
+        private CatalogueManager catalogueMgr;
         //Recherche la liste des articles appartenant à une certaine catégorie
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
             try {
                 listBoxArticles.DataSource = null;
-           MaintinfoBll.CatalogueManager.GenererCatalogue(Convert.ToChar(textBoxCategorie.Text));
-            List<Article> cat = MaintinfoBll.CatalogueManager.RecupererCatalogue();
+                catalogueMgr.GenererCatalogue(Convert.ToChar(textBoxCategorie.Text));
+            List<Article> cat = catalogueMgr.RecupererCatalogue();
             listBoxArticles.DataSource = cat;
             }
             catch(Exception se)
@@ -38,9 +40,18 @@ namespace Maintinfo
 
         //Lance l'event associé au delegate puis ferme
         private void buttonValider_Click(object sender, EventArgs e)
-        {
-            OnCatalogueClosing(sender,e,article);
-            this.Close();
+        {try
+            {
+                if (article == null) { throw new Exception(); }
+                OnCatalogueClosing(sender, e, article);
+                Valide = true;
+                this.Close();
+            }
+           catch (Exception)
+            {
+                Methodes.Erreur("Veuillez Sélectionner un article avant de valider");
+            }
+            
         }
         //Ferme le formulaire
         private void buttonQuitter_Click(object sender, EventArgs e)
@@ -50,7 +61,10 @@ namespace Maintinfo
 
         private void FrmCatalogue_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Methodes.Quitter(sender,e,"Quitter Catalogue?");
+            if (!Valide)
+            {
+                Methodes.Quitter(sender, e, "Quitter Catalogue?");
+            }
         }
 
         private void listBoxArticles_SelectedIndexChanged(object sender, EventArgs e)

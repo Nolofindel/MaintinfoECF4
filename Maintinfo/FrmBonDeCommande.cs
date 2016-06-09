@@ -16,6 +16,8 @@ namespace Maintinfo
         private bool Valide = false;
         private Article article = new Article();
         private BonDeCommande BdC;
+        private BonDeCommandeManager BdCMgr;
+        private ArticleManager articleMgr;
         private void FrmBonDeCommande_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Test si Valide pour quitter le formulaire sans demande de confirmation
@@ -28,7 +30,7 @@ namespace Maintinfo
         void SelectionChange(object sender, EventArgs e, Article art)
         {
             textBoxArticle.Text = art.DesignationArticle.ToString();
-            article= ArticleManager.SaisirArticle(textBoxArticle.Text);
+            article = articleMgr.SaisirArticle(textBoxArticle.Text);
             RemplirTextes(true);
         }
 
@@ -38,38 +40,63 @@ namespace Maintinfo
             if (!Valide)
             {
                 int qte;
-                if (textBoxQuantiteCommande.Text == string.Empty || !int.TryParse(textBoxQuantiteCommande.Text, out qte))
+                try
                 {
-                    Methodes.Erreur("Veuillez entrez une quanitité");
-
-                }
-                else
-                {
-                    BdC.QuantiteCommande = qte;
-                    if (BonDeCommandeManager.TesterQuantiteSeuil(BdC))
+                    if (textBoxQuantiteCommande.Text == string.Empty || !int.TryParse(textBoxQuantiteCommande.Text, out qte))
                     {
-                        Methodes.Apercu(BdC);
-                        panelArticle.Enabled = false;
-                        buttonCatalogue.Enabled = false;
-                        Valide = true;
+                        Methodes.Erreur("Veuillez entrez une quanitité");
+
                     }
                     else
                     {
-                        Methodes.Erreur("Veuillez entrez une quantité correct");
+                        BdC.QuantiteCommande = qte;
+                        if (BdCMgr.TesterQuantiteSeuil(BdC))
+                        {
+                            Methodes.Apercu(BdC, BdCMgr);
+                            panelArticle.Enabled = false;
+                            buttonCatalogue.Enabled = false;
+                            Valide = true;
+                        }
+                        else
+                        {
+                            Methodes.Erreur("Veuillez entrez une quantité correct");
+                        }
                     }
                 }
-            }
+                catch(Exception qt)
+                {
+                    Methodes.Erreur("Veuillez sélectionner un article avant de valider");
+                }
+                }
             else
             {
+                //Envoie du Bon de Commande  
                 try
                 {
-                    BonDeCommandeManager.EnregistrerBonDeCommande(BdC);
+                    DepartementFabrication implementation = new ImplementationDepartementFabrication();
+                    implementation.EnvoyerBondeCommande(BdC);
+
+                    //Pour tester echec envoie
+                    //throw new Exception("Erreur Envoie");
+
                     DialogResult Reussi = MessageBox.Show("Envoie Réussi", "Envoie", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    BdCMgr.EnregistrerBonDeCommande(BdC, true);
                     this.Close();
                 }
                 catch (Exception se)
                 {
                     Methodes.Erreur(se);
+                    DialogResult Echec = MessageBox.Show("Echec de l'envoie, voulez imprimer?", "Echec", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    switch (Echec)
+                    {
+                        case DialogResult.Yes:
+                            try { Methodes.Imprimer(BdC, BdCMgr); BdCMgr.EnregistrerBonDeCommande(BdC, true); }
+                            catch (Exception pr) { Methodes.Erreur(pr); }
+                            break;
+                        case DialogResult.No: BdCMgr.EnregistrerBonDeCommande(BdC, false); break;
+                        case DialogResult.Cancel: break;
+                    }
+                    this.Close();
                 }
             }
         }
@@ -99,7 +126,7 @@ namespace Maintinfo
         {
             try
             {
-                article = ArticleManager.SaisirArticle(textBoxArticle.Text);
+                article = articleMgr.SaisirArticle(textBoxArticle.Text);
             }
             catch (Exception se)
             {
@@ -125,10 +152,11 @@ namespace Maintinfo
         //Remplit les champs du formuaire et initialise le bon de commande
         private void RemplirTextes(bool b)
         {
-            if (b) {
-            BdC = BonDeCommandeManager.CreerBonDeCommande(article);
-            textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
-            textBoxSeuilMinimal.Text = article.SeuilMinimal.ToString();
+            if (b)
+            {
+                BdC = BdCMgr.CreerBonDeCommande(article);
+                textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
+                textBoxSeuilMinimal.Text = article.SeuilMinimal.ToString();
             }
             else
             {

@@ -7,11 +7,12 @@ namespace MaintinfoBo
         private DateTime dateCommande;
         private Article articleCommande;
         private int quantiteCommande;
+        private bool commandeEffectue;
 
         public BonDeCommande(Article articleCommande)
         {
             this.articleCommande = articleCommande;
-            this.dateCommande = DateTime.Today;
+            this.dateCommande = DateTime.Now;
         }
 
         public DateTime DateCommande
@@ -50,6 +51,19 @@ namespace MaintinfoBo
             set
             {
                 quantiteCommande = value;
+            }
+        }
+
+        public bool CommandeEffectue
+        {
+            get
+            {
+                return commandeEffectue;
+            }
+
+            set
+            {
+                commandeEffectue = value;
             }
         }
     }

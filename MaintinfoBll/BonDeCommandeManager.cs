@@ -9,25 +9,26 @@ namespace MaintinfoBll
    public class BonDeCommandeManager
     {
         //Test si la quantité commandée est suffisante pour arriver au dessus du seuil
-        public static  bool TesterQuantiteSeuil(BonDeCommande Bdc)
+        public bool TesterQuantiteSeuil(BonDeCommande Bdc)
         {
-            return Bdc.QuantiteCommande + Bdc.ArticleCommande.QuantiteArticle >= Bdc.ArticleCommande.SeuilMinimal;
+            return (Bdc.QuantiteCommande + Bdc.ArticleCommande.QuantiteArticle >= Bdc.ArticleCommande.SeuilMinimal &Bdc.QuantiteCommande>0);
         }
         public void RemplirBonDeCommande(BonDeCommande Bdc,int Quantite)
         {
             Bdc.QuantiteCommande = Quantite;
         }
-        public static BonDeCommande CreerBonDeCommande(Article art)
+        public BonDeCommande CreerBonDeCommande(Article art)
         {
             return  new BonDeCommande(art);
         }
-        public static void EnregistrerBonDeCommande(BonDeCommande BdC)
+        public void EnregistrerBonDeCommande(BonDeCommande BdC,bool Effectue)
         {
+            BdC.CommandeEffectue = Effectue;
             BonDeCommandeDao BdCdao = new BonDeCommandeDao();
             BdCdao.Insert(BdC);
         }
         //Sert pour l'aperçu avant impression
-        public static string MiseEnPageBonDeCommande(BonDeCommande BdC)
+        public string MiseEnPageBonDeCommande(BonDeCommande BdC)
         {
             string str= "Bon de Commande \n";
             str +=BdC.ArticleCommande.NomArticle.ToString()+"\n";
