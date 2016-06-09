@@ -11,12 +11,12 @@ namespace MaintinfoBll
     {
 
 
-        public static BonSortie CreerBonSortie(Article art)
+        public BonSortie CreerBonSortie(Article art)
         {
             return new BonSortie(art);
         }
 
-        public static string MiseEnPageBonSortie(BonSortie BdS)
+        public string MiseEnPageBonSortie(BonSortie BdS)
         {
             string str = "Bon de Sortie \n\n";
             str += "Nom du dépanneur: " + BdS.NomDepanneur + "\n\n";
@@ -26,7 +26,7 @@ namespace MaintinfoBll
             return str;
         }
 
-        public static List<Depanneur> lesDepanneurs()
+        public List<Depanneur> lesDepanneurs()
         {
             DepanneurDao depDao = new DepanneurDao();
             return depDao.GetAll();

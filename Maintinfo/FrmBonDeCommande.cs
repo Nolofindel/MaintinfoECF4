@@ -16,6 +16,8 @@ namespace Maintinfo
         private bool Valide = false;
         private Article article = new Article();
         private BonDeCommande BdC;
+        private BonDeCommandeManager BdCMgr;
+        private ArticleManager articleMgr;
         private void FrmBonDeCommande_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Test si Valide pour quitter le formulaire sans demande de confirmation
@@ -28,7 +30,7 @@ namespace Maintinfo
         void SelectionChange(object sender, EventArgs e, Article art)
         {
             textBoxArticle.Text = art.DesignationArticle.ToString();
-            article = ArticleManager.SaisirArticle(textBoxArticle.Text);
+            article = articleMgr.SaisirArticle(textBoxArticle.Text);
             RemplirTextes(true);
         }
 
@@ -48,9 +50,9 @@ namespace Maintinfo
                     else
                     {
                         BdC.QuantiteCommande = qte;
-                        if (BonDeCommandeManager.TesterQuantiteSeuil(BdC))
+                        if (BdCMgr.TesterQuantiteSeuil(BdC))
                         {
-                            Methodes.Apercu(BdC);
+                            Methodes.Apercu(BdC, BdCMgr);
                             panelArticle.Enabled = false;
                             buttonCatalogue.Enabled = false;
                             Valide = true;
@@ -73,11 +75,12 @@ namespace Maintinfo
                 {
                     DepartementFabrication implementation = new ImplementationDepartementFabrication();
                     implementation.EnvoyerBondeCommande(BdC);
-                    //Test echec envoie
-                    throw new Exception("Erreur Envoie");
+
+                    //Pour tester echec envoie
+                    //throw new Exception("Erreur Envoie");
 
                     DialogResult Reussi = MessageBox.Show("Envoie Réussi", "Envoie", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    BonDeCommandeManager.EnregistrerBonDeCommande(BdC, true);
+                    BdCMgr.EnregistrerBonDeCommande(BdC, true);
                     this.Close();
                 }
                 catch (Exception se)
@@ -87,10 +90,10 @@ namespace Maintinfo
                     switch (Echec)
                     {
                         case DialogResult.Yes:
-                            try { Methodes.Imprimer(BdC); BonDeCommandeManager.EnregistrerBonDeCommande(BdC, true); }
+                            try { Methodes.Imprimer(BdC, BdCMgr); BdCMgr.EnregistrerBonDeCommande(BdC, true); }
                             catch (Exception pr) { Methodes.Erreur(pr); }
                             break;
-                        case DialogResult.No: BonDeCommandeManager.EnregistrerBonDeCommande(BdC, false); break;
+                        case DialogResult.No: BdCMgr.EnregistrerBonDeCommande(BdC, false); break;
                         case DialogResult.Cancel: break;
                     }
                     this.Close();
@@ -123,7 +126,7 @@ namespace Maintinfo
         {
             try
             {
-                article = ArticleManager.SaisirArticle(textBoxArticle.Text);
+                article = articleMgr.SaisirArticle(textBoxArticle.Text);
             }
             catch (Exception se)
             {
@@ -151,7 +154,7 @@ namespace Maintinfo
         {
             if (b)
             {
-                BdC = BonDeCommandeManager.CreerBonDeCommande(article);
+                BdC = BdCMgr.CreerBonDeCommande(article);
                 textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
                 textBoxSeuilMinimal.Text = article.SeuilMinimal.ToString();
             }
