@@ -27,10 +27,11 @@ namespace Maintinfo
                 string refArt = txtBoxRefArticle.Text;
                 int quant = (int)numericUpDownQuantite.Value;
                 BonEntree newBE = new BonEntree();
+                BonEntreeManager newBeM = new BonEntreeManager();
                 try
                 {
-                    newBE = BonEntreeManager.CreerBonEntree(refArt,quant);
-                    if (BonEntreeManager.EnregistrerBonEntree(newBE))
+                    newBE = newBeM.CreerBonEntree(refArt,quant);
+                    if (newBeM.EnregistrerBonEntree(newBE))
                     {
                         MessageBox.Show("Article " + newBE.ArticleEntree.DesignationArticle + " : " + newBE.ArticleEntree.NomArticle + " Ajouter au stock", "Bon d'entrée ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         articleBindingSource.Add(newBE.ArticleEntree);

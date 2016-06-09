@@ -9,13 +9,14 @@ namespace MaintinfoBll
 {
     public class BonEntreeManager
     {
-        public static BonEntree CreerBonEntree(string refArt,int quantite)
+        public virtual BonEntree CreerBonEntree(string refArt,int quantite)
         {
             Article art = new Article();
+            ArticleManager artMan = new ArticleManager();
             ArticleDao rechArt = new ArticleDao();
             try
             {
-                art = ArticleManager.SaisirArticle(refArt);
+                art = artMan.SaisirArticle(refArt);
                 BonEntree BonE = new BonEntree(art, quantite, DateTime.Now);
                 return BonE;
             }
@@ -26,14 +27,14 @@ namespace MaintinfoBll
             }
 
         }
-        public static bool EnregistrerBonEntree(BonEntree t)
+        public virtual bool EnregistrerBonEntree(BonEntree t)
         {
             BonEntreeDao BEdao=new BonEntreeDao();
-
+            ArticleManager artMan = new ArticleManager();
             try
             {                
                 BEdao.Insert(t);
-                ArticleManager.EntrerArticle(t.ArticleEntree, t.QuantiteEntree);
+                artMan.EntrerArticle(t.ArticleEntree, t.QuantiteEntree);
                 return true;
             }
             catch (Exception ex)

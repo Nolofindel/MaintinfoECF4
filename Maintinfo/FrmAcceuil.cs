@@ -34,6 +34,7 @@ namespace Maintinfo
            FrmBonEntree BonEntree = new FrmBonEntree();
             BonEntree.MdiParent = this;
             BonEntree.Show();
+
         }
 
         private void bonDeSortieToolStripMenuItem_Click(object sender, System.EventArgs e)
