@@ -10,7 +10,8 @@ namespace Maintinfo
         public delegate void CatalogueShow(object sender, EventArgs e);
         private Article article = new Article();
         private BonSortie BdS;
-
+        private ArticleManager articleMgr= new ArticleManager();
+        private BonSortieManager BdSMgr=new BonSortieManager();
         public FrmBonSortie()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace Maintinfo
         void SelectionChange(object sender, EventArgs e, Article art)
         {
             txtboxCodeArt.Text = art.DesignationArticle.ToString();
-            article = ArticleManager.SaisirArticle(txtboxCodeArt.Text);
+            article = articleMgr.SaisirArticle(txtboxCodeArt.Text);
             textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
             txtboxNomArticle.Text = article.NomArticle;
         }
@@ -44,7 +45,7 @@ namespace Maintinfo
         {
             try
             {
-                article = ArticleManager.SaisirArticle(txtboxCodeArt.Text);
+                article = articleMgr.SaisirArticle(txtboxCodeArt.Text);
             }
             catch (Exception se)
             {
@@ -71,10 +72,10 @@ namespace Maintinfo
             }
             else
             {
-                BdS = BonSortieManager.CreerBonSortie(article);
+                BdS = BdSMgr.CreerBonSortie(article);
                 BdS.Quantite = ((int)numericUpDownQte.Value);
                 BdS.NomDepanneur = cboxDepanneur.SelectedValue.ToString();
-                Methodes.Apercu(BdS);
+                Methodes.Apercu(BdS, BdSMgr);
             }
 
 
@@ -84,7 +85,7 @@ namespace Maintinfo
         {
             // TODO: cette ligne de code charge les données dans la table 'maintinfoDataSet.RecupererDepanneur'. Vous pouvez la déplacer ou la supprimer selon vos besoins.
             //this.recupererDepanneurTableAdapter.Fill(this.maintinfoDataSet.RecupererDepanneur);
-            cboxDepanneur.DataSource = BonSortieManager.lesDepanneurs();
+            cboxDepanneur.DataSource = BdSMgr.lesDepanneurs();
 
             cboxDepanneur.SelectedIndex = -1;
         }

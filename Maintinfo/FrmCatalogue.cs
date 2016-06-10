@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaintinfoBo;
+using MaintinfoBll;
 namespace Maintinfo
 {
     public partial class FrmCatalogue : Form
@@ -21,13 +22,14 @@ namespace Maintinfo
         public static event CatalogueClosing OnCatalogueClosing;
         private Article article;
         private bool Valide;
+        private CatalogueManager catalogueMgr=new CatalogueManager();
         //Recherche la liste des articles appartenant à une certaine catégorie
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
             try {
                 listBoxArticles.DataSource = null;
-           MaintinfoBll.CatalogueManager.GenererCatalogue(Convert.ToChar(textBoxCategorie.Text));
-            List<Article> cat = MaintinfoBll.CatalogueManager.RecupererCatalogue();
+                catalogueMgr.GenererCatalogue(Convert.ToChar(textBoxCategorie.Text));
+            List<Article> cat = catalogueMgr.RecupererCatalogue();
             listBoxArticles.DataSource = cat;
             }
             catch(Exception se)

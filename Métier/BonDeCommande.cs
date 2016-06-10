@@ -12,7 +12,7 @@ namespace MaintinfoBo
         public BonDeCommande(Article articleCommande)
         {
             this.articleCommande = articleCommande;
-            this.dateCommande = DateTime.Today;
+            this.dateCommande = DateTime.Now;
         }
 
         public DateTime DateCommande

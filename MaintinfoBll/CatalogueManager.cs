@@ -9,7 +9,8 @@ namespace MaintinfoBll
 {
     public class CatalogueManager
     {
-        public static void GenererCatalogue(char cat)
+        public CatalogueManager() { }
+        public void GenererCatalogue(char cat)
         {
             List<Article> arts = new List<Article>();
             try
@@ -23,11 +24,11 @@ namespace MaintinfoBll
                 throw new Exception(e.Message, e);
             }
         }
-        public static List<Article> RecupererCatalogue()
+        public List<Article> RecupererCatalogue()
         {
             return Catalogue.Instance.RecupererCatalogue();
         }
-        public static void ViderCatalogue()
+        public void ViderCatalogue()
         {
             Catalogue.ViderCatalogue();
         }

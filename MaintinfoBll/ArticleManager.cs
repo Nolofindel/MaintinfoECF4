@@ -9,9 +9,10 @@ namespace MaintinfoBll
 {
 
     public class ArticleManager
-    {       
+    {
 
-        public static  Article SaisirArticle(string DesignationArticle)
+        public ArticleManager() { }
+        public  Article SaisirArticle(string DesignationArticle)
         {
             try {
             ArticleDao artDao = new ArticleDao();
@@ -23,16 +24,15 @@ namespace MaintinfoBll
             }
 
         }
-        public static void SortirArticle(Article Article, int Quantite)
+        public void SortirArticle(Article Article, int Quantite)
         {
             Article.QuantiteArticle -= Quantite;
             
         }
-        public static void EntrerArticle(Article Article, int Quantite)
+        public  void EntrerArticle(Article Article, int Quantite)
         { ArticleDao artDao = new ArticleDao();
             Article.QuantiteArticle += Quantite ;
-            artDao.Update(Article);
-            
+            artDao.Update(Article);            
         }
     }
 }
