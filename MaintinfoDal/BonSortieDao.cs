@@ -17,8 +17,8 @@ namespace MaintinfoDal
             CmdUpdate = string.Empty;
             CmdDelete = string.Empty;
             CmdGetBy = string.Empty;
-            CmdGetAll = "GetAllProduit";
-            CmdGetAllBy = "GetAllGenByFam";
+            CmdGetAll = string.Empty;
+            CmdGetAllBy = string.Empty;
 
         }
 
@@ -44,7 +44,6 @@ namespace MaintinfoDal
         {
 
             throw new NotImplementedException();
-
         }
     }
 }

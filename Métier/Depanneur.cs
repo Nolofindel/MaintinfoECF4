@@ -54,9 +54,12 @@
                 secteurGeographiqueDepanneur = value;
             }
         }
+
+        #region Override Methods
         public override string ToString()
         {
             return nomDepanneur;
         }
+        #endregion
     }
 }

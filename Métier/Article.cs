@@ -34,16 +34,6 @@ namespace MaintinfoBo
         public Article()
         {
         }
-        // Equals : code identique
-        public override bool Equals(Object obj)
-        {
-            var article = obj as Article;
-            if (article != null)
-                return
-                   article.DesignationArticle.Equals(this.DesignationArticle);
-            else
-                return false;
-        }
 
 
         public string DesignationArticle
@@ -110,9 +100,32 @@ namespace MaintinfoBo
                 seuilMinimal = value;
             }
         }
+
+        #region Override Methods
+        // override ToString
         public override string ToString()
         {
             return NomArticle.ToString();
         }
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+    
+            var article = obj as Article;
+            if (article != null)
+                return
+                   article.DesignationArticle.Equals(this.DesignationArticle);
+            else
+                return false;
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            // TODO: write your implementation of GetHashCode() here
+            return base.GetHashCode();
+        }
+        #endregion
     }
 }
