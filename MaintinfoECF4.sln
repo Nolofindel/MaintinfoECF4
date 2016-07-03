@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintinfoBo", "Métier\MaintinfoBo.csproj", "{642283C0-934E-4061-9B40-40E2CB6653BF}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintinfo", "Maintinfo\Maintinfo.csproj", "{02618342-82B3-4F21-8DF0-12DC61D41EC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintinfoDal", "MaintinfoDal\MaintinfoDal.csproj", "{E7CCF73F-D1DB-4B4E-B72A-45EC5A72A051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintinfoDalEntity", "MaintinfoDalEntity\MaintinfoDalEntity.csproj", "{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E7CCF73F-D1DB-4B4E-B72A-45EC5A72A051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7CCF73F-D1DB-4B4E-B72A-45EC5A72A051}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7CCF73F-D1DB-4B4E-B72A-45EC5A72A051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
