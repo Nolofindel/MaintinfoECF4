@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintinfoDal", "MaintinfoDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintinfoDalEntity", "MaintinfoDalEntity\MaintinfoDalEntity.csproj", "{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintinfoASP.Net(MVC)", "MaintinfoASP.Net(MVC)\MaintinfoASP.Net(MVC).csproj", "{A1D41F12-CCE0-4B00-A221-8ABA2FD31C4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreationBDD", "CreationBDD\CreationBDD.csproj", "{0772BD66-4A90-4932-BF45-0402BED1AAD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1D41F12-CCE0-4B00-A221-8ABA2FD31C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D41F12-CCE0-4B00-A221-8ABA2FD31C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D41F12-CCE0-4B00-A221-8ABA2FD31C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D41F12-CCE0-4B00-A221-8ABA2FD31C4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0772BD66-4A90-4932-BF45-0402BED1AAD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0772BD66-4A90-4932-BF45-0402BED1AAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0772BD66-4A90-4932-BF45-0402BED1AAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0772BD66-4A90-4932-BF45-0402BED1AAD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

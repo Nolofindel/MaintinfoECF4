@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2E95CC9-E1F6-4D1C-A443-3EC21C2089EC}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{0772BD66-4A90-4932-BF45-0402BED1AAD7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MaintinfoDalEntity</RootNamespace>
-    <AssemblyName>MaintinfoDalEntity</AssemblyName>
+    <RootNamespace>CreationBDD</RootNamespace>
+    <AssemblyName>CreationBDD</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,8 +44,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,19 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ArticleConfiguration.cs" />
-    <Compile Include="Configuration\BonDeCommandeConfiguration.cs" />
-    <Compile Include="Configuration\BonEntreeConfiguration.cs" />
-    <Compile Include="Configuration\BonSortieConfiguration.cs" />
-    <Compile Include="Configuration\DepanneurConfiguration.cs" />
-    <Compile Include="Configuration\MaintinfoInitializer.cs" />
-    <Compile Include="Exceptions\DaoException.cs" />
-    <Compile Include="Exceptions\DaoExceptionAfficheMessage.cs" />
-    <Compile Include="Exceptions\DaoExceptionFinAppli.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="Configuration\MaintinfoContext.cs" />
-    <Compile Include="Configuration\SecteurGeographiqueConfiguration.cs" />
-    <Compile Include="Configuration\SpecialiteConfiguration.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +60,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Métier\MaintinfoBo.csproj">
-      <Project>{642283C0-934E-4061-9B40-40E2CB6653BF}</Project>
-      <Name>MaintinfoBo</Name>
+    <ProjectReference Include="..\MaintinfoDalEntity\MaintinfoDalEntity.csproj">
+      <Project>{b2e95cc9-e1f6-4d1c-a443-3ec21c2089ec}</Project>
+      <Name>MaintinfoDalEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
