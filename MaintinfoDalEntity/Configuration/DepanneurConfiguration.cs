@@ -11,5 +11,19 @@ namespace MaintinfoDalEntity.Configuration
 {
     class DepanneurConfiguration:EntityTypeConfiguration<Depanneur>
     {
+        public DepanneurConfiguration():base()
+        {
+            //TODO Rajouter la key dans la classe
+            //HasKey(Dep => Dep.);
+            //Property(Dep => Dep.)
+            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+            //    .IsRequired();
+            Property(Dep => Dep.NomDepanneur)
+                .HasColumnName("")
+                .HasColumnType("varchar")
+                .HasMaxLength(30)
+                .IsRequired();
+
+        }
     }
 }

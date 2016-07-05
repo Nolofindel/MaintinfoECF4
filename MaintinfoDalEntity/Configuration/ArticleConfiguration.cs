@@ -11,5 +11,27 @@ namespace MaintinfoDalEntity.Configuration
 {
     class ArticleConfiguration:EntityTypeConfiguration<Article>
     {
+        public ArticleConfiguration():base()
+        {
+            HasKey(art => art.DesignationArticle);
+            Property(art => art.DesignationArticle)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+                .IsRequired();
+            Property(art => art.NomArticle)
+                .HasColumnName("")
+                .HasColumnType("varchar")
+                .HasMaxLength(20)
+                .IsRequired();
+            Property(art => art.QuantiteArticle)
+                .HasColumnName("")
+                //.HasColumnType("")
+                .IsRequired();
+            Property(art => art.SeuilMinimal)
+                .HasColumnName("")
+                //.HasColumnType("")
+                .IsRequired();
+
+            Ignore(art => art.Self);
+        }
     }
 }

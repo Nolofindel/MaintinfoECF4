@@ -11,5 +11,18 @@ namespace MaintinfoDalEntity.Configuration
 {
     class SpecialiteConfiguration:EntityTypeConfiguration<Specialite>
     {
+        public SpecialiteConfiguration():base()
+        {
+            //TODO Rajouter la key dans la classe
+            //HasKey(Sp => Sp.);
+            //Property(Sp => Sp.)
+            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+            //    .IsRequired();
+            Property(Sp => Sp.NomSpecialite)
+                .HasColumnName("")
+                .HasColumnType("varchar")
+                .HasMaxLength(30)
+                .IsRequired();
+        }
     }
 }
