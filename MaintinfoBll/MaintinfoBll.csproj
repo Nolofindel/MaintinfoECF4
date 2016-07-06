@@ -46,6 +46,8 @@
     <Compile Include="BonSortieManager.cs" />
     <Compile Include="CatalogueManager.cs" />
     <Compile Include="DepartementFabrication.cs" />
+    <Compile Include="GestionnaireDepanneurs.cs" />
+    <Compile Include="GestionnaireStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
