@@ -13,15 +13,9 @@ namespace MaintinfoDalEntity.Configuration
     {
         public BonSortieConfiguration():base()
         {
-            //TODO Rajouter la key dans la classe
-            //HasKey(Bs => Bs.);
-            //Property(Bs => Bs.)
-            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-            //    .IsRequired();
-            Property(Bs => Bs.NomDepanneur)
-                .HasColumnName("")
-                .HasColumnType("varchar")
-                .HasMaxLength(30)
+            HasKey(Bs => Bs.BonSortieID);
+            Property(Bs => Bs.BonSortieID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
             Property(Bs => Bs.Quantite)
                 .HasColumnName("")
@@ -31,6 +25,17 @@ namespace MaintinfoDalEntity.Configuration
                 .HasColumnName("")
                 .HasColumnType("date")
                 .IsRequired();
+
+            // Association  (pour LeDepanneur) 
+            HasRequired(Bs => Bs.LeDepanneur)
+                .WithMany()
+                .HasForeignKey(Bs => Bs.DepanneurID);
+
+            // Association  (pour ArticleSortie) 
+            HasRequired(Bs => Bs.ArticleSortie)
+                .WithMany()
+                .HasForeignKey(Bs => Bs.ArticleID);
+
         }
     }
 }

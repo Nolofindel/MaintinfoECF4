@@ -8,6 +8,7 @@ namespace MaintinfoBo
 {
     public class Article
     {
+        private int articleID;
         private string designationArticle;
         private string nomArticle;
         private List<Article> sousEnsemble;
@@ -45,7 +46,18 @@ namespace MaintinfoBo
                 return false;
         }
 
+        public int ArticleID
+        {
+            get
+            {
+                return articleID;
+            }
 
+            set
+            {
+                articleID = value;
+            }
+        }
         public string DesignationArticle
         {
             get

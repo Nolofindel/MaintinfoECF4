@@ -4,8 +4,10 @@ namespace MaintinfoBo
 {
     public class BonDeCommande
     {
+        private int bonDeCommandeID;
         private DateTime dateCommande;
         private Article articleCommande;
+        private int articleID;
         private int quantiteCommande;
         private bool commandeEffectue;
 
@@ -14,7 +16,17 @@ namespace MaintinfoBo
             this.articleCommande = articleCommande;
             this.dateCommande = DateTime.Now;
         }
-
+        public int BonDeCommandeID
+        {
+            get
+            {
+                return bonDeCommandeID;
+            }
+            set
+            {
+                bonDeCommandeID = value;
+            }
+        }
         public DateTime DateCommande
         {
             get
@@ -38,6 +50,18 @@ namespace MaintinfoBo
             set
             {
                 articleCommande = value;
+            }
+        }
+        public int ArticleID
+        {
+            get
+            {
+                return articleID;
+            }
+
+            set
+            {
+                articleID = value;
             }
         }
 

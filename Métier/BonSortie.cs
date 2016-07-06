@@ -4,24 +4,49 @@ namespace MaintinfoBo
 {
     public class BonSortie
     {
-        private string nomDepanneur;
+        private int bonSortieID;
+        private Depanneur leDepanneur;
+        private int depanneurID;
         private Article articleSortie;
+        private int articleID;
         private int quantiteSortie;
         private DateTime dateDemande;
-
-        public string NomDepanneur
+        
+        public int BonSortieID
         {
             get
             {
-                return nomDepanneur;
+                return BonSortieID;
+            }
+            set
+            {
+                BonSortieID = value;
+            }
+        }
+        public Depanneur LeDepanneur
+        {
+            get
+            {
+                return leDepanneur;
             }
 
             set
             {
-                nomDepanneur = value;
+                leDepanneur = value;
             }
         }
+        public int DepanneurID
+        {
+            get
+            {
+                return depanneurID;
+            }
 
+            set
+            {
+                depanneurID = value;
+            }
+        }
         public Article ArticleSortie
         {
             get
@@ -34,7 +59,18 @@ namespace MaintinfoBo
                 articleSortie = value;
             }
         }
+        public int ArticleID
+        {
+            get
+            {
+                return articleID;
+            }
 
+            set
+            {
+                articleID = value;
+            }
+        }
         public int Quantite
         {
             get

@@ -13,11 +13,10 @@ namespace MaintinfoDalEntity.Configuration
     {
         public BonEntreeConfiguration():base()
         {
-            //TODO Rajouter la key dans la classe
-            //HasKey(Be => Be.);
-            //Property(Be => Be.)
-            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-            //    .IsRequired();
+            HasKey(Be => Be.BonEntreeID);
+            Property(Be => Be.BonEntreeID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .IsRequired();
             Property(Be => Be.QuantiteEntree)
                 .HasColumnName("")
                 .HasColumnType("smallint")
@@ -26,6 +25,11 @@ namespace MaintinfoDalEntity.Configuration
                 .HasColumnName("")
                 .HasColumnType("date")
                 .IsRequired();
+
+            // Association  (pour ArticleSortie) 
+            HasRequired(Be => Be.ArticleEntree)
+                .WithMany()
+                .HasForeignKey(Be => Be.ArticleID);
 
 
         }

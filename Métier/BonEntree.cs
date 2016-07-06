@@ -4,7 +4,9 @@ namespace MaintinfoBo
 {
     public class BonEntree
     {
+        private int bonEntreeID;
         private Article articleEntree;
+        private int articleID;
         private int quantiteEntree;
         private DateTime dateEntree;
         public BonEntree()
@@ -17,7 +19,18 @@ namespace MaintinfoBo
             this.quantiteEntree = quantite;
             this.dateEntree = dateEntree;
         }
-
+        
+        public int BonEntreeID
+        {
+            get
+            {
+                return bonEntreeID;
+            }
+            set
+            {
+                bonEntreeID = value;
+            }
+        }
         public Article ArticleEntree
         {
             get
@@ -30,7 +43,18 @@ namespace MaintinfoBo
                 articleEntree = value;
             }
         }
+        public int ArticleID
+        {
+            get
+            {
+                return articleID;
+            }
 
+            set
+            {
+                articleID = value;
+            }
+        }
         public int QuantiteEntree
         {
             get

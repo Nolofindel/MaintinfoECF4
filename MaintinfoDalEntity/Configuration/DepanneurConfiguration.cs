@@ -13,16 +13,25 @@ namespace MaintinfoDalEntity.Configuration
     {
         public DepanneurConfiguration():base()
         {
-            //TODO Rajouter la key dans la classe
-            //HasKey(Dep => Dep.);
-            //Property(Dep => Dep.)
-            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-            //    .IsRequired();
+            HasKey(Dep => Dep.DepanneurID);
+            Property(Dep => Dep.DepanneurID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .IsRequired();
             Property(Dep => Dep.NomDepanneur)
                 .HasColumnName("")
                 .HasColumnType("varchar")
                 .HasMaxLength(30)
                 .IsRequired();
+
+            // Association  (pour la Specialite)
+            HasRequired(Dep => Dep.SpecialiteDepanneur)
+                .WithMany()
+                .HasForeignKey(Dep => Dep.SpecialiteID);
+
+            // Association  (pour la Secteur Geographique)
+            HasRequired(Dep => Dep.SecteurGeographiqueDepanneur)
+                .WithMany()
+                .HasForeignKey(Dep => Dep.SecteurGeographiqueID);
 
         }
     }

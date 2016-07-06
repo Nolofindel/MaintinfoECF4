@@ -12,14 +12,13 @@ namespace MaintinfoDalEntity.Configuration
     class SecteurGeographiqueConfiguration:EntityTypeConfiguration<SecteurGeographique>
     {
         public SecteurGeographiqueConfiguration():base()
-        {
-            //TODO Rajouter la key dans la classe
-            //HasKey(Sg => Sg.);
-            //Property(Sg => Sg.)
-            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-            //    .IsRequired();
+        {            
+            HasKey(Sg => Sg.SecteurGeographiqueID);
+            Property(Sg => Sg.SecteurGeographiqueID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .IsRequired();
             Property(Sg => Sg.NomSecteurGeographique)
-                .HasColumnName("")
+                .HasColumnName("SecteurGeographique")
                 .HasColumnType("varchar")
                 .HasMaxLength(30)
                 .IsRequired();

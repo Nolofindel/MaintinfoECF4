@@ -13,11 +13,10 @@ namespace MaintinfoDalEntity.Configuration
     {
         public BonDeCommandeConfiguration():base()
         {
-            //TODO Rajouter la key dans la classe
-            //HasKey(BdC => BdC.);
-            //Property(BdC => BdC.)
-            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-            //    .IsRequired();
+            HasKey(BdC => BdC.BonDeCommandeID);
+            Property(BdC => BdC.BonDeCommandeID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .IsRequired();
             Property(BdC => BdC.DateCommande)
                 .HasColumnName("")
                 .HasColumnType("date")
@@ -30,6 +29,11 @@ namespace MaintinfoDalEntity.Configuration
                 .HasColumnName("")
                 .HasColumnType("boolean")
                 .IsRequired();
+
+            // Association  (pour ArticleSortie) 
+            HasRequired(BdC => BdC.ArticleCommande)
+                .WithMany()
+                .HasForeignKey(BdC => BdC.ArticleID);
         }
     }
 }

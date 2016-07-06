@@ -22,6 +22,14 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Gestion du stock<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Bon d'entrée", "Index", "BonEntree")</li>
+                            <li>@Html.ActionLink("Bon de sortie", "Index", "BonSortie")</li>
+                            <li>@Html.ActionLink("Bon de commande", "Index", "BonDeCommande")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>

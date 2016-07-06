@@ -12,14 +12,13 @@ namespace MaintinfoDalEntity.Configuration
     class SpecialiteConfiguration:EntityTypeConfiguration<Specialite>
     {
         public SpecialiteConfiguration():base()
-        {
-            //TODO Rajouter la key dans la classe
-            //HasKey(Sp => Sp.);
-            //Property(Sp => Sp.)
-            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-            //    .IsRequired();
+        {            
+            HasKey(Sp => Sp.SpecialiteID);
+            Property(Sp => Sp.SpecialiteID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .IsRequired();
             Property(Sp => Sp.NomSpecialite)
-                .HasColumnName("")
+                .HasColumnName("Specialite")
                 .HasColumnType("varchar")
                 .HasMaxLength(30)
                 .IsRequired();

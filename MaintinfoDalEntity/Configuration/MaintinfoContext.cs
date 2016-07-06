@@ -3,6 +3,7 @@
     using MaintinfoBo;
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
 
     public class MaintinfoContext : DbContext
@@ -31,6 +32,9 @@
         //Configuration du model via API Fluent Code First
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            // Configure Code First to ignore PluralizingTableName convention 
+            // If you keep this convention then the generated tables will have pluralized names. 
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Configurations.Add(new ArticleConfiguration());
             modelBuilder.Configurations.Add(new BonDeCommandeConfiguration());
@@ -43,9 +47,4 @@
         }
     }
 
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
 }

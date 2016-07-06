@@ -51,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleEntityDao.cs" />
+    <Compile Include="BonDeCommandeEntityDao.cs" />
+    <Compile Include="BonEntreeEntityDao.cs" />
+    <Compile Include="BonSortieEntityDao.cs" />
     <Compile Include="Configuration\ArticleConfiguration.cs" />
     <Compile Include="Configuration\BonDeCommandeConfiguration.cs" />
     <Compile Include="Configuration\BonEntreeConfiguration.cs" />
