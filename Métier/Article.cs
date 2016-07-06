@@ -123,7 +123,6 @@ namespace MaintinfoBo
         // override object.GetHashCode
         public override int GetHashCode()
         {
-            // TODO: write your implementation of GetHashCode() here
             return base.GetHashCode();
         }
         #endregion

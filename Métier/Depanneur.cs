@@ -2,6 +2,7 @@
 {
     public class Depanneur
     {
+        private int depanneurID;
         private string nomDepanneur;
         private Specialite specialiteDepanneur;
         private SecteurGeographique secteurGeographiqueDepanneur;
@@ -15,6 +16,18 @@
         public Depanneur()
         {
 
+        }
+        public int DepanneurID
+        {
+            get
+            {
+                return depanneurID;
+            }
+
+            set
+            {
+                depanneurID = value;
+            }
         }
         public string NomDepanneur
         {
@@ -54,6 +67,8 @@
                 secteurGeographiqueDepanneur = value;
             }
         }
+
+
 
         #region Override Methods
         public override string ToString()

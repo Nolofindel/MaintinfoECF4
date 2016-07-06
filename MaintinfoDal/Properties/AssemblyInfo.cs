@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("MaintinfoDal")]
+[assembly: AssemblyTitle("MaintinfoDAL")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MaintinfoDal")]
+[assembly: AssemblyProduct("MaintinfoDAL")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("e7ccf73f-d1db-4b4e-b72a-45ec5a72a051")]
+[assembly: Guid("53a67446-a93d-4238-b8a6-9114d1a5d4da")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //
