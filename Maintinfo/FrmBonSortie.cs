@@ -21,7 +21,7 @@ namespace Maintinfo
 
         void SelectionChange(object sender, EventArgs e, Article art)
         {
-            txtboxCodeArt.Text = art.DesignationArticle.ToString();
+            txtboxCodeArt.Text = art.ArticleID.ToString();
             article = articleMgr.SaisirArticle(txtboxCodeArt.Text);
             textBoxQuantiteStock.Text = article.QuantiteArticle.ToString();
             txtboxNomArticle.Text = article.NomArticle;

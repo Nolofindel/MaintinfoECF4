@@ -29,7 +29,7 @@ namespace Maintinfo
         //Méthode appelé par l'écouteur
         void SelectionChange(object sender, EventArgs e, Article art)
         {
-            textBoxArticle.Text = art.DesignationArticle.ToString();
+            textBoxArticle.Text = art.ArticleID.ToString();
             article = articleMgr.SaisirArticle(textBoxArticle.Text);
             RemplirTextes(true);
         }

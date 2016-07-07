@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{53A67446-A93D-4238-B8A6-9114D1A5D4DA}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{DF905B9B-3E54-4D18-A7BF-6916082CE1C1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MaintinfoDAL</RootNamespace>
-    <AssemblyName>MaintinfoDAL</AssemblyName>
+    <RootNamespace>CreationBase</RootNamespace>
+    <AssemblyName>CreationBase</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -50,15 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleDao.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Configuration\ArticleConfiguration.cs" />
-    <Compile Include="Configuration\BonDeCommandeConfiguration.cs" />
-    <Compile Include="Configuration\BonSortieConfiguration.cs" />
-    <Compile Include="Configuration\DepanneurConfiguration.cs" />
-    <Compile Include="Configuration\MaintinfoContext.cs" />
-    <Compile Include="Configuration\MaintinfoInitializer.cs" />
-    <Compile Include="Configuration\SpecialiteConfiguration.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -75,12 +68,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Métier\MaintinfoBo.csproj">
-      <Project>{642283c0-934e-4061-9b40-40e2cb6653bf}</Project>
-      <Name>MaintinfoBo</Name>
+    <ProjectReference Include="..\MaintinfoDAL\MaintinfoDAL.csproj">
+      <Project>{53a67446-a93d-4238-b8a6-9114d1a5d4da}</Project>
+      <Name>MaintinfoDAL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

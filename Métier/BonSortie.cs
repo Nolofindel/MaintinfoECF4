@@ -4,12 +4,17 @@ namespace MaintinfoBo
 {
     public class BonSortie
     {
-        private string nomDepanneur;
+        private int bonSortieID;
+        private Depanneur nomDepanneur;
         private Article articleSortie;
         private int quantiteSortie;
         private DateTime dateDemande;
+        // Navigation properties 
+        public int DepanneurID { get; set; }
 
-        public string NomDepanneur
+        public int ArticleID { get; set; }
+        public int BonSortieID { get { return bonSortieID; } set { bonSortieID = value; } }
+        public Depanneur NomDepanneur
         {
             get
             {

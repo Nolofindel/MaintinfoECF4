@@ -5,13 +5,14 @@
         private int depanneurID;
         private string nomDepanneur;
         private Specialite specialiteDepanneur;
-        private SecteurGeographique secteurGeographiqueDepanneur;
+        private int specialiteID;
+        //private SecteurGeographique secteurGeographiqueDepanneur;
 
-        public Depanneur(string nomDepanneur, Specialite specialiteDepanneur, SecteurGeographique secteurGeographiqueDepanneur)
+        public Depanneur(string nomDepanneur, Specialite specialiteDepanneur/*, SecteurGeographique secteurGeographiqueDepanneur*/)
         {
             this.nomDepanneur = nomDepanneur;
             this.specialiteDepanneur = specialiteDepanneur;
-            this.secteurGeographiqueDepanneur = secteurGeographiqueDepanneur;
+            //this.secteurGeographiqueDepanneur = secteurGeographiqueDepanneur;
         }
         public Depanneur()
         {
@@ -54,19 +55,25 @@
                 specialiteDepanneur = value;
             }
         }
-
-        internal SecteurGeographique SecteurGeographiqueDepanneur
+        public int SpecialiteID
         {
             get
-            {
-                return secteurGeographiqueDepanneur;
-            }
-
+            { return specialiteID; }
             set
-            {
-                secteurGeographiqueDepanneur = value;
-            }
+            { specialiteID = value; }
         }
+        //internal SecteurGeographique SecteurGeographiqueDepanneur
+        //{
+        //    get
+        //    {
+        //        return secteurGeographiqueDepanneur;
+        //    }
+
+        //    set
+        //    {
+        //        secteurGeographiqueDepanneur = value;
+        //    }
+        //}
 
 
 

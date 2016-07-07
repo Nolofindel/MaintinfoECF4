@@ -19,7 +19,7 @@ namespace Maintinfo
         }
         void SelectionChange(object sender, EventArgs e, Article art)
         {
-            txtBoxRefArticle.Text = art.DesignationArticle.ToString();
+            txtBoxRefArticle.Text = art.ArticleID.ToString();
         }
         private void btnValider_Click(object sender,EventArgs e)
         {
@@ -34,7 +34,7 @@ namespace Maintinfo
                     newBE = BEMgr.CreerBonEntree(refArt,quant);
                     if (BEMgr.EnregistrerBonEntree(newBE))
                     {
-                        MessageBox.Show("Article " + newBE.ArticleEntree.DesignationArticle + " : " + newBE.ArticleEntree.NomArticle + " Ajouter au stock", "Bon d'entrée ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Article " + newBE.ArticleEntree.ArticleID + " : " + newBE.ArticleEntree.NomArticle + " Ajouter au stock", "Bon d'entrée ajouter", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         articleBindingSource.Add(newBE.ArticleEntree);
                         bonEntreeBindingSource.Add(newBE);
                         ResetBox();
@@ -56,7 +56,7 @@ namespace Maintinfo
                     {
                         Methodes.Erreur(ex);
                     }
-                    Methodes.Erreur("Article " + newBE.ArticleEntree.DesignationArticle + " : " + newBE.ArticleEntree.NomArticle + " Non ajouter au stock");
+                    Methodes.Erreur("Article " + newBE.ArticleEntree.ArticleID + " : " + newBE.ArticleEntree.NomArticle + " Non ajouter au stock");
                     Methodes.Erreur(ex);
                 }
 

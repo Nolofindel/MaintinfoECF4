@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MaintinfoBll</RootNamespace>
     <AssemblyName>MaintinfoBll</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MaintinfoDAL\MaintinfoDAL.csproj">
+      <Project>{53a67446-a93d-4238-b8a6-9114d1a5d4da}</Project>
+      <Name>MaintinfoDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Métier\MaintinfoBo.csproj">
       <Project>{642283c0-934e-4061-9b40-40e2cb6653bf}</Project>
       <Name>MaintinfoBo</Name>

@@ -33,7 +33,7 @@ namespace MaintinfoBll
         {
             string str= "Bon de Commande \n";
             str +=BdC.ArticleCommande.NomArticle.ToString()+"\n";
-            str += BdC.ArticleCommande.DesignationArticle.ToString() + "\n";
+            str += BdC.ArticleCommande.ArticleID.ToString() + "\n";
             str +="Date de la Commande " + BdC.DateCommande.ToString() + "\n";
             str +="Quantité Commandé" + BdC.QuantiteCommande.ToString() + "\n";
             return str;

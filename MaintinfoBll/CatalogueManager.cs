@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MaintinfoBo;
-using MaintinfoDal;
+using MaintinfoDAL;
 namespace MaintinfoBll
 {
     public class CatalogueManager
@@ -15,9 +15,9 @@ namespace MaintinfoBll
             List<Article> arts = new List<Article>();
             try
             {
-                ArticleDao cDao = new ArticleDao();
-                arts = cDao.FindAllBy(cat);
-                Catalogue.RemplirCatalogue(arts);
+                //ArticleDao cDao = new ArticleDao();
+                //arts = cDao.FindAllBy(cat);
+                //Catalogue.RemplirCatalogue(arts);
             }
             catch (Exception e)
             {

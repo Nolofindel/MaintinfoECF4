@@ -8,25 +8,16 @@ namespace MaintinfoBo
 {
     public class Article
     {
-        private string designationArticle;
+        private int articleID;
         private string nomArticle;
-        private List<Article> sousEnsemble;
         private int quantiteArticle;
         private int seuilMinimal;
         public Article Self { get { return this; } }
-        public Article(string designationArticle, string nomArticle, List<Article> sousEnsemble, int quantiteArticle, int seuilMinimal)
+        public Article(int articleID, string nomArticle, int quantiteArticle, int seuilMinimal)
         {
-            this.designationArticle = designationArticle;
+            this.articleID = articleID;
             this.nomArticle = nomArticle;
-            this.sousEnsemble = sousEnsemble;
-            this.quantiteArticle = quantiteArticle;
-            this.seuilMinimal = seuilMinimal;
-        }
 
-        public Article(string designationArticle, string nomArticle, int quantiteArticle, int seuilMinimal)
-        {
-            this.designationArticle = designationArticle;
-            this.nomArticle = nomArticle;
             this.quantiteArticle = quantiteArticle;
             this.seuilMinimal = seuilMinimal;
         }
@@ -36,16 +27,16 @@ namespace MaintinfoBo
         }
 
 
-        public string DesignationArticle
+        public int ArticleID
         {
             get
             {
-                return designationArticle;
+                return articleID;
             }
 
             set
             {
-                designationArticle = value;
+                articleID = value;
             }
         }
 
@@ -59,19 +50,6 @@ namespace MaintinfoBo
             set
             {
                 nomArticle = value;
-            }
-        }
-
-        public List<Article> SousEnsemble
-        {
-            get
-            {
-                return sousEnsemble;
-            }
-
-            set
-            {
-                sousEnsemble = value;
             }
         }
 
@@ -111,11 +89,11 @@ namespace MaintinfoBo
         // override object.Equals
         public override bool Equals(object obj)
         {
-    
+
             var article = obj as Article;
             if (article != null)
                 return
-                   article.DesignationArticle.Equals(this.DesignationArticle);
+                   article.ArticleID.Equals(this.ArticleID);
             else
                 return false;
         }
