@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace MaintinfoDalEntity
 {
-    class BonDeCommandeEntityDao : IRepository<BonDeCommande>
+    public class BonDeCommandeEntityDao : IRepository<BonDeCommande>
     {
         public void Delete(BonDeCommande bdc)
         {

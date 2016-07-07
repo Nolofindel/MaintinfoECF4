@@ -14,6 +14,10 @@ namespace MaintinfoBll
     {
         //Son Irepository
         IRepository<Article> artDao;
+        public ArticleManager()
+        {
+
+        }
         public ArticleManager(IRepository<Article> repo)
         {
             artDao = repo;

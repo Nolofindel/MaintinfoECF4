@@ -12,7 +12,11 @@ namespace MaintinfoBll
     {
         //son Irepository
         IRepository<BonEntree> beDao;
-        ArticleManager artMgr = new ArticleManager((new ));
+        ArticleManager artMgr = new ArticleManager();
+        public BonEntreeManager()
+        {
+
+        }
         public BonEntreeManager(IRepository<BonEntree> repo)
         {
             beDao = repo;

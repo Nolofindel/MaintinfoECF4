@@ -11,6 +11,10 @@ namespace MaintinfoBll
     {
         //son Irepository
         IRepository<BonDeCommande> bdcDao;
+        public BonDeCommandeManager()
+        {
+
+        }
        public BonDeCommandeManager(IRepository<BonDeCommande> repo)
         {
             bdcDao = repo;

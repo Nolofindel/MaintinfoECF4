@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace MaintinfoDalEntity
 {
-    class BonSortieEntityDao : IRepository<BonSortie>
+    public class BonSortieEntityDao : IRepository<BonSortie>
     {
         public void Delete(BonSortie bs)
         {

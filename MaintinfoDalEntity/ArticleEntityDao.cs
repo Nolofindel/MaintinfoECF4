@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace MaintinfoDalEntity
 {
-    class ArticleEntityDao : IRepository<Article>
+    public class ArticleEntityDao : IRepository<Article>
     {
         public void Delete(Article art)
         {

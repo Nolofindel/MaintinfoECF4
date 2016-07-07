@@ -45,7 +45,6 @@
     <Compile Include="BonEntreeManager.cs" />
     <Compile Include="BonSortieManager.cs" />
     <Compile Include="CatalogueManager.cs" />
-    <Compile Include="DepartementFabrication.cs" />
     <Compile Include="Exceptions\BllException.cs" />
     <Compile Include="Exceptions\BllExceptionAfficheMessage.cs" />
     <Compile Include="Exceptions\BllExceptionFinAppli.cs" />

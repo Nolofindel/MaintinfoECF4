@@ -10,8 +10,12 @@ namespace MaintinfoBll
 {
     public class BonSortieManager
     {
-
+        IRepository<BonSortie> bsDao;
         public BonSortieManager() { }
+        public BonSortieManager(IRepository<BonSortie> repo)
+        {
+            bsDao = repo;
+        }
         public BonSortie CreerBonSortie(Article art)
         {
             return new BonSortie(art);
