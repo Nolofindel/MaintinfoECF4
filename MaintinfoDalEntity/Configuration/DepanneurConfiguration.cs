@@ -18,7 +18,6 @@ namespace MaintinfoDalEntity.Configuration
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
             Property(Dep => Dep.NomDepanneur)
-                .HasColumnName("")
                 .HasColumnType("varchar")
                 .HasMaxLength(30)
                 .IsRequired();

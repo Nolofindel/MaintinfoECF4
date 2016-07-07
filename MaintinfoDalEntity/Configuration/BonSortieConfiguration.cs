@@ -18,12 +18,8 @@ namespace MaintinfoDalEntity.Configuration
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
             Property(Bs => Bs.Quantite)
-                .HasColumnName("")
-                .HasColumnType("smallint")
                 .IsRequired();
             Property(Bs => Bs.DateDemande)
-                .HasColumnName("")
-                .HasColumnType("date")
                 .IsRequired();
 
             // Association  (pour LeDepanneur) 

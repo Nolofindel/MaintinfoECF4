@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MaintinfoBo;
 using MaintinfoDalEntity.Configuration;
 using MaintinfoDalEntity.Exceptions;
+using System.Data.Entity;
 
 namespace MaintinfoDalEntity
 {
@@ -33,9 +34,15 @@ namespace MaintinfoDalEntity
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
+                ICollection<BonEntree> LesBe = null;
                 try
                 {
-
+                    var AllBonEntrees = db.BonEntrees;
+                    foreach (BonEntree item in AllBonEntrees)
+                    {
+                        LesBe.Add(item);
+                    }
+                    return LesBe;
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {
@@ -51,12 +58,12 @@ namespace MaintinfoDalEntity
             {
                 try
                 {
-                    var Lestag = db.Stagiaires.Find(id);
-                    if (Lestag == null)
+                    var LeBe = db.BonEntrees.Find(id);
+                    if (LeBe == null)
                     {
-                        throw new DaoExceptionAfficheMessage("Stagiaire inexistant");
+                        throw new DaoExceptionAfficheMessage("Bon d'entrée inexistant");
                     }
-                    return Lestag;
+                    return LeBe;
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {
@@ -66,13 +73,17 @@ namespace MaintinfoDalEntity
             }
         }
 
-        public void Insert(BonEntree obj)
+        public void Insert(BonEntree be)
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
                 try
                 {
+                    db.Entry(be).State = EntityState.Added;
+                    // les produits connexes
+                    db.Entry(be.ArticleEntree).State = EntityState.Unchanged;
 
+                    int n = db.SaveChanges();
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {
@@ -82,13 +93,14 @@ namespace MaintinfoDalEntity
             }
         }
 
-        public void Update(BonEntree obj)
+        public void Update(BonEntree be)
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
                 try
                 {
-
+                    db.Entry(be).State = EntityState.Modified;
+                    int n = db.SaveChanges();
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {

@@ -5,8 +5,8 @@ namespace MaintinfoBo
     public class BonEntree
     {
         private int bonEntreeID;
-        private Article articleEntree;
         private int articleID;
+        private Article articleEntree;        
         private int quantiteEntree;
         private DateTime dateEntree;
         public BonEntree()

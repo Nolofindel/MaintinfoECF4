@@ -18,16 +18,10 @@ namespace MaintinfoDalEntity.Configuration
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
             Property(BdC => BdC.DateCommande)
-                .HasColumnName("")
-                .HasColumnType("date")
                 .IsRequired();
             Property(BdC => BdC.QuantiteCommande)
-                .HasColumnName("")
-                .HasColumnType("smallint")
                 .IsRequired();
             Property(BdC => BdC.CommandeEffectue)
-                .HasColumnName("")
-                .HasColumnType("boolean")
                 .IsRequired();
 
             // Association  (pour ArticleSortie) 

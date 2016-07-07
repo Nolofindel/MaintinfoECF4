@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MaintinfoBo;
 using MaintinfoDalEntity.Configuration;
 using MaintinfoDalEntity.Exceptions;
+using System.Data.Entity;
 
 namespace MaintinfoDalEntity
 {
@@ -34,9 +35,15 @@ namespace MaintinfoDalEntity
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
+                ICollection<Article> LesArt = null;
                 try
                 {
-
+                    var AllArticles = db.Articles;
+                    foreach (Article item in AllArticles)
+                    {
+                        LesArt.Add(item);
+                    }
+                    return LesArt;
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {
@@ -54,12 +61,12 @@ namespace MaintinfoDalEntity
             {
                 try
                 {
-                    var Lestag = db.Stagiaires.Find(id);
-                    if (Lestag == null)
+                    var LArt = db.Articles.Find(id);
+                    if (LArt == null)
                     {
-                        throw new DaoExceptionAfficheMessage("Stagiaire inexistant");
+                        throw new DaoExceptionAfficheMessage("Article inexistant");
                     }
-                    return Lestag;
+                    return LArt;
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {
@@ -77,7 +84,11 @@ namespace MaintinfoDalEntity
             {
                 try
                 {
+                    db.Entry(art).State = EntityState.Added;
+                    // les produits connexes
+                    db.Entry(art.SousEnsemble).State = EntityState.Unchanged;
 
+                    int n = db.SaveChanges();
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {
@@ -95,7 +106,8 @@ namespace MaintinfoDalEntity
             {
                 try
                 {
-
+                    db.Entry(art).State = EntityState.Modified;
+                    int n = db.SaveChanges();
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {

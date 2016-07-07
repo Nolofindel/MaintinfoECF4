@@ -24,7 +24,6 @@
         public DbSet<BonDeCommande> BonDeCommandes { get; set; }
         public DbSet<BonEntree> BonEntrees { get; set; }
         public DbSet<BonSortie> BonSorties { get; set; }
-        public DbSet<Catalogue> Catalogue { get; set; }
         public DbSet<Depanneur> Depanneurs { get; set; }
         public DbSet<SecteurGeographique> SecteurGeographiques { get; set; }
         public DbSet<Specialite> Specialites { get; set; }

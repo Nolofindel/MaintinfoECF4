@@ -13,12 +13,11 @@ namespace MaintinfoDalEntity.Configuration
     {
         public ArticleConfiguration():base()
         {
-            HasKey(art => new { art.ArticleID,art.DesignationArticle });
+            HasKey(art =>new { art.ArticleID, art.DesignationArticle });
             Property(art => art.ArticleID)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
             Property(art => art.DesignationArticle)
-                .HasColumnName("")
                 .HasColumnType("varchar")
                 .HasMaxLength(20)
                 .IsRequired();
@@ -27,16 +26,15 @@ namespace MaintinfoDalEntity.Configuration
                 .HasMaxLength(20)
                 .IsRequired();
             Property(art => art.QuantiteArticle)
-                //.HasColumnType("")
                 .IsRequired();
             Property(art => art.SeuilMinimal)
-                //.HasColumnType("")
                 .IsRequired();
 
             Ignore(art => art.Self);
+            Ignore(art => art.SousEnsemble);
 
-            HasMany(art => art.SousEnsemble)
-                .WithOptional();
+            //HasMany(art => art.SousEnsemble)
+            //    .WithOptional();
         }
     }
 }

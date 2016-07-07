@@ -11,16 +11,25 @@ namespace MaintinfoBo
         private int articleID;
         private int quantiteSortie;
         private DateTime dateDemande;
-        
+
+        public BonSortie()
+        {
+
+        }
+        public BonSortie(Article articleSortie)
+        {
+            this.articleSortie = articleSortie;
+            this.dateDemande = DateTime.Today;
+        }
         public int BonSortieID
         {
             get
             {
-                return BonSortieID;
+                return bonSortieID;
             }
             set
             {
-                BonSortieID = value;
+                bonSortieID = value;
             }
         }
         public Depanneur LeDepanneur
@@ -95,12 +104,6 @@ namespace MaintinfoBo
             {
                 dateDemande = value;
             }
-        }
-
-        public BonSortie(Article articleSortie)
-        {
-            this.articleSortie = articleSortie;
-            this.dateDemande = DateTime.Today;
         }
     }
 }

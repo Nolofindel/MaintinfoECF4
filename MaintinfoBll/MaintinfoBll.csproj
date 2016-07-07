@@ -46,11 +46,18 @@
     <Compile Include="BonSortieManager.cs" />
     <Compile Include="CatalogueManager.cs" />
     <Compile Include="DepartementFabrication.cs" />
+    <Compile Include="Exceptions\BllException.cs" />
+    <Compile Include="Exceptions\BllExceptionAfficheMessage.cs" />
+    <Compile Include="Exceptions\BllExceptionFinAppli.cs" />
     <Compile Include="GestionnaireDepanneurs.cs" />
     <Compile Include="GestionnaireStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MaintinfoDalEntity\MaintinfoDalEntity.csproj">
+      <Project>{b2e95cc9-e1f6-4d1c-a443-3ec21c2089ec}</Project>
+      <Name>MaintinfoDalEntity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MaintinfoDal\MaintinfoDal.csproj">
       <Project>{e7ccf73f-d1db-4b4e-b72a-45ec5a72a051}</Project>
       <Name>MaintinfoDal</Name>

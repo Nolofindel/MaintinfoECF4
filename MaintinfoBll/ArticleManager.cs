@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MaintinfoBo;
 using MaintinfoDal;
+using MaintinfoDalEntity;
+using MaintinfoBll.Exceptions;
 namespace MaintinfoBll
 {
 
@@ -14,9 +16,10 @@ namespace MaintinfoBll
         public ArticleManager() { }
         public  Article SaisirArticle(string DesignationArticle)
         {
-            try {
-            ArticleDao artDao = new ArticleDao();
-            return artDao.GetById(DesignationArticle);
+            try
+            {
+                ArticleDao artDao = new ArticleDao();
+                return artDao.GetById(DesignationArticle);
             }
             catch (Exception e)
             {
@@ -30,7 +33,8 @@ namespace MaintinfoBll
             
         }
         public  void EntrerArticle(Article Article, int Quantite)
-        { ArticleDao artDao = new ArticleDao();
+        {
+            ArticleDao artDao = new ArticleDao();
             Article.QuantiteArticle += Quantite ;
             artDao.Update(Article);            
         }

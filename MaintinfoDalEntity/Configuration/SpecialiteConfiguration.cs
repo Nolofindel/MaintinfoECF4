@@ -19,7 +19,6 @@ namespace MaintinfoDalEntity.Configuration
                 .IsRequired();
             Property(Sp => Sp.NomSpecialite)
                 .HasColumnName("Specialite")
-                .HasColumnType("varchar")
                 .HasMaxLength(30)
                 .IsRequired();
         }

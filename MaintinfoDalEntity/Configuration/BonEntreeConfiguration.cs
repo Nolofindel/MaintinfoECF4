@@ -18,12 +18,8 @@ namespace MaintinfoDalEntity.Configuration
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
             Property(Be => Be.QuantiteEntree)
-                .HasColumnName("")
-                .HasColumnType("smallint")
                 .IsRequired();
             Property(Be => Be.DateEntree)
-                .HasColumnName("")
-                .HasColumnType("date")
                 .IsRequired();
 
             // Association  (pour ArticleSortie) 

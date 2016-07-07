@@ -11,6 +11,10 @@ namespace MaintinfoBo
         private int quantiteCommande;
         private bool commandeEffectue;
 
+        public BonDeCommande()
+        {
+
+        }
         public BonDeCommande(Article articleCommande)
         {
             this.articleCommande = articleCommande;

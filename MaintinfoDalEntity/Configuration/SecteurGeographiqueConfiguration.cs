@@ -19,7 +19,6 @@ namespace MaintinfoDalEntity.Configuration
                 .IsRequired();
             Property(Sg => Sg.NomSecteurGeographique)
                 .HasColumnName("SecteurGeographique")
-                .HasColumnType("varchar")
                 .HasMaxLength(30)
                 .IsRequired();
         }
