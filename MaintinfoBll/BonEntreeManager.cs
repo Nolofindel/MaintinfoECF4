@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MaintinfoBo;
-using MaintinfoDal;
+using MaintinfoDalEntity;
+using MaintinfoBll.Exceptions;
 
 namespace MaintinfoBll
 {
     public class BonEntreeManager
     {
-        private ArticleManager artMgr=new ArticleManager();
-        public BonEntreeManager() { }
+        //son Irepository
+        IRepository<BonEntree> beDao;
+        ArticleManager artMgr = new ArticleManager((new ));
+        public BonEntreeManager(IRepository<BonEntree> repo)
+        {
+            beDao = repo;
+        }
         public BonEntree CreerBonEntree(string refArt,int quantite)
         {
-            Article art = new Article();
-            ArticleDao rechArt = new ArticleDao();            
+            Article art = new Article();                        
             try
-            {
-                art = artMgr.SaisirArticle(refArt);
+            {               
                 BonEntree BonE = new BonEntree(art, quantite, DateTime.Now);
                 return BonE;
             }
@@ -29,12 +33,11 @@ namespace MaintinfoBll
 
         }
         public bool EnregistrerBonEntree(BonEntree t)
-        {
-            BonEntreeDao BEdao=new BonEntreeDao();
+        {         
 
             try
-            {                
-                BEdao.Insert(t);
+            {
+                beDao.Insert(t);
                 artMgr.EntrerArticle(t.ArticleEntree, t.QuantiteEntree);
                 return true;
             }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MaintinfoBo;
+using MaintinfoDalEntity;
+using MaintinfoBll.Exceptions;
+
 namespace MaintinfoBll
 {
     public interface DepartementFabrication

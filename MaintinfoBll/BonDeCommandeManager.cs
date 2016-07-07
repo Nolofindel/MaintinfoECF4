@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MaintinfoBo;
-using MaintinfoDal;
+using MaintinfoDalEntity;
+using MaintinfoBll.Exceptions;
 namespace MaintinfoBll
 {
    public class BonDeCommandeManager
     {
-       public BonDeCommandeManager() { }
+        //son Irepository
+        IRepository<BonDeCommande> bdcDao;
+       public BonDeCommandeManager(IRepository<BonDeCommande> repo)
+        {
+            bdcDao = repo;
+        }
         //Test si la quantité commandée est suffisante pour arriver au dessus du seuil
         public bool TesterQuantiteSeuil(BonDeCommande Bdc)
         {
@@ -25,8 +31,7 @@ namespace MaintinfoBll
         public void EnregistrerBonDeCommande(BonDeCommande BdC,bool Effectue)
         {
             BdC.CommandeEffectue = Effectue;
-            BonDeCommandeDao BdCdao = new BonDeCommandeDao();
-            BdCdao.Insert(BdC);
+            bdcDao.Insert(BdC);
         }
         //Sert pour l'aperçu avant impression
         public string MiseEnPageBonDeCommande(BonDeCommande BdC)
