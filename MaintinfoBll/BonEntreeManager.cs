@@ -42,6 +42,7 @@ namespace MaintinfoBll
             try
             {
                 beDao.Insert(t);
+                //met à jour la quantiter de l'article
                 artMgr.EntrerArticle(t.ArticleEntree, t.QuantiteEntree);
                 return true;
             }
@@ -51,5 +52,22 @@ namespace MaintinfoBll
                 throw new Exception(ex.Message, ex);
             }
         }
+        public void SuprimerBonEntree(BonEntree be)
+        {
+            beDao.Delete(be);
+        }
+        public void ModifierBonEntree(BonEntree be)
+        {
+            beDao.Update(be);
+        }
+        public BonEntree RechercherBonEntree(int id)
+        {
+            return beDao.GetById(id);
+        }
+        public ICollection<BonEntree> RecupererLesBonEntrees()
+        {
+            return beDao.GetAll();
+        }
+
     }
 }

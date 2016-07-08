@@ -14,6 +14,8 @@ namespace MaintinfoBll
     {
         //Son Irepository
         IRepository<Article> artDao;
+
+        #region Constructeur
         public ArticleManager()
         {
 
@@ -22,7 +24,10 @@ namespace MaintinfoBll
         {
             artDao = repo;
         }
-        public  Article SaisirArticle(string DesignationArticle)
+        #endregion
+
+        #region Methodes
+        public Article SaisirArticle(string DesignationArticle)
         {
             try
             {
@@ -37,12 +42,27 @@ namespace MaintinfoBll
         public void SortirArticle(Article Article, int Quantite)
         {
             Article.QuantiteArticle -= Quantite;
-            
+            artDao.Update(Article);
         }
-        public  void EntrerArticle(Article Article, int Quantite)
-        {            
-            Article.QuantiteArticle += Quantite ;
-            artDao.Update(Article);            
+        public void EntrerArticle(Article Article, int Quantite)
+        {
+            Article.QuantiteArticle += Quantite;
+            artDao.Update(Article);
         }
+
+        public void SuprimerArticle(Article art)
+        {
+            artDao.Delete(art);
+        }
+        public void ModifierArticle(Article art)
+        {
+            artDao.Update(art);
+        }
+
+        public ICollection<Article> RecupererLesArticles()
+        {
+            return artDao.GetAll();
+        } 
+        #endregion
     }
 }

@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MaintinfoBll;
+using MaintinfoBo;
 
 namespace MaintinfoASP.Net_MVC_.Controllers
 {
     public class BonSortieController : Controller
     {
+        // GET: Gestionnaire stock
+        GestionnaireStock ctrStock = new GestionnaireStock();
         // GET: BonSortie
         public ActionResult Index()
         {
-            return View();
+            ICollection<BonSortie> LesBs = ctrStock.RecupererLesBonSorties();
+            return View(LesBs);
         }
 
         // GET: BonSortie/Details/5

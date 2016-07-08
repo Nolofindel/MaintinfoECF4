@@ -11,14 +11,18 @@ namespace MaintinfoBll
     {
         //son Irepository
         IRepository<BonDeCommande> bdcDao;
+
+        #region Constructeur
         public BonDeCommandeManager()
         {
 
         }
-       public BonDeCommandeManager(IRepository<BonDeCommande> repo)
+        public BonDeCommandeManager(IRepository<BonDeCommande> repo)
         {
             bdcDao = repo;
-        }
+        } 
+        #endregion
+        
         //Test si la quantité commandée est suffisante pour arriver au dessus du seuil
         public bool TesterQuantiteSeuil(BonDeCommande Bdc)
         {
@@ -32,20 +36,36 @@ namespace MaintinfoBll
         {
             return  new BonDeCommande(art);
         }
-        public void EnregistrerBonDeCommande(BonDeCommande BdC,bool Effectue)
+        public void EnregistrerBonDeCommande(BonDeCommande bdc,bool Effectue)
         {
-            BdC.CommandeEffectue = Effectue;
-            bdcDao.Insert(BdC);
+            bdc.CommandeEffectue = Effectue;
+            bdcDao.Insert(bdc);
         }
         //Sert pour l'aperçu avant impression
-        public string MiseEnPageBonDeCommande(BonDeCommande BdC)
+        public string MiseEnPageBonDeCommande(BonDeCommande bdc)
         {
             string str= "Bon de Commande \n";
-            str +=BdC.ArticleCommande.NomArticle.ToString()+"\n";
-            str += BdC.ArticleCommande.DesignationArticle.ToString() + "\n";
-            str +="Date de la Commande " + BdC.DateCommande.ToString() + "\n";
-            str +="Quantité Commandé" + BdC.QuantiteCommande.ToString() + "\n";
+            str +=bdc.ArticleCommande.NomArticle.ToString()+"\n";
+            str += bdc.ArticleCommande.DesignationArticle.ToString() + "\n";
+            str +="Date de la Commande " + bdc.DateCommande.ToString() + "\n";
+            str +="Quantité Commandé" + bdc.QuantiteCommande.ToString() + "\n";
             return str;
+        }
+        public void SuprimerBonDeCommande(BonDeCommande bdc)
+        {
+            bdcDao.Delete(bdc);
+        }
+        public void ModifierBonDeCommande(BonDeCommande bdc)
+        {
+            bdcDao.Update(bdc);
+        }
+        public BonDeCommande RechercherBonDeCommande(int id)
+        {
+            return bdcDao.GetById(id);
+        }
+        public ICollection<BonDeCommande> RecupererLesBonDeCommandes()
+        {
+            return bdcDao.GetAll();
         }
     }
 }

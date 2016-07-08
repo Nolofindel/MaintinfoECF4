@@ -13,7 +13,7 @@ namespace MaintinfoBo
 
         public BonDeCommande()
         {
-
+            this.dateCommande = DateTime.Now;
         }
         public BonDeCommande(Article articleCommande)
         {

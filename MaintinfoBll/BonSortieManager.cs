@@ -24,19 +24,34 @@ namespace MaintinfoBll
         public string MiseEnPageBonSortie(BonSortie BdS)
         {
             string str = "Bon de Sortie \n\n";
-            str += "Nom du dépanneur: " + BdS.NomDepanneur + "\n\n";
+            str += "Nom du dépanneur: " + BdS.LeDepanneur.NomDepanneur + "\n\n";
             str += "Date de la demande: " + BdS.DateDemande.ToShortDateString() + "\n\n";
             str += "Désignation Article: " + BdS.ArticleSortie.NomArticle.ToString() + "\n\n";
             str += "Quantité demandée: " + BdS.Quantite.ToString() + "\n\n";
             return str;
         }
 
-        public List<Depanneur> lesDepanneurs()
+        public ICollection<Depanneur> lesDepanneurs()
         {
-            DepanneurDao depDao = new DepanneurDao();
+            DepanneurEntityDao depDao = new DepanneurEntityDao();
             return depDao.GetAll();
         }
 
-
+        public void SuprimerBonSortie(BonSortie bs)
+        {
+            bsDao.Delete(bs);
+        }
+        public void ModifierBonSortie(BonSortie bs)
+        {
+            bsDao.Update(bs);
+        }
+        public BonSortie RechercherBonSortie( int id)
+        {
+            return bsDao.GetById(id);
+        }
+        public ICollection<BonSortie> RecupererLesBonSorties()
+        {
+            return bsDao.GetAll();
+        }
     }
 }

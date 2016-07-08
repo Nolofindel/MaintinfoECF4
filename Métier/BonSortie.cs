@@ -14,7 +14,7 @@ namespace MaintinfoBo
 
         public BonSortie()
         {
-
+            this.dateDemande = DateTime.Today;
         }
         public BonSortie(Article articleSortie)
         {

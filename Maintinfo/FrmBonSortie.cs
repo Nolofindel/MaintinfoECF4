@@ -74,7 +74,7 @@ namespace Maintinfo
             {
                 BdS = BdSMgr.CreerBonSortie(article);
                 BdS.Quantite = ((int)numericUpDownQte.Value);
-                BdS.NomDepanneur = cboxDepanneur.SelectedValue.ToString();
+                BdS.LeDepanneur.NomDepanneur = cboxDepanneur.SelectedValue.ToString();
                 Methodes.Apercu(BdS, BdSMgr);
             }
 

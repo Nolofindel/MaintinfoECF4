@@ -10,16 +10,16 @@ using System.Data.Entity;
 
 namespace MaintinfoDalEntity
 {
-    public class BonSortieEntityDao : IRepository<BonSortie>
+    public class DepanneurEntityDao : IRepository<Depanneur>
     {
-        public void Delete(BonSortie bs)
+        public void Delete(Depanneur dep)
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
                 try
                 {
-                    db.BonSorties.Attach(bs);
-                    db.BonSorties.Remove(bs);
+                    db.Depanneurs.Attach(dep);
+                    db.Depanneurs.Remove(dep);
                     int n = db.SaveChanges();
                 }
                 catch (DaoExceptionAfficheMessage Dex)
@@ -30,42 +30,19 @@ namespace MaintinfoDalEntity
             }
         }
 
-        public ICollection<BonSortie> GetAll()
+        public ICollection<Depanneur> GetAll()
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
-                ICollection<BonSortie> LesBs = null;
+                ICollection<Depanneur> LesDep = null;
                 try
                 {
-                    var f = db.BonSorties.Include(p => p.ArticleSortie).ToList();
-                    return f;
-                    //var AllBonSorties = db.BonSorties;
-                    //foreach (BonSortie item in AllBonSorties)
-                    //{
-                    //    LesBs.Add(item);
-                    //}
-                    //return LesBs;
-                }
-                catch (DaoExceptionAfficheMessage Dex)
-                {
-
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
-                }
-            }
-        }
-
-        public BonSortie GetById(object id)
-        {
-            using (MaintinfoContext db = new MaintinfoContext())
-            {
-                try
-                {
-                    var LeBonSortie = db.BonSorties.Find(id);
-                    if (LeBonSortie == null)
+                    var AllDepanneurs = db.Depanneurs;
+                    foreach (Depanneur item in AllDepanneurs)
                     {
-                        throw new DaoExceptionAfficheMessage("Le Bon de Sortie et inexistant");
+                        LesDep.Add(item);
                     }
-                    return LeBonSortie;
+                    return LesDep;
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {
@@ -75,16 +52,37 @@ namespace MaintinfoDalEntity
             }
         }
 
-        public void Insert(BonSortie bs)
+        public Depanneur GetById(object id)
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
                 try
                 {
-                    db.Entry(bs).State = EntityState.Added;
-                    // les produits connexes
-                    db.Entry(bs.LeDepanneur).State = EntityState.Unchanged;
+                    var LeDepanneur = db.Depanneurs.Find(id);
+                    if (LeDepanneur == null)
+                    {
+                        throw new DaoExceptionAfficheMessage("Le Depanneur et inexistant");
+                    }
+                    return LeDepanneur;
+                }
+                catch (DaoExceptionAfficheMessage Dex)
+                {
 
+                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                }
+            }
+        }
+
+        public void Insert(Depanneur dep)
+        {
+            using (MaintinfoContext db = new MaintinfoContext())
+            {
+                try
+                {
+                    db.Entry(dep).State = EntityState.Added;
+                    // les produits connexes
+                    db.Entry(dep.SpecialiteDepanneur).State = EntityState.Unchanged;
+                    db.Entry(dep.SecteurGeographiqueDepanneur).State = EntityState.Unchanged;
                     int n = db.SaveChanges();
                 }
                 catch (DaoExceptionAfficheMessage Dex)
@@ -95,13 +93,13 @@ namespace MaintinfoDalEntity
             }
         }
 
-        public void Update(BonSortie bs)
+        public void Update(Depanneur dep)
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
                 try
                 {
-                    db.Entry(bs).State = EntityState.Modified;
+                    db.Entry(dep).State = EntityState.Modified;
                     int n = db.SaveChanges();
                 }
                 catch (DaoExceptionAfficheMessage Dex)

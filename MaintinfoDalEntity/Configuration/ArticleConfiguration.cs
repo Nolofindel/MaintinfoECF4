@@ -13,11 +13,12 @@ namespace MaintinfoDalEntity.Configuration
     {
         public ArticleConfiguration():base()
         {
-            HasKey(art =>new { art.ArticleID, art.DesignationArticle });
+            HasKey(art => art.ArticleID/*new { art.ArticleID, art.DesignationArticle }*/);
             Property(art => art.ArticleID)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
             Property(art => art.DesignationArticle)
+                //.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasColumnType("varchar")
                 .HasMaxLength(20)
                 .IsRequired();

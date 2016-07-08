@@ -45,6 +45,10 @@ namespace MaintinfoBo
             else
                 return false;
         }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();  
+        }
 
         public int ArticleID
         {

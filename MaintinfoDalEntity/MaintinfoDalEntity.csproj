@@ -61,6 +61,7 @@
     <Compile Include="Configuration\BonSortieConfiguration.cs" />
     <Compile Include="Configuration\DepanneurConfiguration.cs" />
     <Compile Include="Configuration\MaintinfoInitializer.cs" />
+    <Compile Include="DepanneurEntityDao.cs" />
     <Compile Include="Exceptions\DaoException.cs" />
     <Compile Include="Exceptions\DaoExceptionAfficheMessage.cs" />
     <Compile Include="Exceptions\DaoExceptionFinAppli.cs" />

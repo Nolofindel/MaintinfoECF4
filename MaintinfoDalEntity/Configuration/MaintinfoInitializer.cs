@@ -73,6 +73,23 @@ namespace MaintinfoDalEntity.Configuration
             db.Depanneurs.Add(Dep5);
             db.Depanneurs.Add(Dep6);
 
+            //Les Bon de sortie
+            BonSortie Bs1 = new BonSortie { LeDepanneur=Dep1,ArticleSortie=Art1,Quantite=2};
+
+            //Ajout des Bon d'entrée
+            db.BonSorties.Add(Bs1);
+
+            //Les Bon d'entrée
+            BonEntree Be1 = new BonEntree { ArticleEntree=Art1,QuantiteEntree=12 };
+
+            //Ajout des Bon de commande
+            db.BonEntrees.Add(Be1);
+
+            //Les Bon de commande
+            BonDeCommande BdC1 = new BonDeCommande {ArticleCommande = Art2,QuantiteCommande=111,CommandeEffectue=true };
+
+            //Ajout des Bon de sortie
+            db.BonDeCommandes.Add(BdC1);
 
         }
     }
