@@ -34,7 +34,7 @@ namespace MaintinfoDalEntity
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
-                ICollection<BonSortie> LesBs = null;
+                //ICollection<BonSortie> LesBs = null;
                 try
                 {
                     var f = db.BonSorties.Include(p => p.ArticleSortie).ToList();

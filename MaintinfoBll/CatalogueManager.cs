@@ -9,16 +9,19 @@ namespace MaintinfoBll
 {
     public class CatalogueManager
     {
+        Catalogue leCata = new Catalogue();
+        ArticleManager artMgr = new ArticleManager();
 
         public CatalogueManager() { }
 
-        //public List<Article> RecupererCatalogue()
-        //{
-        //    return 
-        //}
+        public ICollection<Article> RecupererCatalogue()
+        {
+            leCata.LeCatalogue = (List<Article>)artMgr.RecupererLesArticles();
+            return leCata.LeCatalogue;
+        }
         public void ViderCatalogue()
         {
-            
+            leCata.LeCatalogue = null;
         }
     }
 }

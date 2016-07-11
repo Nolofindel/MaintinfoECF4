@@ -46,9 +46,9 @@ namespace MaintinfoBll
 
 
         #region Bon de sortie
-        public BonSortie CreerBonSortie(Article art)
+        public void CreerBonSortie(BonSortie bs)
         {
-            return BsMgr.CreerBonSortie(art);
+            BsMgr.CreerBonSortie(bs);
         }
         public string MiseEnPageBonSortie(BonSortie bdS)
         {

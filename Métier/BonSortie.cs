@@ -14,10 +14,11 @@ namespace MaintinfoBo
 
         public BonSortie()
         {
-            this.dateDemande = DateTime.Today;
+            
         }
-        public BonSortie(Article articleSortie)
+        public BonSortie(Article articleSortie, Depanneur leDepanneur)
         {
+            this.leDepanneur = leDepanneur;
             this.articleSortie = articleSortie;
             this.dateDemande = DateTime.Today;
         }

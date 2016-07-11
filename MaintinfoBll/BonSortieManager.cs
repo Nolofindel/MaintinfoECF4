@@ -16,9 +16,9 @@ namespace MaintinfoBll
         {
             bsDao = repo;
         }
-        public BonSortie CreerBonSortie(Article art)
+        public void CreerBonSortie(BonSortie bs)
         {
-            return new BonSortie(art);
+            bsDao.Insert(bs);
         }
 
         public string MiseEnPageBonSortie(BonSortie BdS)

@@ -74,19 +74,23 @@ namespace MaintinfoDalEntity.Configuration
             db.Depanneurs.Add(Dep6);
 
             //Les Bon de sortie
-            BonSortie Bs1 = new BonSortie { LeDepanneur=Dep1,ArticleSortie=Art1,Quantite=2};
+            BonSortie Bs1 = new BonSortie { LeDepanneur = Dep1, ArticleSortie = Art1, Quantite = 2, DateDemande = DateTime.Today };
+            BonSortie Bs2 = new BonSortie { LeDepanneur = Dep2, ArticleSortie = Art2, Quantite = 2, DateDemande = DateTime.Today };
+            BonSortie Bs3 = new BonSortie { LeDepanneur = Dep3, ArticleSortie = Art3, Quantite = 2, DateDemande = DateTime.Today };
 
             //Ajout des Bon d'entrée
             db.BonSorties.Add(Bs1);
+            db.BonSorties.Add(Bs2);
+            db.BonSorties.Add(Bs3);
 
             //Les Bon d'entrée
-            BonEntree Be1 = new BonEntree { ArticleEntree=Art1,QuantiteEntree=12 };
+            BonEntree Be1 = new BonEntree { ArticleEntree=Art1,QuantiteEntree=12,DateEntree = DateTime.Today };
 
             //Ajout des Bon de commande
             db.BonEntrees.Add(Be1);
 
             //Les Bon de commande
-            BonDeCommande BdC1 = new BonDeCommande {ArticleCommande = Art2,QuantiteCommande=111,CommandeEffectue=true };
+            BonDeCommande BdC1 = new BonDeCommande {ArticleCommande = Art2,QuantiteCommande=111,DateCommande = DateTime.Today, CommandeEffectue=true };
 
             //Ajout des Bon de sortie
             db.BonDeCommandes.Add(BdC1);

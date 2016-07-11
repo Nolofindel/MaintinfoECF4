@@ -8,12 +8,20 @@ using System.Threading;
 
 namespace MaintinfoBo
 {
-
     public class Catalogue
     {
+        private List<Article> leCatalogue;
 
+        public List<Article> LeCatalogue
+        {
+            get { return leCatalogue; }
+            set { leCatalogue = value; }
+        }
+        public Catalogue()
+        {
 
-       
+        }
+
     }
 
 }

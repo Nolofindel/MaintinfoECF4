@@ -11,7 +11,7 @@ namespace MaintinfoBo
         private DateTime dateEntree;
         public BonEntree()
         {
-            this.dateEntree = DateTime.Now;
+            
         }
         public BonEntree(Article article, int quantite, DateTime dateEntree)
         {
