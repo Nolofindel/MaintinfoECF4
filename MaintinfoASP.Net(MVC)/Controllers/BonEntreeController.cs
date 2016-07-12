@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MaintinfoBll;
+using MaintinfoBo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,16 @@ namespace MaintinfoASP.Net_MVC_.Controllers
 {
     public class BonEntreeController : Controller
     {
+        // GET: Gestionnaire stock
+        GestionnaireStock ctrStock = new GestionnaireStock();
+        CatalogueManager ctrCata = new CatalogueManager();
+
         // GET: BonEntree
         public ActionResult Index()
         {
-            return View();
+            ICollection<BonEntree> LesBe = ctrStock.RecupererLesBonEntrees();
+            return View(LesBe);
+            
         }
 
         // GET: BonEntree/Details/5
@@ -22,7 +30,12 @@ namespace MaintinfoASP.Net_MVC_.Controllers
 
         // GET: BonEntree/Create
         public ActionResult Create()
-        {
+        {            
+            // charger les Articles
+            ICollection<Article> lstArticles = ctrCata.RecupererCatalogue();
+            TempData["lstArticles"] = lstArticles;
+            ViewBag.lesArticles = new SelectList(lstArticles, "ArticleID", "NomArticle");
+
             return View();
         }
 
@@ -33,7 +46,14 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             try
             {
                 // TODO: Add insert logic here
-
+                if (ModelState.IsValid)
+                {
+                    Article lArt = new Article();
+                    lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleEntree.ArticleID"]));
+                    BonEntree newBe = ctrStock.CreerBonEntree(lArt,Convert.ToInt32(collection["QuantiteEntree"]));
+                    ctrStock.EnregistrerBonEntree(newBe);
+                    //return View("Merci");
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -45,7 +65,15 @@ namespace MaintinfoASP.Net_MVC_.Controllers
         // GET: BonEntree/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            // charger les Articles
+            ICollection<Article> lstArticles = ctrCata.RecupererCatalogue();
+            TempData["lstArticles"] = lstArticles;
+
+            BonEntree be = ctrStock.RechercherBonEntree(id);
+            ViewBag.lesArticles = new SelectList(lstArticles, "ArticleID", "NomArticle",be.ArticleID);
+
+       
+            return View(be);
         }
 
         // POST: BonEntree/Edit/5

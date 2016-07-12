@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MaintinfoBll;
+using MaintinfoBo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,15 @@ namespace MaintinfoASP.Net_MVC_.Controllers
 {
     public class BonDeCommandeController : Controller
     {
+        // GET: Gestionnaire stock
+        GestionnaireStock ctrStock = new GestionnaireStock();
+        CatalogueManager ctrCata = new CatalogueManager();
+
         // GET: BonDeCommande
         public ActionResult Index()
         {
-            return View();
+            ICollection<BonDeCommande> LesBdC = ctrStock.RecupererLesBonDeCommandes();
+            return View(LesBdC);            
         }
 
         // GET: BonDeCommande/Details/5
@@ -23,6 +30,11 @@ namespace MaintinfoASP.Net_MVC_.Controllers
         // GET: BonDeCommande/Create
         public ActionResult Create()
         {
+            // charger les Articles
+            ICollection<Article> lstArticles = ctrCata.RecupererCatalogue();
+            TempData["lstArticles"] = lstArticles;
+            ViewBag.lstArticles = new SelectList(lstArticles, "ArticleID", "NomArticle");
+
             return View();
         }
 
@@ -33,7 +45,15 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             try
             {
                 // TODO: Add insert logic here
-
+                if (ModelState.IsValid)
+                {
+                    Article lArt = new Article();
+                    lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleID"]));
+                    BonDeCommande newBdC = ctrStock.CreerBonDeCommande(lArt);
+                    
+                    ctrStock.EnregistrerBonDeCommande(newBdC, Convert.ToBoolean(collection["CommandeEffectue"]));
+                    //return View("Merci");
+                }
                 return RedirectToAction("Index");
             }
             catch

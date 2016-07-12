@@ -21,9 +21,9 @@ namespace MaintinfoBll
         {
             beDao = repo;
         }
-        public BonEntree CreerBonEntree(string refArt,int quantite)
+        public BonEntree CreerBonEntree(Article art,int quantite)
         {
-            Article art = new Article();                        
+                                 
             try
             {               
                 BonEntree BonE = new BonEntree(art, quantite, DateTime.Now);

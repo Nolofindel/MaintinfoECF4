@@ -35,15 +35,18 @@ namespace MaintinfoDalEntity
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
-                ICollection<Article> LesArt = null;
+                //ICollection<Article> LesArt = null;
                 try
                 {
-                    var AllArticles = db.Articles;
-                    foreach (Article item in AllArticles)
-                    {
-                        LesArt.Add(item);
-                    }
-                    return LesArt;
+                    var art = db.Articles.ToList();
+                    return art;
+
+                    //var AllArticles = db.Articles;
+                    //foreach (Article item in AllArticles)
+                    //{
+                    //    LesArt.Add(item);
+                    //}
+                    //return LesArt;
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {

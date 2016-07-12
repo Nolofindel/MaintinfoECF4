@@ -37,8 +37,8 @@ namespace MaintinfoDalEntity
                 //ICollection<BonSortie> LesBs = null;
                 try
                 {
-                    var f = db.BonSorties.Include(p => p.ArticleSortie).ToList();
-                    return f;
+                    var bs = db.BonSorties.Include(p => p.ArticleSortie).ToList();
+                    return bs;
                     //var AllBonSorties = db.BonSorties;
                     //foreach (BonSortie item in AllBonSorties)
                     //{

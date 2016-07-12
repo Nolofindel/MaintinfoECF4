@@ -18,7 +18,7 @@ namespace MaintinfoBll
         #region Constructeur
         public ArticleManager()
         {
-
+            artDao = new ArticleEntityDao();
         }
         public ArticleManager(IRepository<Article> repo)
         {

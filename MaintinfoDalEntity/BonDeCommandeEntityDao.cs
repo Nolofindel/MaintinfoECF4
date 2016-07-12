@@ -34,15 +34,17 @@ namespace MaintinfoDalEntity
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
-                ICollection<BonDeCommande> LesBdC = null;
+                //ICollection<BonDeCommande> LesBdC = null;
                 try
                 {
-                    var AllBonDeCommandes = db.BonDeCommandes;
-                    foreach (BonDeCommande item in AllBonDeCommandes)
-                    {
-                        LesBdC.Add(item);
-                    }
-                    return LesBdC;
+                    var bdc = db.BonDeCommandes.Include(p => p.ArticleCommande).ToList();
+                    return bdc;
+                    //var AllBonDeCommandes = db.BonDeCommandes;
+                    //foreach (BonDeCommande item in AllBonDeCommandes)
+                    //{
+                    //    LesBdC.Add(item);
+                    //}
+                    //return LesBdC;
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {

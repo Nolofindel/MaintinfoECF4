@@ -22,23 +22,27 @@ namespace MaintinfoBll
         }
 
         #region Bon d'entrée
-        public BonEntree CreerBonEntree(string refArt, int quantite)
+        public BonEntree CreerBonEntree(Article art, int quantite)
         {
-            return BeMgr.CreerBonEntree(refArt, quantite);
+            return BeMgr.CreerBonEntree(art, quantite);
         }
         public bool EnregistrerBonEntree(BonEntree t)
         {
             return BeMgr.EnregistrerBonEntree(t);
         }
-        public void Suprimer(BonEntree be)
+        public void SuprimerBonEntree(BonEntree be)
         {
             BeMgr.SuprimerBonEntree(be);
         }
-        public void Modifier(BonEntree be)
+        public void ModifierBonEntree(BonEntree be)
         {
             BeMgr.ModifierBonEntree(be);
-        }        
-        public ICollection<BonEntree> RecupererTous()
+        }
+        public BonEntree RechercherBonEntree(int id)
+        {
+            return BeMgr.RechercherBonEntree(id);
+        }
+        public ICollection<BonEntree> RecupererLesBonEntrees()
         {
             return BeMgr.RecupererLesBonEntrees();
         }
@@ -46,9 +50,13 @@ namespace MaintinfoBll
 
 
         #region Bon de sortie
-        public void CreerBonSortie(BonSortie bs)
+        public BonSortie CreerBonSortie(Article art, Depanneur leDep)
         {
-            BsMgr.CreerBonSortie(bs);
+            return BsMgr.CreerBonSortie(art,leDep);
+        }
+        public bool EnregistrerBonSortie(BonSortie t)
+        {
+            return BsMgr.EnregistrerBonSortie(t);
         }
         public string MiseEnPageBonSortie(BonSortie bdS)
         {

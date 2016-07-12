@@ -34,15 +34,19 @@ namespace MaintinfoDalEntity
         {
             using (MaintinfoContext db = new MaintinfoContext())
             {
-                ICollection<Depanneur> LesDep = null;
+                //ICollection<Depanneur> LesDep = null;
                 try
                 {
-                    var AllDepanneurs = db.Depanneurs;
-                    foreach (Depanneur item in AllDepanneurs)
-                    {
-                        LesDep.Add(item);
-                    }
-                    return LesDep;
+                    var dep = db.Depanneurs.Include(p => p.SecteurGeographiqueDepanneur).ToList();
+                    dep = db.Depanneurs.Include(p => p.SpecialiteDepanneur).ToList();
+                    return dep;
+
+                    //var AllDepanneurs = db.Depanneurs;
+                    //foreach (Depanneur item in AllDepanneurs)
+                    //{
+                    //    LesDep.Add(item);
+                    //}
+                    //return LesDep;
                 }
                 catch (DaoExceptionAfficheMessage Dex)
                 {

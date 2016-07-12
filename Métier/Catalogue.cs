@@ -10,18 +10,46 @@ namespace MaintinfoBo
 {
     public class Catalogue
     {
-        private List<Article> leCatalogue;
 
-        public List<Article> LeCatalogue
+        private static readonly Lazy<Catalogue> _instance
+                = new Lazy<Catalogue>(() => new Catalogue(), LazyThreadSafetyMode.PublicationOnly);
+        
+        private Catalogue() { }
+        private List<Article> Cat = new List<Article>();
+
+        public static Catalogue Instance
         {
-            get { return leCatalogue; }
-            set { leCatalogue = value; }
+            get
+            {
+
+                return _instance.Value;
+            }
         }
-        public Catalogue()
+        public static  void RemplirCatalogue(List<Article> arts)
         {
-
+            ViderCatalogue();
+            Instance.Cat.AddRange(arts);
+        }
+        public List<Article> RecupererCatalogue()
+        {
+            return Instance.Cat;
+        }
+        public static void ViderCatalogue()
+        {
+            Instance.Cat.Clear();
         }
 
+        //private List<Article> leCatalogue;
+
+        //public List<Article> LeCatalogue
+        //{
+        //    get { return leCatalogue; }
+        //    set { leCatalogue = value; }
+        //}
+        //public Catalogue()
+        //{
+
+        //}
     }
 
 }

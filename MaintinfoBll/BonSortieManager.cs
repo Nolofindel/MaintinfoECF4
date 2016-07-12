@@ -11,14 +11,32 @@ namespace MaintinfoBll
     public class BonSortieManager
     {
         IRepository<BonSortie> bsDao;
+        ArticleManager artMgr = new ArticleManager();
         public BonSortieManager() { }
         public BonSortieManager(IRepository<BonSortie> repo)
         {
             bsDao = repo;
         }
-        public void CreerBonSortie(BonSortie bs)
+        public BonSortie CreerBonSortie(Article art, Depanneur leDep)
         {
-            bsDao.Insert(bs);
+            BonSortie BonS = new BonSortie(art,leDep);
+            return BonS;
+        }
+        public bool EnregistrerBonSortie(BonSortie t)
+        {
+
+            try
+            {
+                bsDao.Insert(t);
+                //met à jour la quantiter de l'article
+                artMgr.SortirArticle(t.ArticleSortie, t.Quantite);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message, ex);
+            }
         }
 
         public string MiseEnPageBonSortie(BonSortie BdS)

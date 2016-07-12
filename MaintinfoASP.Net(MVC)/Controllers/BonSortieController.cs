@@ -13,6 +13,7 @@ namespace MaintinfoASP.Net_MVC_.Controllers
         // GET: Gestionnaire stock
         GestionnaireStock ctrStock = new GestionnaireStock();
         CatalogueManager ctrCata = new CatalogueManager();
+
         // GET: BonSortie
         public ActionResult Index()
         {
@@ -42,14 +43,18 @@ namespace MaintinfoASP.Net_MVC_.Controllers
 
         // POST: BonSortie/Create
         [HttpPost]
-        public ActionResult Create(BonSortie newBonSortie)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
-                    ctrStock.CreerBonSortie(newBonSortie);
+                    Article lArt = new Article();
+                    lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection[""]));
+                    Depanneur leDep = new Depanneur() {DepanneurID= Convert.ToInt32(collection[""]) };
+                    BonSortie newBs = ctrStock.CreerBonSortie(lArt, leDep);
+                    ctrStock.EnregistrerBonSortie(newBs);
                     //return View("Merci");
                 }                
                 return RedirectToAction("Index");

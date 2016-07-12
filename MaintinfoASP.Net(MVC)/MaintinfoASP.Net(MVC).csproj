@@ -186,14 +186,18 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\BonSortie\Index.cshtml" />
     <Content Include="Views\BonSortie\Create.cshtml" />
+    <Content Include="Views\BonDeCommande\Create.cshtml" />
+    <Content Include="Views\BonDeCommande\Index.cshtml" />
+    <Content Include="Views\BonEntree\Index.cshtml" />
+    <Content Include="Views\BonEntree\Create.cshtml" />
+    <Content Include="Views\BonEntree\Details.cshtml" />
+    <Content Include="Views\BonEntree\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\css\" />
     <Folder Include="Content\js\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\BonDeCommande\" />
-    <Folder Include="Views\BonEntree\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
