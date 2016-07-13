@@ -60,7 +60,9 @@ namespace MaintinfoDalEntity
             {
                 try
                 {
+                    db.BonEntrees.Include(p => p.ArticleEntree).ToList();
                     var LeBe = db.BonEntrees.Find(id);
+                    
                     if (LeBe == null)
                     {
                         throw new DaoExceptionAfficheMessage("Bon d'entrée inexistant");

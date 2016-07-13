@@ -25,7 +25,8 @@ namespace MaintinfoASP.Net_MVC_.Controllers
         // GET: BonEntree/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            BonEntree be = ctrStock.RechercherBonEntree(id);
+            return View(be);
         }
 
         // GET: BonEntree/Create
@@ -52,7 +53,7 @@ namespace MaintinfoASP.Net_MVC_.Controllers
                     lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleEntree.ArticleID"]));
                     BonEntree newBe = ctrStock.CreerBonEntree(lArt,Convert.ToInt32(collection["QuantiteEntree"]));
                     ctrStock.EnregistrerBonEntree(newBe);
-                    //return View("Merci");
+                    
                 }
                 return RedirectToAction("Index");
             }
@@ -83,7 +84,15 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                BonEntree be = new BonEntree()
+                {
+                    BonEntreeID = id,
+                    ArticleID = Convert.ToInt32(collection["ArticleEntree.ArticleID"]),
+                    ArticleEntree = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleEntree.ArticleID"])),
+                    QuantiteEntree = Convert.ToInt32(collection["QuantiteEntree"]),
+                    DateEntree=Convert.ToDateTime(collection["DateEntree"])                
+                };
+                ctrStock.ModifierBonEntree(be);
                 return RedirectToAction("Index");
             }
             catch

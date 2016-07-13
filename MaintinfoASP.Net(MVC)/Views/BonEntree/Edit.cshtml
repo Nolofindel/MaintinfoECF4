@@ -1,10 +1,10 @@
 ﻿@model MaintinfoBo.BonEntree
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Modification";
 }
 
-<h2>Edit</h2>
+<h2>Modification</h2>
 
 
 @using (Html.BeginForm())
@@ -12,13 +12,13 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>BonEntree</h4>
+        <h4>Bon d'entrée</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BonEntreeID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ArticleID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ArticleEntree,"Article", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ArticleEntree.ArticleID, (SelectList)ViewBag.lesArticles, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ArticleID, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.QuantiteEntree, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.QuantiteEntree, "Quantité entrée", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.QuantiteEntree, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.QuantiteEntree, "", new { @class = "text-danger" })
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateEntree, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DateEntree, "Date d'entrée", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateEntree, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateEntree, "", new { @class = "text-danger" })
@@ -50,7 +50,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Retour à la liste", "Index")
 </div>
 
 @section Scripts {

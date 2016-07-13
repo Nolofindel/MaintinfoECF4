@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<MaintinfoBo.BonEntree>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liste";
 }
 
-<h2>Index</h2>
+<h2>Les Bons d'entrée</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -34,10 +34,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.DateEntree)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BonEntreeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BonEntreeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BonEntreeID })
+        <td>            
+            @Html.ActionLink("Details", "Details", new { id=item.BonEntreeID })            
         </td>
     </tr>
 }

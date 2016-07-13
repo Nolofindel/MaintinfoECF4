@@ -192,6 +192,11 @@
     <Content Include="Views\BonEntree\Create.cshtml" />
     <Content Include="Views\BonEntree\Details.cshtml" />
     <Content Include="Views\BonEntree\Edit.cshtml" />
+    <Content Include="Views\BonEntree\Delete.cshtml" />
+    <Content Include="Views\BonDeCommande\Edit.cshtml" />
+    <Content Include="Views\BonDeCommande\Details.cshtml" />
+    <Content Include="Views\BonSortie\Details.cshtml" />
+    <Content Include="Views\BonSortie\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

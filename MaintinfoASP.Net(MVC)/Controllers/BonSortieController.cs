@@ -24,7 +24,8 @@ namespace MaintinfoASP.Net_MVC_.Controllers
         // GET: BonSortie/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            BonSortie bs = ctrStock.RechercherBonSortie(id);
+            return View(bs);
         }
 
         // GET: BonSortie/Create
@@ -37,7 +38,7 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             // charger les Articles
             ICollection<Article> lstArticles = ctrCata.RecupererCatalogue();
             TempData["lstArticles"] = lstArticles;
-            ViewBag.lstArticles = new SelectList(lstArticles, "ArticleID", "NomArticle");
+            ViewBag.lesArticles = new SelectList(lstArticles, "ArticleID", "NomArticle");
             return View();
         }
 
@@ -55,7 +56,7 @@ namespace MaintinfoASP.Net_MVC_.Controllers
                     Depanneur leDep = new Depanneur() {DepanneurID= Convert.ToInt32(collection[""]) };
                     BonSortie newBs = ctrStock.CreerBonSortie(lArt, leDep);
                     ctrStock.EnregistrerBonSortie(newBs);
-                    //return View("Merci");
+                    
                 }                
                 return RedirectToAction("Index");
             }
@@ -68,7 +69,19 @@ namespace MaintinfoASP.Net_MVC_.Controllers
         // GET: BonSortie/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            // charger les Depanneurs
+            ICollection<Depanneur> lstDepanneurs = ctrStock.lesDepanneurs();
+            TempData["lstDepanneurs"] = lstDepanneurs;
+
+            
+            // charger les Articles
+            ICollection<Article> lstArticles = ctrCata.RecupererCatalogue();
+            TempData["lstArticles"] = lstArticles;
+            BonSortie bs = ctrStock.RechercherBonSortie(id);
+            ViewBag.lesDepanneurs = new SelectList(lstDepanneurs, "DepanneurID", "NomDepanneur",bs.DepanneurID);
+            ViewBag.lesArticles = new SelectList(lstArticles, "ArticleID", "NomArticle",bs.ArticleID);
+
+            return View(bs);
         }
 
         // POST: BonSortie/Edit/5
@@ -78,7 +91,15 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                BonSortie bs = new BonSortie()
+                {
+                    BonSortieID = id,
+                    ArticleID = Convert.ToInt32(collection["ArticleSortie.ArticleID"]),
+                    ArticleSortie = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleSortie.ArticleID"])),
+                    Quantite = Convert.ToInt32(collection["Quantite"]),
+                    DateDemande = Convert.ToDateTime(collection["DateDemande"])
+                };
+                ctrStock.ModifierBonSortie(bs);
                 return RedirectToAction("Index");
             }
             catch

@@ -58,7 +58,20 @@ namespace MaintinfoBll
         }
         public void ModifierBonEntree(BonEntree be)
         {
-            beDao.Update(be);
+            try
+            {
+                BonEntree oldBe = RechercherBonEntree(be.BonEntreeID);
+                int diff = be.QuantiteEntree - oldBe.QuantiteEntree;
+                artMgr.EntrerArticle(be.ArticleEntree, diff);
+
+                beDao.Update(be);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message, ex);
+            }
+
         }
         public BonEntree RechercherBonEntree(int id)
         {

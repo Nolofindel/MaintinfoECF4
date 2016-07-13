@@ -24,7 +24,8 @@ namespace MaintinfoASP.Net_MVC_.Controllers
         // GET: BonDeCommande/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            BonDeCommande bdc = ctrStock.RechercherBonDeCommande(id);
+            return View(bdc);
         }
 
         // GET: BonDeCommande/Create
@@ -33,7 +34,7 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             // charger les Articles
             ICollection<Article> lstArticles = ctrCata.RecupererCatalogue();
             TempData["lstArticles"] = lstArticles;
-            ViewBag.lstArticles = new SelectList(lstArticles, "ArticleID", "NomArticle");
+            ViewBag.lesArticles = new SelectList(lstArticles, "ArticleID", "NomArticle");
 
             return View();
         }
@@ -52,7 +53,7 @@ namespace MaintinfoASP.Net_MVC_.Controllers
                     BonDeCommande newBdC = ctrStock.CreerBonDeCommande(lArt);
                     
                     ctrStock.EnregistrerBonDeCommande(newBdC, Convert.ToBoolean(collection["CommandeEffectue"]));
-                    //return View("Merci");
+                    
                 }
                 return RedirectToAction("Index");
             }
@@ -65,7 +66,12 @@ namespace MaintinfoASP.Net_MVC_.Controllers
         // GET: BonDeCommande/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            // charger les Articles
+            ICollection<Article> lstArticles = ctrCata.RecupererCatalogue();
+            TempData["lstArticles"] = lstArticles;
+            BonDeCommande bdc = ctrStock.RechercherBonDeCommande(id);
+            ViewBag.lesArticles = new SelectList(lstArticles, "ArticleID", "NomArticle",bdc.ArticleID);
+            return View(bdc);
         }
 
         // POST: BonDeCommande/Edit/5
@@ -75,7 +81,15 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                BonDeCommande bdc = new BonDeCommande()
+                {
+                    BonDeCommandeID = id,
+                    ArticleID = Convert.ToInt32(collection["ArticleCommande.ArticleID"]),
+                    ArticleCommande = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleCommande.ArticleID"])),
+                    QuantiteCommande = Convert.ToInt32(collection["QuantiteCommande"]),
+                    DateCommande = Convert.ToDateTime(collection["DateCommande"])
+                };
+                ctrStock.ModifierBonDeCommande(bdc);
                 return RedirectToAction("Index");
             }
             catch
