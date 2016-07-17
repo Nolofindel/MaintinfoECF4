@@ -11,6 +11,8 @@ namespace MaintinfoBll
     {
         ArticleManager artMgr = new ArticleManager();
         public CatalogueManager() { }
+        
+        //Génére
         public void GenererCatalogue()
         {
             List<Article> arts = new List<Article>();

@@ -16,8 +16,15 @@ namespace MaintinfoBo
         public BonEntree(Article article, int quantite, DateTime dateEntree)
         {
             this.articleEntree = article;
+            this.articleID = article.ArticleID;
+            
             this.quantiteEntree = quantite;
-            this.dateEntree = dateEntree;
+
+            if (dateEntree == null)
+                this.dateEntree = DateTime.Today.Date;
+            else
+                this.dateEntree = dateEntree.Date;
+
         }
         
         public int BonEntreeID

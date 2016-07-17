@@ -37,8 +37,8 @@ namespace MaintinfoDalEntity
                 //ICollection<Depanneur> LesDep = null;
                 try
                 {
-                    var dep = db.Depanneurs.Include(p => p.SecteurGeographiqueDepanneur).ToList();
-                    dep = db.Depanneurs.Include(p => p.SpecialiteDepanneur).ToList();
+                    var dep = db.Depanneurs.ToList();
+                    
                     return dep;
 
                     //var AllDepanneurs = db.Depanneurs;

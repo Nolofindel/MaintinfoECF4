@@ -48,10 +48,9 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             {
                 // TODO: Add insert logic here
                 if (ModelState.IsValid)
-                {
-                    Article lArt = new Article();
-                    lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleEntree.ArticleID"]));
-                    BonEntree newBe = ctrStock.CreerBonEntree(lArt,Convert.ToInt32(collection["QuantiteEntree"]));
+                {                     
+                    Article lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleEntree.ArticleID"]));
+                    BonEntree newBe = ctrStock.CreerBonEntree(lArt,Convert.ToInt32(collection["QuantiteEntree"]),Convert.ToDateTime(collection["DateEntree"]));
                     ctrStock.EnregistrerBonEntree(newBe);
                     
                 }

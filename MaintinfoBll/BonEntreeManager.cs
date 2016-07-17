@@ -21,18 +21,16 @@ namespace MaintinfoBll
         {
             beDao = repo;
         }
-        public BonEntree CreerBonEntree(Article art,int quantite)
+        public BonEntree CreerBonEntree(Article art,int quantite,DateTime dateEntree)
         {
-                                 
             try
-            {               
-                BonEntree BonE = new BonEntree(art, quantite, DateTime.Now);
-                return BonE;
+            {                
+                return new BonEntree(art, quantite, dateEntree);
             }
-            catch (Exception ex)
+            catch (BllExceptionAfficheMessage ex)
             {
 
-                throw new Exception(ex.Message, ex);
+                throw new BllExceptionAfficheMessage(ex.Message, ex);
             }
 
         }
@@ -46,10 +44,10 @@ namespace MaintinfoBll
                 artMgr.EntrerArticle(t.ArticleEntree, t.QuantiteEntree);
                 return true;
             }
-            catch (Exception ex)
+            catch (BllExceptionAfficheMessage ex)
             {
 
-                throw new Exception(ex.Message, ex);
+                throw new BllExceptionAfficheMessage(ex.Message, ex);
             }
         }
         public void SuprimerBonEntree(BonEntree be)
@@ -66,10 +64,10 @@ namespace MaintinfoBll
 
                 beDao.Update(be);
             }
-            catch (Exception ex)
+            catch (BllExceptionAfficheMessage ex)
             {
 
-                throw new Exception(ex.Message, ex);
+                throw new BllExceptionAfficheMessage(ex.Message, ex);
             }
 
         }
@@ -79,7 +77,15 @@ namespace MaintinfoBll
         }
         public ICollection<BonEntree> RecupererLesBonEntrees()
         {
-            return beDao.GetAll();
+            try
+            {
+                return beDao.GetAll();
+            }
+            catch (BllExceptionAfficheMessage ex)
+            {
+
+                throw new BllExceptionAfficheMessage(ex.Message, ex);
+            }
         }
 
     }

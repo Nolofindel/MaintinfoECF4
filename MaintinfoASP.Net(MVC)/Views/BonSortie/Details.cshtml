@@ -1,50 +1,50 @@
 ﻿@model MaintinfoBo.BonSortie
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>BonSortie</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DepanneurID)
-        </dt>
+	<h4>Bon de sortie</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.ArticleSortie)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepanneurID)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ArticleSortie.NomArticle)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleID)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Quantite)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ArticleID)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Quantite)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantite)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.LeDepanneur)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Quantite)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.LeDepanneur.NomDepanneur)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateDemande)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.DateDemande)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateDemande)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.DateDemande)
+		</dd>
 
-    </dl>
+	</dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BonSortieID }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Modifier", "Edit", new { id = Model.BonSortieID }) |
+	@Html.ActionLink("Retour à la liste", "Index")
 </p>

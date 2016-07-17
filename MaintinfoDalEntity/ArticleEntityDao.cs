@@ -25,7 +25,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Article non supprimer");
                 }
             }
             
@@ -51,7 +51,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible de récupérer les articles");
                 }
             }
 
@@ -74,7 +74,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("");
                 }
             }
 

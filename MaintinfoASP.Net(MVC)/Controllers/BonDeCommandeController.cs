@@ -48,9 +48,12 @@ namespace MaintinfoASP.Net_MVC_.Controllers
                 // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
-                    Article lArt = new Article();
-                    lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleID"]));
-                    BonDeCommande newBdC = ctrStock.CreerBonDeCommande(lArt);
+                    Article lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleID"]));
+                    int quant =Convert.ToInt32(collection["QuantiteCommande"]);
+                    DateTime dateCommande =Convert.ToDateTime(collection["DateCommande"]);
+                    bool effectue = Convert.ToBoolean(collection["CommandeEffectue"]);
+                    //
+                    BonDeCommande newBdC = ctrStock.CreerBonDeCommande(lArt,quant,dateCommande,effectue);
                     
                     ctrStock.EnregistrerBonDeCommande(newBdC, Convert.ToBoolean(collection["CommandeEffectue"]));
                     

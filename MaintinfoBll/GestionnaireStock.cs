@@ -22,9 +22,9 @@ namespace MaintinfoBll
         }
 
         #region Bon d'entrée
-        public BonEntree CreerBonEntree(Article art, int quantite)
+        public BonEntree CreerBonEntree(Article art, int quantite,DateTime dateEntree)
         {
-            return BeMgr.CreerBonEntree(art, quantite);
+            return BeMgr.CreerBonEntree(art, quantite, dateEntree);
         }
         public bool EnregistrerBonEntree(BonEntree t)
         {
@@ -50,9 +50,9 @@ namespace MaintinfoBll
 
 
         #region Bon de sortie
-        public BonSortie CreerBonSortie(Article art, Depanneur leDep)
+        public BonSortie CreerBonSortie(Article art, Depanneur leDep,int quantie,DateTime date)
         {
-            return BsMgr.CreerBonSortie(art,leDep);
+            return BsMgr.CreerBonSortie(art,leDep, quantie, date);
         }
         public bool EnregistrerBonSortie(BonSortie t)
         {
@@ -94,9 +94,9 @@ namespace MaintinfoBll
         {
             BdCMgr.RemplirBonDeCommande(bdc, quantite);
         }
-        public BonDeCommande CreerBonDeCommande(Article art)
+        public BonDeCommande CreerBonDeCommande(Article art,int quantiteCommande, DateTime dateCommande, bool commandeEffectue)
         {
-            return BdCMgr.CreerBonDeCommande(art);
+            return BdCMgr.CreerBonDeCommande(art,quantiteCommande,dateCommande,commandeEffectue);
         }
         public void EnregistrerBonDeCommande(BonDeCommande bdC, bool effectue)
         {

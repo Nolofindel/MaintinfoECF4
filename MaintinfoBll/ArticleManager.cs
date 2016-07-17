@@ -41,13 +41,48 @@ namespace MaintinfoBll
         }
         public void SortirArticle(Article Article, int Quantite)
         {
-            Article.QuantiteArticle -= Quantite;
-            artDao.Update(Article);
+            try
+            {
+                if (Article.QuantiteArticle == 0 || Article.QuantiteArticle + Quantite <= 0)
+                {
+                    throw new BllExceptionAfficheMessage(Article.NomArticle + ": Quantité insuffisante restant ==> " + Article.QuantiteArticle);
+
+                }
+                else
+                {
+                    Article.QuantiteArticle -= Quantite;
+                    artDao.Update(Article);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new BllExceptionAfficheMessage(ex.Message);
+            }
+
         }
         public void EntrerArticle(Article Article, int Quantite)
         {
-            Article.QuantiteArticle += Quantite;
-            artDao.Update(Article);
+
+            try
+            {
+                if (Article.QuantiteArticle == 0 || Article.QuantiteArticle + Quantite <= 0)
+                {
+                    throw new BllExceptionAfficheMessage(Article.NomArticle + ": Quantité insuffisante restant ==> " + Article.QuantiteArticle);
+                }
+                else
+                {
+                    Article.QuantiteArticle += Quantite;
+                    artDao.Update(Article);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new BllExceptionAfficheMessage(ex.Message);
+            }
+  
         }
 
         public void SuprimerArticle(Article art)

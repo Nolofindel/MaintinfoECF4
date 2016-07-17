@@ -48,7 +48,6 @@
     <Compile Include="Exceptions\BllException.cs" />
     <Compile Include="Exceptions\BllExceptionAfficheMessage.cs" />
     <Compile Include="Exceptions\BllExceptionFinAppli.cs" />
-    <Compile Include="GestionnaireDepanneurs.cs" />
     <Compile Include="GestionnaireStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

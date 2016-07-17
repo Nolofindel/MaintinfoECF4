@@ -25,7 +25,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("Erreur : " + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible de supprimer le bon de sortie! Erreur : " + Dex.Message);
                 }
             }
         }
@@ -38,6 +38,9 @@ namespace MaintinfoDalEntity
                 try
                 {
                     var bs = db.BonSorties.Include(p => p.ArticleSortie).ToList();
+                    bs = db.BonSorties.Include(p => p.LeDepanneur).ToList();
+
+
                     return bs;
                     //var AllBonSorties = db.BonSorties;
                     //foreach (BonSortie item in AllBonSorties)
@@ -60,6 +63,9 @@ namespace MaintinfoDalEntity
             {
                 try
                 {
+                    db.BonSorties.Include(p => p.ArticleSortie).ToList();
+                    db.BonSorties.Include(p => p.LeDepanneur).ToList();
+
                     var LeBonSortie = db.BonSorties.Find(id);
                     if (LeBonSortie == null)
                     {
@@ -70,7 +76,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible de retrouver le bon de sortie! Erreur : " + Dex.Message);
                 }
             }
         }
@@ -90,7 +96,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible d'ajouter le bon de sortie! Erreur : " + Dex.Message);
                 }
             }
         }
@@ -107,7 +113,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible de modifier le bon de sortie! Erreur : " + Dex.Message);
                 }
             }
         }

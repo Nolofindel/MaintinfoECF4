@@ -25,7 +25,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible de supprimer le bon d'entrée! Erreur : " + Dex.Message);
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible de récupérer les bons d'entrée! Erreur : " + Dex.Message);
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible de récupérer le bon d'entrée! Erreur : " + Dex.Message);
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible d'ajouter le bon d'entrée! Erreur : " + Dex.Message);
                 }
             }
         }
@@ -109,7 +109,7 @@ namespace MaintinfoDalEntity
                 catch (DaoExceptionAfficheMessage Dex)
                 {
 
-                    throw new DaoExceptionAfficheMessage("" + Dex.Message);
+                    throw new DaoExceptionAfficheMessage("Impossible de modifier le bon d'entrée! Erreur : " + Dex.Message);
                 }
             }
         }

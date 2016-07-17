@@ -17,25 +17,25 @@ namespace MaintinfoBll
         {
             bsDao = repo;
         }
-        public BonSortie CreerBonSortie(Article art, Depanneur leDep)
+        public BonSortie CreerBonSortie(Article art, Depanneur leDep,int quantite,DateTime date)
         {
-            BonSortie BonS = new BonSortie(art,leDep);
+            BonSortie BonS = new BonSortie(art,leDep, quantite,date);
             return BonS;
         }
         public bool EnregistrerBonSortie(BonSortie t)
         {
-
             try
-            {
-                bsDao.Insert(t);
+            {                
                 //met à jour la quantiter de l'article
                 artMgr.SortirArticle(t.ArticleSortie, t.Quantite);
+                //Si la MAJ de l'article est Ok creation du bon de sortie
+                bsDao.Insert(t);
                 return true;
             }
-            catch (Exception ex)
+            catch (BllExceptionAfficheMessage ex)
             {
 
-                throw new Exception(ex.Message, ex);
+                throw new BllExceptionAfficheMessage(ex.Message, ex);
             }
         }
 
@@ -61,7 +61,19 @@ namespace MaintinfoBll
         }
         public void ModifierBonSortie(BonSortie bs)
         {
-            bsDao.Update(bs);
+            try
+            {
+                BonSortie oldBs = RechercherBonSortie(bs.BonSortieID);
+                int diff = bs.Quantite - oldBs.Quantite;
+                artMgr.SortirArticle(bs.ArticleSortie, diff);
+
+                bsDao.Update(bs);
+            }
+            catch (BllExceptionAfficheMessage ex)
+            {
+
+                throw new BllExceptionAfficheMessage(ex.Message, ex);
+            }
         }
         public BonSortie RechercherBonSortie( int id)
         {

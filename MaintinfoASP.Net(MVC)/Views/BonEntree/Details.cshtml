@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Bon d'entrée</h2>
+<h2>Details</h2>
 
 <div>
-    <h4>BonEntree</h4>
+    <h4>Bon d'entrée</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,7 +37,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BonEntreeID }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.BonEntreeID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.BonEntreeID }) |
+    @Html.ActionLink("Supprimer", "Delete", new { id = Model.BonEntreeID }) |
+    @Html.ActionLink("Retour à la liste", "Index")
 </p>

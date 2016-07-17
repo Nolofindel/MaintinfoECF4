@@ -7,23 +7,16 @@
 <h2>Details</h2>
 
 <div>
-    <h4>BonDeCommande</h4>
+    <h4>Bon de commande</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.DateCommande)
+            @Html.DisplayNameFor(model => model.ArticleCommande)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DateCommande)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ArticleID)
+            @Html.DisplayFor(model => model.ArticleCommande.NomArticle)
         </dd>
 
         <dt>
@@ -42,9 +35,17 @@
             @Html.DisplayFor(model => model.CommandeEffectue)
         </dd>
 
+		<dt>
+			@Html.DisplayNameFor(model => model.DateCommande)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DateCommande)
+		</dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BonDeCommandeID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.BonDeCommandeID }) |
+    @Html.ActionLink("Retour à la liste", "Index")
 </p>

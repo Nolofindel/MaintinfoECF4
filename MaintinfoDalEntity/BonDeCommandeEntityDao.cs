@@ -60,6 +60,7 @@ namespace MaintinfoDalEntity
             {
                 try
                 {
+                    db.BonDeCommandes.Include(p => p.ArticleCommande).ToList();
                     var LeBdc = db.BonDeCommandes.Find(id);
                     if (LeBdc == null)
                     {

@@ -34,7 +34,7 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             // charger les Depanneurs
             ICollection<Depanneur> lstDepanneurs = ctrStock.lesDepanneurs();
             TempData["lstDepanneurs"] = lstDepanneurs;
-            ViewBag.lstDepanneurs = new SelectList(lstDepanneurs, "DepanneurID", "NomDepanneur");
+            ViewBag.lesDepanneurs = new SelectList(lstDepanneurs, "DepanneurID", "NomDepanneur");
             // charger les Articles
             ICollection<Article> lstArticles = ctrCata.RecupererCatalogue();
             TempData["lstArticles"] = lstArticles;
@@ -49,12 +49,25 @@ namespace MaintinfoASP.Net_MVC_.Controllers
             try
             {
                 // TODO: Add insert logic here
-                if (ModelState.IsValid)
+                if (Convert.ToInt32(collection["Quantite"]) <= 0)
+                {
+
+                }
+                else if (ModelState.IsValid)
                 {
                     Article lArt = new Article();
-                    lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection[""]));
-                    Depanneur leDep = new Depanneur() {DepanneurID= Convert.ToInt32(collection[""]) };
-                    BonSortie newBs = ctrStock.CreerBonSortie(lArt, leDep);
+                    lArt = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleSortie.ArticleID"]));
+                    Depanneur leDep = new Depanneur() {DepanneurID= Convert.ToInt32(collection["LeDepanneur.DepanneurID"]) };
+
+                    BonSortie newBs = new BonSortie
+                    {
+                        ArticleID = lArt.ArticleID,
+                        ArticleSortie = lArt,
+                        DepanneurID = leDep.DepanneurID,
+                        LeDepanneur = leDep,
+                        Quantite = Convert.ToInt32(collection["Quantite"]),
+                        DateDemande = Convert.ToDateTime(collection["DateDemande"])
+                    };
                     ctrStock.EnregistrerBonSortie(newBs);
                     
                 }                
@@ -97,6 +110,8 @@ namespace MaintinfoASP.Net_MVC_.Controllers
                     ArticleID = Convert.ToInt32(collection["ArticleSortie.ArticleID"]),
                     ArticleSortie = ctrCata.RechercheArticleById(Convert.ToInt32(collection["ArticleSortie.ArticleID"])),
                     Quantite = Convert.ToInt32(collection["Quantite"]),
+                    DepanneurID = Convert.ToInt32(collection["LeDepanneur.DepanneurID"]),
+                    LeDepanneur = new Depanneur {DepanneurID = Convert.ToInt32(collection["LeDepanneur.DepanneurID"]) },
                     DateDemande = Convert.ToDateTime(collection["DateDemande"])
                 };
                 ctrStock.ModifierBonSortie(bs);

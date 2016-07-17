@@ -32,9 +32,9 @@ namespace MaintinfoBll
         {
             Bdc.QuantiteCommande = Quantite;
         }
-        public BonDeCommande CreerBonDeCommande(Article art)
+        public BonDeCommande CreerBonDeCommande(Article articleCommande, int quantiteCommande, DateTime dateCommande, bool commandeEffectue)
         {
-            return  new BonDeCommande(art);
+            return  new BonDeCommande(articleCommande,quantiteCommande,dateCommande,commandeEffectue);
         }
         public void EnregistrerBonDeCommande(BonDeCommande bdc,bool Effectue)
         {

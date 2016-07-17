@@ -9,18 +9,16 @@ namespace MaintinfoASP.Net_MVC_.Controllers
 {
     
     public class HomeController : Controller
-    {
-        CatalogueManager initCat = new CatalogueManager();
+    {       
         
         public ActionResult Index()
-        {
-            initCat.GenererCatalogue();
+        {            
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Gestionnaire des piéces de maintenance informatique";
 
             return View();
         }

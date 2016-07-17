@@ -16,11 +16,20 @@ namespace MaintinfoBo
         {
             
         }
-        public BonSortie(Article articleSortie, Depanneur leDepanneur)
+        public BonSortie(Article articleSortie, Depanneur leDepanneur, int quantite, DateTime dateDemande)
         {
             this.leDepanneur = leDepanneur;
+            this.depanneurID = leDepanneur.DepanneurID;
             this.articleSortie = articleSortie;
-            this.dateDemande = DateTime.Today;
+            this.articleID = articleSortie.ArticleID;
+            this.quantiteSortie = quantite;
+
+            if (dateDemande == null)
+                this.dateDemande = DateTime.Today;
+            else
+                this.dateDemande = dateDemande.Date;
+
+
         }
         public int BonSortieID
         {
